@@ -27,17 +27,47 @@ public class MainJFrame extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        mainjSplitPanel = new javax.swing.JSplitPane();
+        controljPanel = new javax.swing.JPanel();
+        containerjPanel = new javax.swing.JPanel();
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
+        javax.swing.GroupLayout controljPanelLayout = new javax.swing.GroupLayout(controljPanel);
+        controljPanel.setLayout(controljPanelLayout);
+        controljPanelLayout.setHorizontalGroup(
+            controljPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 100, Short.MAX_VALUE)
+        );
+        controljPanelLayout.setVerticalGroup(
+            controljPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 362, Short.MAX_VALUE)
+        );
+
+        mainjSplitPanel.setLeftComponent(controljPanel);
+
+        javax.swing.GroupLayout containerjPanelLayout = new javax.swing.GroupLayout(containerjPanel);
+        containerjPanel.setLayout(containerjPanelLayout);
+        containerjPanelLayout.setHorizontalGroup(
+            containerjPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 557, Short.MAX_VALUE)
+        );
+        containerjPanelLayout.setVerticalGroup(
+            containerjPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 362, Short.MAX_VALUE)
+        );
+
+        mainjSplitPanel.setRightComponent(containerjPanel);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addComponent(mainjSplitPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 670, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addComponent(mainjSplitPanel, javax.swing.GroupLayout.Alignment.TRAILING)
         );
 
         pack();
@@ -79,5 +109,8 @@ public class MainJFrame extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JPanel containerjPanel;
+    private javax.swing.JPanel controljPanel;
+    private javax.swing.JSplitPane mainjSplitPanel;
     // End of variables declaration//GEN-END:variables
 }
