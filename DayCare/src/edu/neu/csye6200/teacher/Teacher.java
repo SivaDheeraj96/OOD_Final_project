@@ -1,4 +1,6 @@
-package edu.neu.csye6200;
+package edu.neu.csye6200.teacher;
+
+import edu.neu.csye6200.Person;
 
 public class Teacher extends Person {
 

@@ -6,7 +6,7 @@ import java.util.Map;
 
 import edu.neu.csye6200.FileUtil;
 import edu.neu.csye6200.Person;
-import edu.neu.csye6200.Teacher;
+import edu.neu.csye6200.teacher.Teacher;
 
 public class TeacherFactory implements Factory{
 	private static final Map<Integer,Person> personMap=new HashMap<Integer,Person>();
