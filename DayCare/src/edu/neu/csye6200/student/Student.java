@@ -1,4 +1,6 @@
-package edu.neu.csye6200;
+package edu.neu.csye6200.student;
+
+import edu.neu.csye6200.Person;
 
 public class Student extends Person {
 
@@ -53,9 +55,7 @@ public class Student extends Person {
 	
 	@Override 
 	public String toString() { 
-		return "Student [Age=" + getAge() + ", gpa= "+getGpa()+", SId= "+ getSId() +
-	  "Name()=" + getName() + "Parentname()=" + getParentname() + "Phonenumber()="
-	  + getPhonenumber() + "Address()=" + getAddress() + "]"; 
+		return super.toString()+","+this.getGpa()+","+this.getSId();
 		}
 	 
 	
@@ -64,13 +64,6 @@ public class Student extends Person {
 		return gpa;
 	}
 	
-
-	/*
-	 * @Override public String toString() { return "Student [getGpa()=" + getGpa() +
-	 * ", getSId()=" + getSId() + ", getName()=" + getName() + ", getParentname()="
-	 * + getParentname() + ", getPhonenumber()=" + getPhonenumber() +
-	 * ", getAddress()=" + getAddress() + ", getAge()=" + getAge() + "]"; }
-	 */
 	public void setGpa(double gpa) {
 		this.gpa = gpa;
 	}

@@ -1,5 +1,10 @@
 package edu.neu.csye6200;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import edu.neu.csye6200.health.VaccineRecord;
+
 public class Person {
 
 	protected String name;
@@ -7,6 +12,8 @@ public class Person {
 	protected long phoneNumber;
 	protected String address;
 	protected int age;
+	protected List<VaccineRecord> vaccineRecords;
+	
 	public Person() {};
 	public Person(String name, String parentName, long phoneNumber, String address, int age) {
 		this.name = name;
@@ -14,6 +21,7 @@ public class Person {
 		this.phoneNumber = phoneNumber;
 		this.address = address;
 		this.age=age;
+//		this.vaccineRecords = vacRecords;
 	}
 	
 	public Person(String csvString) {
@@ -72,6 +80,22 @@ public class Person {
 	}
 	public void setAge(int age) {
 		this.age = age;
+	}
+	public List<VaccineRecord> getVaccineRecords() {
+		return vaccineRecords;
+	}
+	public void setVaccineRecords(List<VaccineRecord> vaccineRecords) {
+		this.vaccineRecords = vaccineRecords;
+	}
+	public void addVaccineRecord(VaccineRecord record) {
+		if(this.vaccineRecords == null) {
+			this.vaccineRecords =  new ArrayList<VaccineRecord>();
+		}
+		this.vaccineRecords.add(record);
+	}
+	@Override
+	public String toString() {
+		return this.getName()+","+this.getAddress()+","+this.getPhonenumber()+","+this.getAge()+","+this.getPhonenumber()+","+this.getAddress().replace(",", "--C--");
 	}
 }
 	

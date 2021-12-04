@@ -10,8 +10,10 @@ import java.util.Comparator;
 import java.util.List;
 import java.util.Scanner;
 
+import edu.neu.csye6200.student.Student;
+
 public class Parsing {
-	static final String fileName = "csv1.txt";
+	static final String fileName = "edu/neu/csye6200/inputData/csv1.txt";
 	static ArrayList<Student> student = new ArrayList<Student>();
 	// static Student st= new Student();
 

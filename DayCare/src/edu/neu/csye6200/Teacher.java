@@ -4,6 +4,7 @@ public class Teacher extends Person {
 
 	private int salary;
 	private int tId;
+	
 	public Teacher(String name, String parentname, long phonenumber, String address,int age, int salary, int tId) {
 		super(name, parentname, phonenumber, address, age);
 		this.salary = salary;
@@ -49,12 +50,10 @@ public class Teacher extends Person {
 			System.err.println("Error while parsing teacher id"+vals[6]);	
 		}
 	}
+	
 	@Override
 	public String toString() {
-		return "Teacher [salary=" + salary + ", TId=" + tId + ", getSalary()=" + getSalary() + ", getTId()=" + getTId()
-				+ ", getName()=" + getName() + ", getParentname()=" + getParentname() + ", getPhonenumber()="
-				+ getPhonenumber() + ", getAddress()=" + getAddress() + ", getAge()=" + getAge() + ", getClass()="
-				+ getClass() + ", hashCode()=" + hashCode() + ", toString()=" + super.toString() + "]";
+		return super.toString()+","+this.getSalary()+","+this.getTId();
 	}
 	
 

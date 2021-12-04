@@ -8,6 +8,7 @@ import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.ArrayList;
 import java.util.List;
 
 
@@ -15,21 +16,32 @@ public class FileUtil {
 	
 	
 	 
- public static List<String>  getFileData(String fileName) throws Exception{
+ public static List<String>  getFileData(String fileName) {
 	 FileReader fr = null;
 	 BufferedReader br = null;
+	 List<String> data = new ArrayList<String>();
 	 try {
 		 fr = new FileReader(fileName);
 		 br = new BufferedReader(fr);
-//		 while (br) {
-//			 
-//		 }
+		 while (br.ready()) {
+			 String line = br.readLine();
+			 data.add(line);
+		 }
 	 }
 	 catch(Exception e) {
-		 System.err.println();
-		 throw e;
+		 System.err.println("Exception while reading the file");
+		 e.printStackTrace();
 	 }
-	 return null;
+	 finally {
+		 try {
+			fr.close();
+			br.close();
+		} catch (IOException e) {
+			System.err.print("error while closing the buffer");
+			e.printStackTrace();
+		}
+	 }
+	 return data;
  }
  
  
