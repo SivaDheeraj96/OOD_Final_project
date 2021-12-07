@@ -1,5 +1,7 @@
 package edu.neu.csye6200.classRoom;
 
+import edu.neu.csye6200.student.Student;
+import edu.neu.csye6200.teacher.Teacher;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
@@ -22,6 +24,9 @@ public class ClassRoomController {
 	public void addClassRoom(ClassRoom classRoom) {
 		this.model.addClassRoom(classRoom);
 	}
+        
+        public void addClassRoom(Teacher teacher, List<Student> students){
+        }
 	
 	public void updateView() {
 		this.view.updateDisplay();

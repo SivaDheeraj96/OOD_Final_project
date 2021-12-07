@@ -10,8 +10,11 @@ import edu.neu.csye6200.Person;
 
 public class StudentModel {
 	private Map<Integer,Student> personMap=null;
-	private static final String file = "edu/neu/csye6200/inputData/studentData.txt"; 
-	private StudentModel(){}
+	private String fileInput = "edu/neu/csye6200/inputData/studentData.txt";
+
+    public StudentModel(String filePath) {
+        this.fileInput = filePath;
+    }
 	public Student getStudent(int id) {
 		if(personMap == null) {
 			populate();
@@ -20,7 +23,7 @@ public class StudentModel {
 	}
 	private void populate() {
 		personMap = new HashMap<Integer,Student>();
-		FileUtil.getFileData(file).stream().map((x) -> new Student(x)).forEach((x) -> {personMap.put(x.getSId(), x);});
+		FileUtil.getFileData(this.fileInput).stream().map((x) -> new Student(x)).forEach((x) -> {personMap.put(x.getSId(), x);});
 	}
 	public void loadPersons(String fileName) {
 		List<String> data = FileUtil.getFileData(fileName);
