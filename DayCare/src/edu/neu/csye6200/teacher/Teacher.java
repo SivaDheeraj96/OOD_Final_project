@@ -71,5 +71,5 @@ public class Teacher extends Person {
 	public void setTId(int tId) {
 		this.tId = tId;
 	}
-
+        
 }

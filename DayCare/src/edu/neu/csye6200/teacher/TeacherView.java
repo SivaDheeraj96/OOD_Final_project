@@ -9,5 +9,9 @@ package edu.neu.csye6200.teacher;
  * @author dheeraj
  */
 public class TeacherView {
+
+    void updateView() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
     
 }

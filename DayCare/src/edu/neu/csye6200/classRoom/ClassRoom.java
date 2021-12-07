@@ -1,10 +1,9 @@
 package edu.neu.csye6200.classRoom;
 
 import edu.neu.csye6200.classRoomGroup.ClassRoomGroup;
-import edu.neu.csye6200.student.Student;
-import edu.neu.csye6200.teacher.Teacher;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class ClassRoom {
 
@@ -15,6 +14,9 @@ public class ClassRoom {
 	
 	protected ClassRoom(String data) {
 		
+            this.id =-1;
+            this.name ="";
+            
 	}
 	public int getId() {
 		return id;
@@ -34,6 +36,19 @@ public class ClassRoom {
         public boolean getIsFull(){
             return this.isFull;
         }
+
+    public List<ClassRoomGroup> getGroups() {
+        return groups;
+    }
+
+    public void setGroups(List<ClassRoomGroup> groups) {
+        this.groups = groups;
+    }
         
+    @Override
+    public String toString()
+    {
+        return this.getId()+","+this.getName()+","+this.getGroups().stream().map(x -> ((Integer)x.getId()).toString()).collect(Collectors.joining(","));
+    }
 	
 }

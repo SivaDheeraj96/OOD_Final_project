@@ -1,8 +1,9 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package edu.neu.csye6200.teacher;
+
+import edu.neu.csye6200.FileUtil;
+import edu.neu.csye6200.Person;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  *
@@ -10,8 +11,45 @@ package edu.neu.csye6200.teacher;
  */
 public class TeacherModel {
 
-    public TeacherModel(String TEACHER_CSV) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    private final String inputFilePath ;
+    
+    private final List<Person> teacherList = new ArrayList();
+    public TeacherModel(String filePath) {
+        this.inputFilePath = filePath;
+        FileUtil.getFileData(filePath).stream().map(x -> new Teacher(x)).forEach(teacherList::add);
+    }
+
+    protected List<Person> getTeacherList() {
+        return teacherList;
+    }
+    protected void addTeacher(String name, String parentName, long phoneNumber, String address,int age, int salary, int tId){
+        Teacher t = new Teacher(name, parentName, phoneNumber, address, age, salary, tId);
+        teacherList.add(t);
+        FileUtil.appendEntryToFile(inputFilePath,t.toString());
+    }
+    
+    protected void addTeacher(Person t){
+        teacherList.add(t);
+        FileUtil.appendEntryToFile(inputFilePath,t.toString());
+    }
+    
+    protected void removeTeacher(Person t){
+        teacherList.remove(t);
+        FileUtil.removeEntryInFile(inputFilePath, t.toString());
+    }
+    
+    protected void updateTeacher(Person oldTeacher, Person newTeacher)
+    {
+        teacherList.remove(oldTeacher);
+        teacherList.add(newTeacher);
+        FileUtil.modifyEntryInFile(inputFilePath, oldTeacher.toString(), newTeacher.toString());
+    }
+    
+    protected List<Person> getUnassignedTeacherList(){
+        List<Person> list = new ArrayList<>();
+        teacherList.stream().filter(x -> x.getIsAssigned()).forEach(list::add);
+        return list;
+        
     }
     
 }
