@@ -23,7 +23,7 @@
   <Layout>
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Component id="mainjSplitPanel" alignment="0" pref="670" max="32767" attributes="0"/>
+          <Component id="mainjSplitPanel" alignment="0" max="32767" attributes="0"/>
       </Group>
     </DimensionLayout>
     <DimensionLayout dim="1">
@@ -38,6 +38,11 @@
       <Layout class="org.netbeans.modules.form.compat2.layouts.support.JSplitPaneSupportLayout"/>
       <SubComponents>
         <Container class="javax.swing.JPanel" name="controljPanel">
+          <Properties>
+            <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="ff" green="cc" red="cc" type="rgb"/>
+            </Property>
+          </Properties>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JSplitPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JSplitPaneSupportLayout$JSplitPaneConstraintsDescription">
               <JSplitPaneConstraints position="left"/>
@@ -47,17 +52,74 @@
           <Layout>
             <DimensionLayout dim="0">
               <Group type="103" groupAlignment="0" attributes="0">
-                  <EmptySpace min="0" pref="100" max="32767" attributes="0"/>
+                  <Group type="102" attributes="0">
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Component id="studentManagejButton" linkSize="1" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="teacherManagejButton" linkSize="1" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="groupManagejButton" linkSize="1" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="vaccineManagejButton" linkSize="1" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="classroomManagejButton" linkSize="1" alignment="0" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace max="32767" attributes="0"/>
+                  </Group>
               </Group>
             </DimensionLayout>
             <DimensionLayout dim="1">
               <Group type="103" groupAlignment="0" attributes="0">
-                  <EmptySpace min="0" pref="362" max="32767" attributes="0"/>
+                  <Group type="102" alignment="0" attributes="0">
+                      <EmptySpace min="-2" pref="46" max="-2" attributes="0"/>
+                      <Component id="studentManagejButton" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                      <Component id="teacherManagejButton" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                      <Component id="groupManagejButton" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                      <Component id="classroomManagejButton" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
+                      <Component id="vaccineManagejButton" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace pref="124" max="32767" attributes="0"/>
+                  </Group>
               </Group>
             </DimensionLayout>
           </Layout>
+          <SubComponents>
+            <Component class="javax.swing.JButton" name="studentManagejButton">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Student-Management"/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="studentManagejButtonActionPerformed"/>
+              </Events>
+            </Component>
+            <Component class="javax.swing.JButton" name="teacherManagejButton">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Teacher-Management"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JButton" name="classroomManagejButton">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Classroom-Management"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JButton" name="groupManagejButton">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Groups-Management"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JButton" name="vaccineManagejButton">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Vaccine-Management"/>
+              </Properties>
+            </Component>
+          </SubComponents>
         </Container>
         <Container class="javax.swing.JPanel" name="containerjPanel">
+          <Properties>
+            <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="99" green="66" red="0" type="rgb"/>
+            </Property>
+          </Properties>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JSplitPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JSplitPaneSupportLayout$JSplitPaneConstraintsDescription">
               <JSplitPaneConstraints position="right"/>
@@ -67,12 +129,12 @@
           <Layout>
             <DimensionLayout dim="0">
               <Group type="103" groupAlignment="0" attributes="0">
-                  <EmptySpace min="0" pref="557" max="32767" attributes="0"/>
+                  <EmptySpace min="0" pref="630" max="32767" attributes="0"/>
               </Group>
             </DimensionLayout>
             <DimensionLayout dim="1">
               <Group type="103" groupAlignment="0" attributes="0">
-                  <EmptySpace min="0" pref="362" max="32767" attributes="0"/>
+                  <EmptySpace min="0" pref="387" max="32767" attributes="0"/>
               </Group>
             </DimensionLayout>
           </Layout>
