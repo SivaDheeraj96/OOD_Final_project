@@ -47,11 +47,11 @@ public class University {
         TeacherView teacherView = new TeacherView();//need to add proper input;
         teacherController = new TeacherController(teacherModel,teacherView);
         
-        ClassRoomGroupModel classRoomGroupModel = new ClassRoomGroupModel(CLASSGROUP_CSV);
+        ClassRoomGroupModel classRoomGroupModel = new ClassRoomGroupModel(CLASSGROUP_CSV,teacherController,studentController);
         ClassRoomGroupView classRoomGroupView = new ClassRoomGroupView();//need to add proper input;
         classRoomGroupController = new ClassRoomGroupController(classRoomGroupModel,classRoomGroupView);       
         
-        ClassRoomModel classRoomModel = new ClassRoomModel(CLASS_CSV);
+        ClassRoomModel classRoomModel = new ClassRoomModel(CLASS_CSV,classRoomGroupController);
         ClassRoomView classRoomView = new ClassRoomView();//need to add proper input;
         classRoomController  = new ClassRoomController(classRoomModel,classRoomView);
         

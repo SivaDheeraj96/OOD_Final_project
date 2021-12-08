@@ -7,7 +7,7 @@ public class ClassRoomView {
 		
 	}
 
-	public void updateDisplay() {
+	public void updateView() {
 		// TODO Auto-generated method stub
 		
 	}

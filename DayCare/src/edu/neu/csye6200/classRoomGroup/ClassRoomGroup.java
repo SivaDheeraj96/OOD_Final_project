@@ -61,11 +61,13 @@ public class ClassRoomGroup {
         catch(Exception e)
         {
             LOGGER.log(Level.SEVERE,"error while creating students");
-        }
-        
-        
-        
-                
+        }    
+    }
+    protected ClassRoomGroup(int id, Teacher teacher, List<Person> students)
+    {
+        this.id = id;
+        this.teacher = teacher;
+        this.students = students;
     }
 
     public int getId() {
@@ -90,6 +92,14 @@ public class ClassRoomGroup {
 
     public void setStudents(List<Person> students) {
         this.students = students;
+    }
+
+    public boolean getIsAssigned() {
+        return isAssigned;
+    }
+
+    public void setIsAssigned(boolean isAssigned) {
+        this.isAssigned = isAssigned;
     }
     
     
