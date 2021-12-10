@@ -22,7 +22,7 @@ import edu.neu.csye6200.teacher.TeacherView;
  */
 
 public class University {
-    private final String STUDENT_CSV = "edu/neu/csye6200/inputData/studentData.txt"; 
+    private final String STUDENT_CSV = "src/edu/neu/csye6200/inputData/studentData.txt"; 
     private final String TEACHER_CSV = "edu/neu/csye6200/inputData/teacherData.txt";
     private final String CLASSGROUP_CSV = "edu/neu/csye6200/inputData/classGroupData.txt";
     private final String CLASS_CSV = "edu/neu/csye6200/inputData/classData.txt";
@@ -30,12 +30,12 @@ public class University {
     
     private String name;
     private final StudentController studentController;
-    private final TeacherController teacherController;
-    private final ClassRoomGroupController classRoomGroupController;
-    private final ClassRoomController classRoomController;
-    private final ImmunizationController immunizationController;
+    private final TeacherController teacherController = null;
+    private final ClassRoomGroupController classRoomGroupController =null;
+    private final ClassRoomController classRoomController =null;
+    private final ImmunizationController immunizationController=null;
     
-    University(String name){
+    public University(String name){
         
         this.name = name;
         
@@ -43,7 +43,7 @@ public class University {
         StudentView studentView = new StudentView(); //need to add proper input;
         studentController = new StudentController(studentModel,studentView);
         
-        TeacherModel teacherModel = new TeacherModel(TEACHER_CSV);
+/*        TeacherModel teacherModel = new TeacherModel(TEACHER_CSV);
         TeacherView teacherView = new TeacherView();//need to add proper input;
         teacherController = new TeacherController(teacherModel,teacherView);
         
@@ -57,7 +57,7 @@ public class University {
         
         ImmunizationModel immunizationModel = new ImmunizationModel(IMMUNIZATION_CSV);
         ImmunizationView immunizationView = new ImmunizationView();//need to add proper input;
-        immunizationController = new ImmunizationController(immunizationModel, immunizationView);   
+        immunizationController = new ImmunizationController(immunizationModel, immunizationView);   */  
     }
 
     public String getName() {

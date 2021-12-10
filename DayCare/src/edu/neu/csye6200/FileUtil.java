@@ -19,6 +19,17 @@ public class FileUtil {
 	
 	 
  public static List<String>  getFileData(String fileName) {
+     File file = new File(fileName);
+     if(!file.exists())
+     {
+         System.out.println(file.getAbsoluteFile());try {
+             file.createNewFile();
+         } catch (IOException ex) {
+                 System.err.println("Error while creating file");
+             Logger.getLogger(FileUtil.class.getName()).log(Level.SEVERE, null, ex);
+         }
+         
+     }
 	 FileReader fr = null;
 	 BufferedReader br = null;
 	 List<String> data = new ArrayList<String>();

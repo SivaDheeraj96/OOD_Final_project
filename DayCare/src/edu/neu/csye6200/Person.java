@@ -17,9 +17,8 @@ public class Person {
 
     public Person() {
     }
-
-    ;
-	public Person(String name, String parentName, long phoneNumber, String address, int age) {
+    
+    public Person(String name, String parentName, long phoneNumber, String address, int age) {
         this.name = name;
         this.parentName = parentName;
         this.phoneNumber = phoneNumber;

@@ -45,7 +45,7 @@ public class StudentModel {
     protected List<Person> getUnassignedStudentList()
     {
         List<Person> list = new ArrayList<>();
-        students.stream().filter(x -> x.getIsAssigned()).forEach(list::add);
+        students.stream().filter(x -> !x.getIsAssigned()).forEach(list::add);
         return list;
     }
 }

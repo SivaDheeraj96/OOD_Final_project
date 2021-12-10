@@ -5,6 +5,10 @@
  */
 package edu.neu.csye6200.userinterface;
 
+import edu.neu.csye6200.University;
+import edu.neu.csye6200.userinterface.student.StudentMangementHomeJPanel;
+import java.awt.CardLayout;
+
 /**
  *
  * @author manojreddy
@@ -14,8 +18,17 @@ public class MainJFrame extends javax.swing.JFrame {
     /**
      * Creates new form MainJFrame
      */
+    
+    private University university;
+    
+    
     public MainJFrame() {
         initComponents();
+        initializeData();
+    }
+    
+    private void initializeData() {
+        university = new University("Northeastern University");
     }
 
     /**
@@ -85,31 +98,20 @@ public class MainJFrame extends javax.swing.JFrame {
                 .addComponent(classroomManagejButton)
                 .addGap(18, 18, 18)
                 .addComponent(vaccineManagejButton)
-                .addContainerGap(124, Short.MAX_VALUE))
+                .addContainerGap(250, Short.MAX_VALUE))
         );
 
         mainjSplitPanel.setLeftComponent(controljPanel);
 
         containerjPanel.setBackground(new java.awt.Color(0, 102, 153));
-
-        javax.swing.GroupLayout containerjPanelLayout = new javax.swing.GroupLayout(containerjPanel);
-        containerjPanel.setLayout(containerjPanelLayout);
-        containerjPanelLayout.setHorizontalGroup(
-            containerjPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 630, Short.MAX_VALUE)
-        );
-        containerjPanelLayout.setVerticalGroup(
-            containerjPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 387, Short.MAX_VALUE)
-        );
-
+        containerjPanel.setLayout(new java.awt.CardLayout());
         mainjSplitPanel.setRightComponent(containerjPanel);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(mainjSplitPanel)
+            .addComponent(mainjSplitPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 1051, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -122,6 +124,9 @@ public class MainJFrame extends javax.swing.JFrame {
     private void studentManagejButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_studentManagejButtonActionPerformed
         // TODO add your handling code here:
         
+        CardLayout cardLayout = (CardLayout) containerjPanel.getLayout();
+        containerjPanel.add("StudentManagementHomePanel", new StudentMangementHomeJPanel(university));
+        cardLayout.next(containerjPanel);
     }//GEN-LAST:event_studentManagejButtonActionPerformed
 
     /**
