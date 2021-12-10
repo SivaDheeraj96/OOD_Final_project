@@ -130,7 +130,7 @@ public class FileUtil {
             
             while(bin.ready()){
                 String currentLine = bin.readLine();
-                if(!currentLine.equals(lineData+"\n")){
+                if(!currentLine.equals(lineData)){
                     bout.write(currentLine+"\n");
                 }
             }
