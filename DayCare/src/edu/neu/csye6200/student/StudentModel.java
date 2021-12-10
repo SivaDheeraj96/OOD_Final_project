@@ -32,6 +32,7 @@ public class StudentModel {
     
     protected void removeStudent(Person s)
     {
+        students.remove(s);
         FileUtil.removeEntryInFile(fileInput, s.toCSV());
     }
     

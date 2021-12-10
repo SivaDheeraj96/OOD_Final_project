@@ -96,7 +96,7 @@ public class FileUtil {
      try {
           fr = new FileWriter(fileName);
           bw = new BufferedWriter(fr);
-          bw.append(lineData);
+          bw.append(lineData+"\n");
      } catch (IOException ex) {
          LOGGER.log(Level.SEVERE, "error while reading the file", ex);
      }
@@ -130,8 +130,8 @@ public class FileUtil {
             
             while(bin.ready()){
                 String currentLine = bin.readLine();
-                if(!currentLine.equals(lineData)){
-                    bout.write(currentLine);
+                if(!currentLine.equals(lineData+"\n")){
+                    bout.write(currentLine+"\n");
                 }
             }
         } catch (IOException ex) {
@@ -174,7 +174,7 @@ public class FileUtil {
             while(bin.ready()){
                 String currentLine = bin.readLine();
                 if(currentLine.equals(oldData)){
-                    bout.write(newData);
+                    bout.write(newData+"\n");
                 }
                 else{
                     bout.write(currentLine);

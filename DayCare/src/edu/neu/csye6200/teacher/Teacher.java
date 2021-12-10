@@ -58,7 +58,7 @@ public class Teacher extends Person {
             return ((Integer)this.getTId()).toString();
         }
 	public String toCSV() {
-		return super.toString()+","+this.getSalary()+","+this.getTId();
+		return super.toCSV()+","+this.getSalary()+","+this.getTId();
 	}
 	
 

@@ -54,7 +54,7 @@ public class Student extends Person {
         return ((Integer)this.getSId()).toString();
     }
     public String toCSV() {
-        return super.toString() + "," + this.getGpa() + "," + this.getSId();
+        return super.toCSV() + "," + this.getGpa() + "," + this.getSId();
     }
 
     public double getGpa() {
