@@ -25,24 +25,24 @@ public class TeacherModel {
     protected void addTeacher(String name, String parentName, long phoneNumber, String address,int age, int salary, int tId){
         Teacher t = new Teacher(name, parentName, phoneNumber, address, age, salary, tId);
         teacherList.add(t);
-        FileUtil.appendEntryToFile(inputFilePath,t.toString());
+        FileUtil.appendEntryToFile(inputFilePath,t.toCSV());
     }
     
     protected void addTeacher(Person t){
         teacherList.add(t);
-        FileUtil.appendEntryToFile(inputFilePath,t.toString());
+        FileUtil.appendEntryToFile(inputFilePath,t.toCSV());
     }
     
     protected void removeTeacher(Person t){
         teacherList.remove(t);
-        FileUtil.removeEntryInFile(inputFilePath, t.toString());
+        FileUtil.removeEntryInFile(inputFilePath, t.toCSV());
     }
     
     protected void updateTeacher(Person oldTeacher, Person newTeacher)
     {
         teacherList.remove(oldTeacher);
         teacherList.add(newTeacher);
-        FileUtil.modifyEntryInFile(inputFilePath, oldTeacher.toString(), newTeacher.toString());
+        FileUtil.modifyEntryInFile(inputFilePath, oldTeacher.toCSV(), newTeacher.toCSV());
     }
     
     protected List<Person> getUnassignedTeacherList(){

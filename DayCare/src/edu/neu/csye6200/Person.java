@@ -107,8 +107,8 @@ public class Person {
         this.vaccineRecords.add(record);
     }
 
-    @Override
-    public String toString() {
+    
+    public String toCSV() {
         return this.getName()+ "," + this.getParentName() + "," + this.getPhoneNumber() + "," + this.getAddress().replace(",", "__C__") + "," + this.getAge() ;
     }
 

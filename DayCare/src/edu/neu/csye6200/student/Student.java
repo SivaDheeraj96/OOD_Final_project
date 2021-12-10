@@ -48,9 +48,12 @@ public class Student extends Person {
             System.err.println("Error while parsing student id" + vals[6]);
         }
     }
-
     @Override
-    public String toString() {
+    public String toString()
+    {
+        return ((Integer)this.getSId()).toString();
+    }
+    public String toCSV() {
         return super.toString() + "," + this.getGpa() + "," + this.getSId();
     }
 

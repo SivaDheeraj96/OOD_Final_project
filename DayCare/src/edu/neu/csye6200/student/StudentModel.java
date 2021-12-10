@@ -23,7 +23,7 @@ public class StudentModel {
 
     protected void addStudent(Person person) {
         students.add(person);
-        FileUtil.appendEntryToFile(fileInput, person.toString());
+        FileUtil.appendEntryToFile(fileInput, person.toCSV());
     }
 
     protected List<Person> getStudents() {
@@ -32,14 +32,14 @@ public class StudentModel {
     
     protected void removeStudent(Person s)
     {
-        FileUtil.removeEntryInFile(fileInput, s.toString());
+        FileUtil.removeEntryInFile(fileInput, s.toCSV());
     }
     
     protected void updateStudent(Person oldStudent, Person newStudent)
     {
         students.remove(oldStudent);
         students.add(newStudent);
-        FileUtil.modifyEntryInFile(fileInput,oldStudent.toString(), newStudent.toString());
+        FileUtil.modifyEntryInFile(fileInput,oldStudent.toCSV(), newStudent.toCSV());
     }
     
     protected List<Person> getUnassignedStudentList()
