@@ -3,10 +3,12 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package edu.neu.csye6200.userinterface.student;
+package edu.neu.csye6200.userinterface.teacher;
 
 import edu.neu.csye6200.University;
 import edu.neu.csye6200.student.Student;
+import edu.neu.csye6200.teacher.Teacher;
+import edu.neu.csye6200.userinterface.student.UpdateStudentJPanel;
 import java.awt.CardLayout;
 import javax.swing.JPanel;
 import javax.swing.table.DefaultTableModel;
@@ -15,37 +17,38 @@ import javax.swing.table.DefaultTableModel;
  *
  * @author manojreddy
  */
-public class StudentMangementHomeJPanel extends javax.swing.JPanel {
+public class TeacherManagementHomeJPanel extends javax.swing.JPanel {
 
     /**
-     * Creates new form StudentMangementHomeJPanel
+     * Creates new form TeacherManagementHomeJPanel
      */
+    
     private JPanel containerjPanel;
     private University university;
     
-    public StudentMangementHomeJPanel(JPanel containerjPanel, University university) {
+    public TeacherManagementHomeJPanel(JPanel containerjPanel, University university) {
         initComponents();
         this.containerjPanel = containerjPanel;
         this.university = university;
         
-        populateTable();
-    }
-
-    public void populateTable() {
-        
-        DefaultTableModel studentListModel = (DefaultTableModel) studentsListjTable.getModel();
-        studentListModel.setRowCount(0);
-        
-        System.out.println(university.getStudentController().getUnassignedStudent().size());
-        
-        university.getStudentController().getUnassignedStudent().stream()
-                .map(x -> (Student)x)
-                .map(x -> new Object[]{x, x.getName(),x.getAge(),x.getGpa(),x.getPhoneNumber(),x.getParentName(),x.getAddress()})
-                .forEach(x -> {studentListModel.addRow(x);});
-        
-        System.out.println(studentListModel.getRowCount());
+        populateTeachers();
     }
     
+    public void populateTeachers() {
+        
+        DefaultTableModel teacherListModel = (DefaultTableModel) teachersListjTable.getModel();
+        teacherListModel.setRowCount(0);
+        
+        System.out.println(university.getTeacherController().getUnassignedTeacher().size());
+        
+        university.getTeacherController().getUnassignedTeacher().stream()
+                .map(x -> (Teacher)x)
+                .map(x -> new Object[]{x, x.getName(),x.getAge(),x.getSalary(),x.getPhoneNumber(),x.getParentName(),x.getAddress()})
+                .forEach(x -> {teacherListModel.addRow(x);});
+        
+        System.out.println(teacherListModel.getRowCount());
+    }
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -56,13 +59,13 @@ public class StudentMangementHomeJPanel extends javax.swing.JPanel {
     private void initComponents() {
 
         jScrollPane1 = new javax.swing.JScrollPane();
-        studentsListjTable = new javax.swing.JTable();
+        teachersListjTable = new javax.swing.JTable();
         jLabel1 = new javax.swing.JLabel();
         deletejButton = new javax.swing.JButton();
         createjButton = new javax.swing.JButton();
         updatejButton = new javax.swing.JButton();
 
-        studentsListjTable.setModel(new javax.swing.table.DefaultTableModel(
+        teachersListjTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null, null, null, null},
                 {null, null, null, null, null, null, null},
@@ -70,11 +73,11 @@ public class StudentMangementHomeJPanel extends javax.swing.JPanel {
                 {null, null, null, null, null, null, null}
             },
             new String [] {
-                "Student-Id", "Name", "Age", "Gpa", "Phone No", "Parent Name", "Address"
+                "Teacher-Id", "Name", "Age", "Salary", "Phone No", "Parent Name", "Address"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.Object.class, java.lang.String.class, java.lang.Integer.class, java.lang.Float.class, java.lang.Long.class, java.lang.String.class, java.lang.String.class
+                java.lang.Object.class, java.lang.String.class, java.lang.Integer.class, java.lang.Integer.class, java.lang.Long.class, java.lang.String.class, java.lang.String.class
             };
             boolean[] canEdit = new boolean [] {
                 false, false, false, false, false, false, false
@@ -88,11 +91,11 @@ public class StudentMangementHomeJPanel extends javax.swing.JPanel {
                 return canEdit [columnIndex];
             }
         });
-        jScrollPane1.setViewportView(studentsListjTable);
+        jScrollPane1.setViewportView(teachersListjTable);
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setText("Students Records");
+        jLabel1.setText("Teachers Records");
 
         deletejButton.setText("Delete");
         deletejButton.addActionListener(new java.awt.event.ActionListener() {
@@ -135,17 +138,14 @@ public class StudentMangementHomeJPanel extends javax.swing.JPanel {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(createjButton))
                             .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 906, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(151, Short.MAX_VALUE))
+                .addContainerGap(64, Short.MAX_VALUE))
         );
-
-        layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {createjButton, deletejButton, updatejButton});
-
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(23, 23, 23)
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 122, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 127, Short.MAX_VALUE)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 236, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -158,29 +158,28 @@ public class StudentMangementHomeJPanel extends javax.swing.JPanel {
 
     private void deletejButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deletejButtonActionPerformed
         // TODO add your handling code here:
-        
-        DefaultTableModel studentListModel = (DefaultTableModel) studentsListjTable.getModel();
-        Student student = (Student) studentListModel.getValueAt(studentsListjTable.getSelectedRow(), 0);
-        university.getStudentController().removeStudent(student);
-        populateTable();
-        
+
+        DefaultTableModel teacherListModel = (DefaultTableModel) teachersListjTable.getModel();
+        Teacher teacher = (Teacher) teacherListModel.getValueAt(teachersListjTable.getSelectedRow(), 0);
+        university.getTeacherController().removeTeacher(teacher);
+        populateTeachers();
+
     }//GEN-LAST:event_deletejButtonActionPerformed
 
     private void createjButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_createjButtonActionPerformed
         // TODO add your handling code here:
         CardLayout cardLayout = (CardLayout) containerjPanel.getLayout();
-        containerjPanel.add("CreateNewStudentJpanel", new CreateNewStudentJPanel(containerjPanel, university));
+        containerjPanel.add("CreateNewTeacherJPanel", new CreateNewTeacherJPanel(containerjPanel, university));
         cardLayout.next(containerjPanel);
     }//GEN-LAST:event_createjButtonActionPerformed
 
     private void updatejButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_updatejButtonActionPerformed
         // TODO add your handling code here:
         
-        DefaultTableModel studentsModel = (DefaultTableModel) studentsListjTable.getModel();
-        Student student = (Student) studentsModel.getValueAt(studentsListjTable.getSelectedRow(), 0);        
-        
+        DefaultTableModel teacherListModel = (DefaultTableModel) teachersListjTable.getModel();
+        Teacher teacher = (Teacher) teacherListModel.getValueAt(teachersListjTable.getSelectedRow(), 0);
         CardLayout cardLayout = (CardLayout) containerjPanel.getLayout();
-        containerjPanel.add("UpdateStudentJPanel", new UpdateStudentJPanel(containerjPanel, university, student));
+        containerjPanel.add("UpdateTeacherJPanel", new UpdateTeacherJPanel(containerjPanel, university, teacher));
         cardLayout.next(containerjPanel);
     }//GEN-LAST:event_updatejButtonActionPerformed
 
@@ -190,7 +189,7 @@ public class StudentMangementHomeJPanel extends javax.swing.JPanel {
     private javax.swing.JButton deletejButton;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable studentsListjTable;
+    private javax.swing.JTable teachersListjTable;
     private javax.swing.JButton updatejButton;
     // End of variables declaration//GEN-END:variables
 }

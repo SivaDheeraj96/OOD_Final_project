@@ -152,7 +152,7 @@ public class MainJFrame extends javax.swing.JFrame {
         // TODO add your handling code here:
 
         CardLayout cardLayout = (CardLayout) containerjPanel.getLayout();
-        containerjPanel.add("StudentManagementHomePanel", new StudentMangementHomeJPanel(university));
+        containerjPanel.add("StudentManagementHomePanel", new StudentMangementHomeJPanel(containerjPanel, university));
         cardLayout.next(containerjPanel);
     }//GEN-LAST:event_studentManagejButtonActionPerformed
 
