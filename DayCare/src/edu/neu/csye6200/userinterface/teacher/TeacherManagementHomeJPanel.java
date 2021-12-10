@@ -10,6 +10,7 @@ import edu.neu.csye6200.student.Student;
 import edu.neu.csye6200.teacher.Teacher;
 import edu.neu.csye6200.userinterface.student.UpdateStudentJPanel;
 import java.awt.CardLayout;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.table.DefaultTableModel;
 
@@ -163,6 +164,7 @@ public class TeacherManagementHomeJPanel extends javax.swing.JPanel {
         Teacher teacher = (Teacher) teacherListModel.getValueAt(teachersListjTable.getSelectedRow(), 0);
         university.getTeacherController().removeTeacher(teacher);
         populateTeachers();
+        JOptionPane.showMessageDialog(this, "Successfully deleted the Teacher record");
 
     }//GEN-LAST:event_deletejButtonActionPerformed
 

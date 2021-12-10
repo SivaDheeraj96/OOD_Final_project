@@ -9,6 +9,7 @@ import edu.neu.csye6200.University;
 import edu.neu.csye6200.student.Student;
 import java.awt.CardLayout;
 import java.awt.Component;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
 /**
@@ -232,6 +233,9 @@ public class CreateNewStudentJPanel extends javax.swing.JPanel {
         agejTextField.setText("");
         gpajTextField.setText("");
         studentIdjTextField.setText("");
+
+        JOptionPane.showMessageDialog(this, "Successfully added New Student record");
+        
     }
     
     private void backjButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backjButtonActionPerformed

@@ -9,6 +9,7 @@ import edu.neu.csye6200.University;
 import edu.neu.csye6200.student.Student;
 import java.awt.CardLayout;
 import java.awt.Component;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
 /**
@@ -233,6 +234,9 @@ public class UpdateStudentJPanel extends javax.swing.JPanel {
         student.setAge(Integer.valueOf(agejTextField.getText()));
         student.setGpa(Double.valueOf(gpajTextField.getText()));
         student.setSId(Integer.valueOf(studentIdjTextField.getText()));
+        
+        JOptionPane.showMessageDialog(this, "Successfully updated Student record");
+
 
     }//GEN-LAST:event_updatejButtonActionPerformed
 

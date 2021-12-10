@@ -9,6 +9,7 @@ import edu.neu.csye6200.University;
 import edu.neu.csye6200.teacher.Teacher;
 import java.awt.CardLayout;
 import java.awt.Component;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
 /**
@@ -247,6 +248,7 @@ public class UpdateTeacherJPanel extends javax.swing.JPanel {
     private void updatejButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_updatejButtonActionPerformed
         // TODO add your handling code here:
 
+        
         teacher.setName(namejTextField.getText());
         teacher.setParentName(parentNamejTextField.getText());
         teacher.setPhoneNumber(Long.valueOf(phoneNojTextField.getText()));
@@ -254,6 +256,8 @@ public class UpdateTeacherJPanel extends javax.swing.JPanel {
         teacher.setAge(Integer.valueOf(agejTextField.getText()));
         teacher.setSalary(Integer.valueOf(salaryjTextField.getText()));
         teacher.setTId(Integer.valueOf(teacherIdjTextField.getText()));
+        
+        JOptionPane.showMessageDialog(this, "Successfully updated the Teacher record");
     }//GEN-LAST:event_updatejButtonActionPerformed
 
     private void addressjTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addressjTextFieldActionPerformed

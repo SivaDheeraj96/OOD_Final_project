@@ -8,6 +8,7 @@ package edu.neu.csye6200.userinterface.student;
 import edu.neu.csye6200.University;
 import edu.neu.csye6200.student.Student;
 import java.awt.CardLayout;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.table.DefaultTableModel;
 
@@ -162,6 +163,9 @@ public class StudentMangementHomeJPanel extends javax.swing.JPanel {
         DefaultTableModel studentListModel = (DefaultTableModel) studentsListjTable.getModel();
         Student student = (Student) studentListModel.getValueAt(studentsListjTable.getSelectedRow(), 0);
         university.getStudentController().removeStudent(student);
+        
+        JOptionPane.showMessageDialog(this, "Successfully deleted Student record");
+
         populateTable();
         
     }//GEN-LAST:event_deletejButtonActionPerformed

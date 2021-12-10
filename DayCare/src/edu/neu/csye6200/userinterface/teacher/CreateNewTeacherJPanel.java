@@ -9,6 +9,7 @@ import edu.neu.csye6200.University;
 import edu.neu.csye6200.teacher.Teacher;
 import java.awt.CardLayout;
 import java.awt.Component;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
 /**
@@ -228,6 +229,8 @@ public class CreateNewTeacherJPanel extends javax.swing.JPanel {
         agejTextField.setText("");
         salaryjTextField.setText("");
         teacherIdjTextField.setText("");
+        
+        JOptionPane.showMessageDialog(this, "Successfully added New Teacher record");
     }
     
     private void addressjTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addressjTextFieldActionPerformed
