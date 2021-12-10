@@ -36,7 +36,7 @@ public class StudentMangementHomeJPanel extends javax.swing.JPanel {
         
         university.getStudentController().getUnassignedStudent().stream()
                 .map(x -> (Student)x)
-                .map(x -> new Object[]{x.getSId(), x.getName(),x.getAge(),x.getGpa(),x.getPhoneNumber(),x.getParentName(),x.getAddress()})
+                .map(x -> new Object[]{x, x.getName(),x.getAge(),x.getGpa(),x.getPhoneNumber(),x.getParentName(),x.getAddress()})
                 .forEach(x -> {studentListModel.addRow(x);});
         
         System.out.println(studentListModel.getRowCount());
@@ -54,6 +54,7 @@ public class StudentMangementHomeJPanel extends javax.swing.JPanel {
         jScrollPane1 = new javax.swing.JScrollPane();
         studentsListjTable = new javax.swing.JTable();
         jLabel1 = new javax.swing.JLabel();
+        deletejButton = new javax.swing.JButton();
 
         studentsListjTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -87,18 +88,27 @@ public class StudentMangementHomeJPanel extends javax.swing.JPanel {
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("Students Records");
 
+        deletejButton.setText("Delete");
+        deletejButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                deletejButtonActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(55, 55, 55)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 906, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(368, 368, 368)
-                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 199, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(deletejButton)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(layout.createSequentialGroup()
+                            .addGap(55, 55, 55)
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 906, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(layout.createSequentialGroup()
+                            .addGap(368, 368, 368)
+                            .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 199, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addContainerGap(188, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -108,12 +118,25 @@ public class StudentMangementHomeJPanel extends javax.swing.JPanel {
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 236, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(246, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addComponent(deletejButton)
+                .addContainerGap(199, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
+    private void deletejButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deletejButtonActionPerformed
+        // TODO add your handling code here:
+        
+        DefaultTableModel studentListModel = (DefaultTableModel) studentsListjTable.getModel();
+        Student student = (Student) studentListModel.getValueAt(studentsListjTable.getSelectedRow(), 0);
+        university.getStudentController().removeStudent(student);
+        populateTable();
+        
+    }//GEN-LAST:event_deletejButtonActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton deletejButton;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable studentsListjTable;
