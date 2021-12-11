@@ -27,8 +27,8 @@ public class CreateNewStudentJPanel extends javax.swing.JPanel {
     
     public CreateNewStudentJPanel(JPanel containerjPanel, University university) {
         initComponents();
-        containerjPanel = containerjPanel;
-        university = university;
+        this.containerjPanel = containerjPanel;
+        this.university = university;
     }
 
     /**

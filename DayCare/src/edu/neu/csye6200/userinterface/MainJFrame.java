@@ -9,6 +9,7 @@ import edu.neu.csye6200.University;
 import edu.neu.csye6200.userinterface.classroom.ClassRoomManagementHomeJPanel;
 import edu.neu.csye6200.userinterface.classroomGroup.ClassRoomGroupManagementHomeJPanel;
 import edu.neu.csye6200.userinterface.student.StudentMangementHomeJPanel;
+import edu.neu.csye6200.userinterface.teacher.TeacherManagementHomeJPanel;
 import edu.neu.csye6200.userinterface.vaccination.VaccineManagementHomeJPanel;
 import java.awt.CardLayout;
 
@@ -67,6 +68,11 @@ public class MainJFrame extends javax.swing.JFrame {
         });
 
         teacherManagejButton.setText("Teacher-Management");
+        teacherManagejButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                teacherManagejButtonActionPerformed(evt);
+            }
+        });
 
         classroomManagejButton.setText("Classroom-Management");
         classroomManagejButton.addActionListener(new java.awt.event.ActionListener() {
@@ -199,6 +205,14 @@ public class MainJFrame extends javax.swing.JFrame {
         containerjPanel.add("VaccinationManagementHomePanel", new VaccineManagementHomeJPanel(containerjPanel, university));
         cardLayout.next(containerjPanel);
     }//GEN-LAST:event_vaccineManagejButtonActionPerformed
+
+    private void teacherManagejButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_teacherManagejButtonActionPerformed
+        // TODO add your handling code here:
+        
+        CardLayout cardLayout = (CardLayout) containerjPanel.getLayout();
+        containerjPanel.add("TeacherManagementHomePanel", new TeacherManagementHomeJPanel(containerjPanel, university));
+        cardLayout.next(containerjPanel);
+    }//GEN-LAST:event_teacherManagejButtonActionPerformed
 
     /**
      * @param args the command line arguments
