@@ -91,12 +91,14 @@
                       <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
                       <Component id="vaccineManagejButton" min="-2" max="-2" attributes="0"/>
                       <EmptySpace pref="219" max="32767" attributes="0"/>
-                      <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="madeWithjLabel" linkSize="2" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="lovejLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" alignment="1" attributes="0">
                               <Component id="neujLabel" linkSize="2" min="-2" max="-2" attributes="0"/>
                               <EmptySpace min="-2" pref="8" max="-2" attributes="0"/>
+                          </Group>
+                          <Group type="103" groupAlignment="3" attributes="0">
+                              <Component id="madeWithjLabel" linkSize="2" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="lovejLabel" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
@@ -122,16 +124,25 @@
               <Properties>
                 <Property name="text" type="java.lang.String" value="Classroom-Management"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="classroomManagejButtonActionPerformed"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JButton" name="groupManagejButton">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Groups-Management"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="groupManagejButtonActionPerformed"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JButton" name="vaccineManagejButton">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Vaccine-Management"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="vaccineManagejButtonActionPerformed"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JLabel" name="madeWithjLabel">
               <Properties>

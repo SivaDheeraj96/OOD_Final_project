@@ -6,7 +6,10 @@
 package edu.neu.csye6200.userinterface;
 
 import edu.neu.csye6200.University;
+import edu.neu.csye6200.userinterface.classroom.ClassRoomManagementHomeJPanel;
+import edu.neu.csye6200.userinterface.classroomGroup.ClassRoomGroupManagementHomeJPanel;
 import edu.neu.csye6200.userinterface.student.StudentMangementHomeJPanel;
+import edu.neu.csye6200.userinterface.vaccination.VaccineManagementHomeJPanel;
 import java.awt.CardLayout;
 
 /**
@@ -66,10 +69,25 @@ public class MainJFrame extends javax.swing.JFrame {
         teacherManagejButton.setText("Teacher-Management");
 
         classroomManagejButton.setText("Classroom-Management");
+        classroomManagejButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                classroomManagejButtonActionPerformed(evt);
+            }
+        });
 
         groupManagejButton.setText("Groups-Management");
+        groupManagejButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                groupManagejButtonActionPerformed(evt);
+            }
+        });
 
         vaccineManagejButton.setText("Vaccine-Management");
+        vaccineManagejButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                vaccineManagejButtonActionPerformed(evt);
+            }
+        });
 
         madeWithjLabel.setText("Made with ");
 
@@ -117,12 +135,13 @@ public class MainJFrame extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addComponent(vaccineManagejButton)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 219, Short.MAX_VALUE)
-                .addGroup(controljPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(madeWithjLabel)
-                    .addComponent(lovejLabel)
-                    .addGroup(controljPanelLayout.createSequentialGroup()
+                .addGroup(controljPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, controljPanelLayout.createSequentialGroup()
                         .addComponent(neujLabel)
-                        .addGap(8, 8, 8)))
+                        .addGap(8, 8, 8))
+                    .addGroup(controljPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(madeWithjLabel)
+                        .addComponent(lovejLabel)))
                 .addContainerGap())
         );
 
@@ -155,6 +174,31 @@ public class MainJFrame extends javax.swing.JFrame {
         containerjPanel.add("StudentManagementHomePanel", new StudentMangementHomeJPanel(containerjPanel, university));
         cardLayout.next(containerjPanel);
     }//GEN-LAST:event_studentManagejButtonActionPerformed
+
+    private void groupManagejButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_groupManagejButtonActionPerformed
+        // TODO add your handling code here:
+        
+        CardLayout cardLayout = (CardLayout) containerjPanel.getLayout();
+        containerjPanel.add("ClassroomGroupManagementHomePanel", new ClassRoomGroupManagementHomeJPanel(containerjPanel, university));
+        cardLayout.next(containerjPanel);
+        
+    }//GEN-LAST:event_groupManagejButtonActionPerformed
+
+    private void classroomManagejButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_classroomManagejButtonActionPerformed
+        // TODO add your handling code here:
+        
+        CardLayout cardLayout = (CardLayout) containerjPanel.getLayout();
+        containerjPanel.add("ClassroomManagementHomePanel", new ClassRoomManagementHomeJPanel(containerjPanel, university));
+        cardLayout.next(containerjPanel);
+    }//GEN-LAST:event_classroomManagejButtonActionPerformed
+
+    private void vaccineManagejButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_vaccineManagejButtonActionPerformed
+        // TODO add your handling code here:
+        
+        CardLayout cardLayout = (CardLayout) containerjPanel.getLayout();
+        containerjPanel.add("VaccinationManagementHomePanel", new VaccineManagementHomeJPanel(containerjPanel, university));
+        cardLayout.next(containerjPanel);
+    }//GEN-LAST:event_vaccineManagejButtonActionPerformed
 
     /**
      * @param args the command line arguments

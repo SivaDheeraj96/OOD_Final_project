@@ -5,7 +5,6 @@
 package edu.neu.csye6200.classRoomGroup;
 
 import edu.neu.csye6200.Person;
-import edu.neu.csye6200.student.Student;
 import edu.neu.csye6200.student.StudentController;
 import edu.neu.csye6200.teacher.Teacher;
 import edu.neu.csye6200.teacher.TeacherController;
