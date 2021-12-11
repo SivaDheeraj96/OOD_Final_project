@@ -6,7 +6,11 @@
 package edu.neu.csye6200.userinterface.vaccination;
 
 import edu.neu.csye6200.University;
+import edu.neu.csye6200.health.VaccineRecord;
+import java.awt.CardLayout;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -25,8 +29,17 @@ public class VaccineManagementHomeJPanel extends javax.swing.JPanel {
         initComponents();
         this.containerjPanel = containerjPanel;
         this.university = university;
+        
+        populateVaccineRecords();
     }
 
+    public void populateVaccineRecords() {
+        
+        DefaultTableModel vaccineRecorsListModel = (DefaultTableModel) vaccinationRecordsListjTable.getModel();
+        vaccineRecorsListModel.setRowCount(0);
+        
+    }
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -36,19 +49,150 @@ public class VaccineManagementHomeJPanel extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jScrollPane1 = new javax.swing.JScrollPane();
+        vaccinationRecordsListjTable = new javax.swing.JTable();
+        jLabel1 = new javax.swing.JLabel();
+        updatejButton = new javax.swing.JButton();
+        deletejButton = new javax.swing.JButton();
+        createjButton = new javax.swing.JButton();
+
+        vaccinationRecordsListjTable.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "Record-Id", "Name", "Vaccine", "Date Received"
+            }
+        ) {
+            Class[] types = new Class [] {
+                java.lang.Object.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
+            };
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        vaccinationRecordsListjTable.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                vaccinationRecordsListjTableMouseClicked(evt);
+            }
+        });
+        jScrollPane1.setViewportView(vaccinationRecordsListjTable);
+
+        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel1.setText("Vaccination Records");
+
+        updatejButton.setText("Update");
+        updatejButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                updatejButtonActionPerformed(evt);
+            }
+        });
+
+        deletejButton.setText("Delete");
+        deletejButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                deletejButtonActionPerformed(evt);
+            }
+        });
+
+        createjButton.setText("Create >");
+        createjButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                createjButtonActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 770, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(36, 36, 36)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(updatejButton)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(deletejButton)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(createjButton))
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 906, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(368, 368, 368)
+                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 246, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(96, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 378, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(23, 23, 23)
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 236, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(deletejButton)
+                    .addComponent(createjButton)
+                    .addComponent(updatejButton))
+                .addContainerGap(171, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
+    private void vaccinationRecordsListjTableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_vaccinationRecordsListjTableMouseClicked
+        // TODO add your handling code here:
+
+        DefaultTableModel classRoomListModel = (DefaultTableModel) vaccinationRecordsListjTable.getModel();
+        VaccineRecord vaccineRecord = (VaccineRecord) classRoomListModel.getValueAt(vaccinationRecordsListjTable.getSelectedRow(), 0);
+
+    }//GEN-LAST:event_vaccinationRecordsListjTableMouseClicked
+
+    private void updatejButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_updatejButtonActionPerformed
+        // TODO add your handling code here:
+
+        DefaultTableModel vaccineRecordListModel = (DefaultTableModel) vaccinationRecordsListjTable.getModel();
+        VaccineRecord vaccineRecord = (VaccineRecord) vaccineRecordListModel.getValueAt(vaccinationRecordsListjTable.getSelectedRow(), 0);
+
+        CardLayout cardLayout = (CardLayout) containerjPanel.getLayout();
+        containerjPanel.add("UpdateStudentJPanel", new UpdateVaccinationRecordJPanel(containerjPanel, university, vaccineRecord));
+        cardLayout.next(containerjPanel);
+    }//GEN-LAST:event_updatejButtonActionPerformed
+
+    private void deletejButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deletejButtonActionPerformed
+        // TODO add your handling code here:
+
+        DefaultTableModel vaccineRecordListModel = (DefaultTableModel) vaccinationRecordsListjTable.getModel();
+        VaccineRecord vaccineRecord = (VaccineRecord) vaccineRecordListModel.getValueAt(vaccinationRecordsListjTable.getSelectedRow(), 0);
+//        university.getClassRoomGroupController().removeClassRoomGroup(vaccineRecord);
+
+        JOptionPane.showMessageDialog(this, "Successfully deleted Vaccination record");
+
+        populateVaccineRecords();
+    }//GEN-LAST:event_deletejButtonActionPerformed
+
+    private void createjButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_createjButtonActionPerformed
+        // TODO add your handling code here:
+        CardLayout cardLayout = (CardLayout) containerjPanel.getLayout();
+        containerjPanel.add("CreateNewStudentJpanel", new CreateNewVaccinationRecordJPanel(containerjPanel, university));
+        cardLayout.next(containerjPanel);
+    }//GEN-LAST:event_createjButtonActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton createjButton;
+    private javax.swing.JButton deletejButton;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JButton updatejButton;
+    private javax.swing.JTable vaccinationRecordsListjTable;
     // End of variables declaration//GEN-END:variables
 }
