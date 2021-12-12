@@ -160,7 +160,7 @@ public class VaccineManagementHomeJPanel extends javax.swing.JPanel {
         // TODO add your handling code here:
 
         DefaultTableModel vaccineRecordListModel = (DefaultTableModel) vaccinationDirectoryRecordsListjTable.getModel();
-        VaccineRecord vaccineRecord = (VaccineRecord) vaccineRecordListModel.getValueAt(vaccinationDirectoryRecordsListjTable.getSelectedRow(), 0);
+        Vaccine vaccineRecord = (Vaccine) vaccineRecordListModel.getValueAt(vaccinationDirectoryRecordsListjTable.getSelectedRow(), 0);
 
         CardLayout cardLayout = (CardLayout) containerjPanel.getLayout();
         containerjPanel.add("UpdateStudentJPanel", new UpdateVaccinationRecordJPanel(containerjPanel, university, vaccineRecord));

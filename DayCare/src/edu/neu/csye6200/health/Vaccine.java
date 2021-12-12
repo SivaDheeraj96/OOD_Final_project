@@ -26,7 +26,7 @@ public class Vaccine {
     private FREQUENCY frequency;
     private int doseCount;
 
-    protected Vaccine(int id, String name, boolean isOptional, FREQUENCY frequency, int doseCount) {
+    public Vaccine(int id, String name, boolean isOptional, FREQUENCY frequency, int doseCount) {
         this.id = id;
         this.name = name;
         this.isOptional = isOptional;

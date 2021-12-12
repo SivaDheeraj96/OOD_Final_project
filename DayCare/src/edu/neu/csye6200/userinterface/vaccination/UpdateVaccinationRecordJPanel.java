@@ -7,7 +7,10 @@ package edu.neu.csye6200.userinterface.vaccination;
 
 import edu.neu.csye6200.University;
 import edu.neu.csye6200.classRoom.ClassRoom;
+import edu.neu.csye6200.health.Vaccine;
 import edu.neu.csye6200.health.VaccineRecord;
+import java.awt.CardLayout;
+import java.awt.Component;
 import javax.swing.JPanel;
 
 /**
@@ -21,15 +24,36 @@ public class UpdateVaccinationRecordJPanel extends javax.swing.JPanel {
      */
     private JPanel containerjPanel;
     private University university;
-    private VaccineRecord vaccineRecord;
+    private Vaccine vaccineRecord;
     
-    public UpdateVaccinationRecordJPanel(JPanel containerjPanel, University university, VaccineRecord vaccineRecord) {
+    public UpdateVaccinationRecordJPanel(JPanel containerjPanel, University university, Vaccine vaccineRecord) {
         initComponents();
         this.containerjPanel = containerjPanel;
         this.university = university;
         this.vaccineRecord = vaccineRecord;
+        
+        populateData();
     }
 
+    private void populateData() {
+        
+        idjTextField.setText(String.valueOf(vaccineRecord.getId()));
+        namejTextField.setText(vaccineRecord.getName());
+        doseCountjTextField.setText(String.valueOf(vaccineRecord.getDoseCount()));
+        isOptionaljCheckBox.setSelected(vaccineRecord.isIsOptional());
+        
+        frequencyjComboBox.removeAllItems();
+        
+        frequencyjComboBox.addItem(Vaccine.FREQUENCY.DAILY.name());
+        frequencyjComboBox.addItem(Vaccine.FREQUENCY.WEEKLY.name());
+        frequencyjComboBox.addItem(Vaccine.FREQUENCY.MONTHLY.name());
+        frequencyjComboBox.addItem(Vaccine.FREQUENCY.QUARTERLY.name());
+        frequencyjComboBox.addItem(Vaccine.FREQUENCY.YEARLY.name());
+        frequencyjComboBox.addItem(Vaccine.FREQUENCY.ONLYONCE.name());
+        
+        frequencyjComboBox.setSelectedItem(vaccineRecord.getFrequency().name());
+    }
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -39,19 +63,162 @@ public class UpdateVaccinationRecordJPanel extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        frequencyjComboBox = new javax.swing.JComboBox<>();
+        jButton1 = new javax.swing.JButton();
+        jButton2 = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
+        idjTextField = new javax.swing.JTextField();
+        isOptionaljCheckBox = new javax.swing.JCheckBox();
+        jLabel3 = new javax.swing.JLabel();
+        namejTextField = new javax.swing.JTextField();
+        jLabel4 = new javax.swing.JLabel();
+        doseCountjTextField = new javax.swing.JTextField();
+        jLabel5 = new javax.swing.JLabel();
+
+        jButton1.setText("< < Back");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+
+        jButton2.setText("Update");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
+
+        jLabel1.setFont(new java.awt.Font("Lucida Grande", 1, 24)); // NOI18N
+        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel1.setText(" Update Vaccine");
+
+        jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        jLabel2.setText("Id : ");
+
+        jLabel6.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        jLabel6.setText("Is Optional : ");
+
+        jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        jLabel3.setText("Name : ");
+
+        jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        jLabel4.setText("Dose Count : ");
+
+        jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        jLabel5.setText("Frequency : ");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 723, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(31, 31, 31)
+                        .addComponent(jButton1)
+                        .addGap(73, 73, 73)
+                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 385, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(215, 215, 215)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(48, 48, 48)
+                                .addComponent(namejTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(48, 48, 48)
+                                .addComponent(idjTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(48, 48, 48)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(doseCountjTextField, javax.swing.GroupLayout.DEFAULT_SIZE, 125, Short.MAX_VALUE)
+                                    .addComponent(frequencyjComboBox, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(isOptionaljCheckBox)))))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(280, 280, 280)
+                        .addComponent(jButton2)))
+                .addContainerGap(277, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 364, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(43, 43, 43)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButton1))
+                .addGap(56, 56, 56)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel2)
+                    .addComponent(idjTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel3)
+                    .addComponent(namejTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel4)
+                    .addComponent(doseCountjTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel5)
+                    .addComponent(frequencyjComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel6)
+                    .addComponent(isOptionaljCheckBox))
+                .addGap(42, 42, 42)
+                .addComponent(jButton2)
+                .addContainerGap(111, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+
+        containerjPanel.remove(this);
+
+        Component[] components = containerjPanel.getComponents();
+        VaccineManagementHomeJPanel vaccineManagementHomeJPanel = (VaccineManagementHomeJPanel) components[components.length-1];
+        vaccineManagementHomeJPanel.populateVaccineDirectoryRecords();
+
+        CardLayout cardLayout = (CardLayout) containerjPanel.getLayout();
+        cardLayout.previous(containerjPanel);
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        // TODO add your handling code here:
+
+        int id = Integer.valueOf(idjTextField.getText());
+        String name  = namejTextField.getText();
+        int doseCount = Integer.valueOf(doseCountjTextField.getText());
+        boolean isOptional = isOptionaljCheckBox.isSelected();
+
+        Vaccine newVaccine = new Vaccine(id,name,isOptional, Vaccine.FREQUENCY.valueOf((String) frequencyjComboBox.getSelectedItem()), doseCount);
+        university.getImmunizationController().modifyVaccine(vaccineRecord, newVaccine);
+    }//GEN-LAST:event_jButton2ActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JTextField doseCountjTextField;
+    private javax.swing.JComboBox<String> frequencyjComboBox;
+    private javax.swing.JTextField idjTextField;
+    private javax.swing.JCheckBox isOptionaljCheckBox;
+    private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JTextField namejTextField;
     // End of variables declaration//GEN-END:variables
 }
