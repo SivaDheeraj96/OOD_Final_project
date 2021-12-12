@@ -8,6 +8,7 @@ import java.util.Map;
 import java.util.function.Predicate;
 
 import edu.neu.csye6200.Person;
+import java.util.Date;
 import java.util.Optional;
 
 public class StudentController {
@@ -67,9 +68,9 @@ public class StudentController {
         this.view.updateView();
     }
     
-    public void modifyStudent(Student s, String name, String parentName, long phoneNumber, String address,int age,double gpa, int sid)
+    public void modifyStudent(Student s, String name, String parentName, long phoneNumber, String address,int age,double gpa, int sid,Date renewedDate)
     {
-        Student tempStudent = new Student(name, parentName, phoneNumber, address,age,gpa,sid);
+        Student tempStudent = new Student(name, parentName, phoneNumber, address,age,gpa,sid,renewedDate);
         this.model.updateStudent(s, tempStudent);
         this.view.updateView();
     }
@@ -99,5 +100,6 @@ public class StudentController {
     {
         return this.model.getStudents();
     }
+    
 
 }
