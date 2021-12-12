@@ -9,7 +9,9 @@ import edu.neu.csye6200.Person;
 import edu.neu.csye6200.University;
 import edu.neu.csye6200.classRoomGroup.ClassRoomGroup;
 import edu.neu.csye6200.classRoomGroup.ClassRoomGroupController;
+import edu.neu.csye6200.student.Student;
 import edu.neu.csye6200.teacher.Teacher;
+import java.awt.CardLayout;
 import java.awt.Component;
 import java.util.ArrayList;
 import java.util.List;
@@ -39,8 +41,37 @@ public class UpdateClassRoomGroupJPanel extends javax.swing.JPanel {
     }
 
     private void populateData() {
+        idjTextField.setText(((Integer)this.classRoomGroup.getId()).toString());
+        
+        teacherjComboBox.removeAllItems();
+        teacherjComboBox.addItem(String.valueOf(((Teacher)this.classRoomGroup.getTeacher()).getTId()) + "-" + ((Teacher)this.classRoomGroup.getTeacher()).getName());
+        for(Person person:university.getTeacherController().getUnassignedTeacher()) {
+            
+            Teacher teacher  = (Teacher) person;
+            teacherjComboBox.addItem(String.valueOf(teacher.getTId()) + "-" + teacher.getName());
+        }
+        
+        teacherjComboBox.setSelectedIndex(0);
         
         
+        studentsjList.removeAll();
+        List<Person> studentList = university.getStudentController().getUnassignedStudent();
+        List<Person> currentStudents = this.classRoomGroup.getStudents();
+        String[] inputData = new String[studentList.size()+currentStudents.size()];
+        int i=0;
+        int[] selectedIndices = new int[currentStudents.size()];
+        for(Person person:currentStudents) {
+            inputData[i]= ((Integer)((Student)person).getSId()).toString()+"-"+person.getName();
+            selectedIndices[i]=i;
+            i++;
+        }
+        for(Person person:studentList) {
+            inputData[i]= ((Integer)((Student)person).getSId()).toString()+"-"+person.getName();
+            i++;
+        }
+        
+        studentsjList.setListData( inputData);
+        studentsjList.setSelectedIndices(selectedIndices);
     }
     
     /**
@@ -155,8 +186,10 @@ public class UpdateClassRoomGroupJPanel extends javax.swing.JPanel {
 
     private void updatejButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_updatejButtonActionPerformed
         String id = idjTextField.getText();
-        Person teacher = university.getTeacherController().getUnassignedTeacher().get(teacherjComboBox.getSelectedIndex());
-        List<Person> studentList = university.getStudentController().getUnassignedStudent();
+        int idx = teacherjComboBox.getSelectedIndex();
+        Person teacher = idx ==0? this.classRoomGroup.getTeacher():university.getTeacherController().getUnassignedTeacher().get(idx-1);
+        List<Person> studentList = new ArrayList(this.classRoomGroup.getStudents());
+        studentList.addAll( university.getStudentController().getUnassignedStudent());
         List<Person> selectedStudentList = new ArrayList();
         for(int index:studentsjList.getSelectedIndices())
         {
@@ -184,6 +217,8 @@ public class UpdateClassRoomGroupJPanel extends javax.swing.JPanel {
         Component[] components = containerjPanel.getComponents();
         ClassRoomGroupManagementHomeJPanel groupManagementHomeJPanel = (ClassRoomGroupManagementHomeJPanel) components[components.length-1];
         groupManagementHomeJPanel.populateClassRoomgroups();
+        CardLayout cardLayout = (CardLayout) containerjPanel.getLayout();
+        cardLayout.previous(containerjPanel);
     }//GEN-LAST:event_jButton1ActionPerformed
 
 

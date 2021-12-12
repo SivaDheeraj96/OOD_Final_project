@@ -20,7 +20,7 @@ public class ImmunizationModel {
         this.vaccineRecordFilePath = recordsPath;
         this.vaccineDirectory = new VaccineDirectory(vaccineFilePath);
         vaccineRecords = new ArrayList<>();
-        FileUtil.getFileData(this.vaccineRecordFilePath).stream().map(x -> new VaccineRecord(x,vaccineDirectory,studentController));
+        FileUtil.getFileData(this.vaccineRecordFilePath).stream().map(x -> new VaccineRecord(x,vaccineDirectory,studentController)).forEach(vaccineRecords::add);
     }
 
 

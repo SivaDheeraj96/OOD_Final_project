@@ -23,12 +23,12 @@
   <Layout>
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Component id="mainjSplitPanel" alignment="0" pref="1314" max="32767" attributes="0"/>
+          <Component id="mainjSplitPanel" alignment="0" pref="1462" max="32767" attributes="0"/>
       </Group>
     </DimensionLayout>
     <DimensionLayout dim="1">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Component id="mainjSplitPanel" alignment="1" pref="587" max="32767" attributes="0"/>
+          <Component id="mainjSplitPanel" alignment="1" pref="827" max="32767" attributes="0"/>
       </Group>
     </DimensionLayout>
   </Layout>
@@ -90,7 +90,7 @@
                       <Component id="classroomManagejButton" min="-2" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
                       <Component id="vaccineManagejButton" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace pref="289" max="32767" attributes="0"/>
+                      <EmptySpace pref="541" max="32767" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" alignment="1" attributes="0">
                               <Component id="neujLabel" linkSize="2" min="-2" max="-2" attributes="0"/>

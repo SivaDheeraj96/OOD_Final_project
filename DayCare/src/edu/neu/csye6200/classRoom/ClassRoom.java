@@ -43,7 +43,7 @@ public class ClassRoom {
             }
             this.name = data[1];
             this.groups = new ArrayList<>();
-            Arrays.asList(data[2].split("_")).stream().map(x -> controller.getClassRoomGroupById()).forEach(groups::add);
+            Arrays.asList(data[2].split("_")).stream().map(x -> controller.getClassRoomGroupById(Integer.parseInt(x))).forEach(groups::add);
         }
 	public int getId() {
 		return id;
@@ -74,6 +74,10 @@ public class ClassRoom {
         
     @Override
     public String toString()
+    {
+        return ((Integer)this.getId()).toString();
+    }
+    public String toCSV()
     {
         return this.getId()+","+this.getName()+","+this.getGroups().stream().map(x -> ((Integer)x.getId()).toString()).collect(Collectors.joining("_"));
     }

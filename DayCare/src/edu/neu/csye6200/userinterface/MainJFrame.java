@@ -140,7 +140,7 @@ public class MainJFrame extends javax.swing.JFrame {
                 .addComponent(classroomManagejButton)
                 .addGap(18, 18, 18)
                 .addComponent(vaccineManagejButton)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 289, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 541, Short.MAX_VALUE)
                 .addGroup(controljPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, controljPanelLayout.createSequentialGroup()
                         .addComponent(neujLabel)
@@ -163,11 +163,11 @@ public class MainJFrame extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(mainjSplitPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 1314, Short.MAX_VALUE)
+            .addComponent(mainjSplitPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 1462, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(mainjSplitPanel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 587, Short.MAX_VALUE)
+            .addComponent(mainjSplitPanel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 827, Short.MAX_VALUE)
         );
 
         pack();

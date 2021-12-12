@@ -37,7 +37,7 @@ public class ClassRoomGroupModel {
         this.groups.remove(group);
         group.getTeacher().setIsAssigned(false);
         group.getStudents().stream().forEach(x -> x.setIsAssigned(false));
-        FileUtil.removeEntryInFile(inputFilePath, group.toString());
+        FileUtil.removeEntryInFile(inputFilePath, group.toCSV());
     }
     
     void addClassRoomGroup(int id, Teacher teacher, List<Person> students)
@@ -50,7 +50,9 @@ public class ClassRoomGroupModel {
     protected void updateClassRoomGroup(ClassRoomGroup oldGroup,ClassRoomGroup newGroup)
     {
         this.groups.remove(oldGroup);
+        oldGroup.getStudents().stream().forEach(x -> x.setIsAssigned(false));
         this.groups.add(newGroup);
+        newGroup.getStudents().stream().forEach(x -> x.setIsAssigned(true));
         FileUtil.modifyEntryInFile(inputFilePath, oldGroup.toCSV(), newGroup.toCSV());
     }
     

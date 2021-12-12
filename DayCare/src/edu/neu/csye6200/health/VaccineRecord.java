@@ -58,10 +58,11 @@ public class VaccineRecord {
         
         try
         {
-            String dates[]= data[2].split(";");
+            String dates[]= data[3].split(";");
+            recievedDate = new Date[dates.length];
             SimpleDateFormat dateFormat =  new SimpleDateFormat(DATE_FORMAT);
-            for (String date : dates) {
-                dateFormat.parse(date);
+            for (int i =0;i< dates.length;i++) {
+                recievedDate[i] = dateFormat.parse(dates[i]);
             }
         }
         catch(Exception e)
