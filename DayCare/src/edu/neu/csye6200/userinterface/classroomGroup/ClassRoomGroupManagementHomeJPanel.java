@@ -86,11 +86,6 @@ public class ClassRoomGroupManagementHomeJPanel extends javax.swing.JPanel {
                 return canEdit [columnIndex];
             }
         });
-        classRoomsListjTable.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                classRoomsListjTableMouseClicked(evt);
-            }
-        });
         jScrollPane1.setViewportView(classRoomsListjTable);
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
@@ -205,21 +200,6 @@ public class ClassRoomGroupManagementHomeJPanel extends javax.swing.JPanel {
         containerjPanel.add("UpdateStudentJPanel", new UpdateClassRoomGroupJPanel(containerjPanel, university, classRoomGroup));
         cardLayout.next(containerjPanel);
     }//GEN-LAST:event_updatejButtonActionPerformed
-
-    private void classRoomsListjTableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_classRoomsListjTableMouseClicked
-        // TODO add your handling code here:
-
-        DefaultTableModel classRoomListModel = (DefaultTableModel) classRoomsListjTable.getModel();
-        ClassRoom classRoom = (ClassRoom) classRoomListModel.getValueAt(classRoomsListjTable.getSelectedRow(), 0);
-
-        DefaultTableModel classRoomGroupListModel = (DefaultTableModel) classRoomsListjTable.getModel();
-        classRoomGroupListModel.setRowCount(0);
-
-        classRoom.getGroups().stream()
-        .map(x -> (ClassRoomGroup)x)
-        .map(x -> new Object[]{x, x.getTeacher().getName(),x.getIsAssigned(),x.getStudents().size()})
-        .forEach(x -> {classRoomGroupListModel.addRow(x);});
-    }//GEN-LAST:event_classRoomsListjTableMouseClicked
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
