@@ -20,7 +20,7 @@ public class ImmunizationModel {
         this.vaccineRecordFilePath = recordsPath;
         this.vaccineDirectory = new VaccineDirectory(vaccineFilePath);
         vaccineRecords = new ArrayList<>();
-        FileUtil.getFileData(this.vaccineRecordFilePath).stream().map(x -> new VaccineRecord(x,studentController));
+        FileUtil.getFileData(this.vaccineRecordFilePath).stream().map(x -> new VaccineRecord(x,vaccineDirectory,studentController));
     }
 
 
@@ -39,9 +39,9 @@ public class ImmunizationModel {
             return this.vaccineList.stream().filter(x -> x.getId()==id).findFirst().get();
         }
         
-        public void addVaccine(int id, String name, FREQUENCY frequency, boolean isOptional)
+        public void addVaccine(int id, String name, FREQUENCY frequency, boolean isOptional,int doseCount)
         {
-            Vaccine vaccine = new Vaccine(id,name,isOptional, frequency);
+            Vaccine vaccine = new Vaccine(id,name,isOptional, frequency, doseCount);
             this.vaccineList.add(vaccine);
             FileUtil.appendEntryToFile(this.inputFilePath, vaccine.toCSV());
         }
@@ -61,7 +61,7 @@ public class ImmunizationModel {
     }
     
     
-    public void addVaccineRecord(int id, Vaccine vaccine, Person person, Date recievedDate)
+    public void addVaccineRecord(int id, Vaccine vaccine, Person person, Date[] recievedDate)
     {
         VaccineRecord record = new VaccineRecord(id,vaccine,recievedDate,person);
         this.vaccineRecords.add(record);

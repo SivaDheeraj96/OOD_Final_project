@@ -5,22 +5,26 @@ import java.util.Date;
 import edu.neu.csye6200.Person;
 import edu.neu.csye6200.student.Student;
 import edu.neu.csye6200.student.StudentController;
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 
 public class VaccineRecord {
 
+    public String DATE_FORMAT = "mm-dd-yyyy";
     private int recordId;
     private Vaccine vaccine;
-    private Date recievedDate;
+    private Date[] recievedDate;
     private Person person;
 
-    public VaccineRecord(int id, Vaccine vaccine, Date recivedDate, Person person) {
+    public VaccineRecord(int id, Vaccine vaccine, Date[] recivedDate, Person person) {
         this.recordId = id;
         this.vaccine = vaccine;
         this.recievedDate = recivedDate;
         this.person = person;
     }
 
-    VaccineRecord(String csvString, StudentController studentController) {
+    VaccineRecord(String csvString,ImmunizationModel.VaccineDirectory vaccineDirectory ,StudentController studentController) {
 
         this.recordId = -1;
         this.vaccine = null;
@@ -35,6 +39,36 @@ public class VaccineRecord {
             e.printStackTrace();
             throw new RuntimeException("error while parsing record id");
         }
+        
+        try{
+        this.vaccine = vaccineDirectory.getVaccineById(Integer.parseInt(data[1]));
+        }
+        catch(Exception e)
+        {
+            throw new RuntimeException("error while parsing vaccine id");
+        }
+        
+        try{
+        this.person = studentController.getStudentById(Integer.parseInt(data[2]));
+        }
+        catch(Exception e)
+        {
+            throw new RuntimeException("error while parsing student");
+        }
+        
+        try
+        {
+            String dates[]= data[2].split(";");
+            SimpleDateFormat dateFormat =  new SimpleDateFormat(DATE_FORMAT);
+            for (String date : dates) {
+                dateFormat.parse(date);
+            }
+        }
+        catch(Exception e)
+        {
+            throw new RuntimeException("error while parsing dates");
+        }
+        
     }
 
     public Vaccine getVaccine() {
@@ -45,11 +79,11 @@ public class VaccineRecord {
         this.vaccine = vaccine;
     }
 
-    public Date getRecievedDate() {
+    public Date[] getRecievedDate() {
         return recievedDate;
     }
 
-    public void setRecievedDate(Date recievedDate) {
+    public void setRecievedDate(Date[] recievedDate) {
         this.recievedDate = recievedDate;
     }
 
@@ -70,7 +104,14 @@ public class VaccineRecord {
     }
 
     public String toCSV() {
-        return this.getRecordId() + "," + ((Student) this.getPerson()).getSId() + "," + this.getVaccine().getId() + "," + this.getRecievedDate();
+        String str = "";
+        
+        for (Date recievedDate1 : recievedDate) {
+            DateFormat dateFormat =  new SimpleDateFormat(DATE_FORMAT);
+            str += dateFormat.format(recievedDate1) + ";";
+        }
+        str = str.substring(0,str.length()-1);
+        return this.getRecordId() + "," + this.getVaccine().getId()+ "," + ((Student) this.getPerson()).getSId()  + "," + str;
     }
 
     @Override

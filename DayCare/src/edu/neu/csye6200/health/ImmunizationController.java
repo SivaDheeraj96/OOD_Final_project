@@ -21,9 +21,9 @@ public class ImmunizationController {
         this.view = view;
     }
     
-    public void addVaccine(int id, String name, Vaccine.FREQUENCY frequency, boolean isOptional)
+    public void addVaccine(int id, String name, Vaccine.FREQUENCY frequency, boolean isOptional, int doseCount)
     {
-        this.model.getVaccineDirectory().addVaccine(id, name, frequency, isOptional);
+        this.model.getVaccineDirectory().addVaccine(id, name, frequency, isOptional,doseCount);
     }
     
     public void removeVaccine(Vaccine vaccine)
@@ -36,10 +36,7 @@ public class ImmunizationController {
         this.model.getVaccineDirectory().modifyVaccine(oldVaccine, newVaccine);
     }
     
-    
-    
-    
-    public void addVaccineRecord(int id, Vaccine vaccine, Person person, Date recievedDate)
+    public void addVaccineRecord(int id, Vaccine vaccine, Person person, Date[] recievedDate)
     {
         this.model.addVaccineRecord(id, vaccine, person, recievedDate);
     }
