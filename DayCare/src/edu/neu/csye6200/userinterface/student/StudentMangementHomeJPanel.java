@@ -287,6 +287,10 @@ public class StudentMangementHomeJPanel extends javax.swing.JPanel {
         {
             criteria.put("PHONE_NUMBER", phoneNumber);
         }
+        if(status)
+        {
+            criteria.put("STATUS", "TRUE");
+        }
         List<Person> searchedList = university.getStudentController().searchStudent(criteria);
         populateTable(searchedList);
     }//GEN-LAST:event_jButton1ActionPerformed
