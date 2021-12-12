@@ -11,7 +11,6 @@ package edu.neu.csye6200.classRoomGroup;
 public class ClassRoomGroupView {
 
     void updateView() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     
 }

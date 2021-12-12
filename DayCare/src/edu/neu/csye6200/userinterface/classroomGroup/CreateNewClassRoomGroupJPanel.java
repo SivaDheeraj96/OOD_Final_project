@@ -170,10 +170,12 @@ public class CreateNewClassRoomGroupJPanel extends javax.swing.JPanel {
         
         List<Person> students = new ArrayList<>();
         for(int student:selectedStudents) {
-            students.add((Student) university.getStudentController().getStudentById(student));
+            students.add((Student) university.getStudentController().getStudentList().get(student));
         }
         
         Teacher teacher  = (Teacher) university.getTeacherController().getUnassignedTeacher().get(teacherjComboBox.getSelectedIndex());
+        
+        System.out.println(students.size());
         
         university.getClassRoomGroupController()
                 .addClassRoomGroup( id, teacher , students);
