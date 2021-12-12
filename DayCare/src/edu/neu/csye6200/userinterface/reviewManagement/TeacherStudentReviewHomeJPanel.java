@@ -7,6 +7,8 @@ package edu.neu.csye6200.userinterface.reviewManagement;
 
 import edu.neu.csye6200.Person;
 import edu.neu.csye6200.University;
+import java.util.Map;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -39,7 +41,19 @@ public class TeacherStudentReviewHomeJPanel extends javax.swing.JPanel {
     private void populateRatings() {
         
         String year = (String) yearjComboBox.getSelectedItem();
-//        university
+        Map<Person, Float> ratings = university.getRatingController().getAllProfessorRatingsByYear(year);
+        
+        DefaultTableModel defaultTableModel = (DefaultTableModel) ratingsjTable.getModel();
+        defaultTableModel.setRowCount(0);
+        
+        for(Person person:ratings.keySet()) {
+            
+            Object[] row = new Object[2];
+            row[0] = person.getName();
+            row[1] = ratings.get(person);
+            
+            defaultTableModel.addRow(row);
+        }
         
     }
 
