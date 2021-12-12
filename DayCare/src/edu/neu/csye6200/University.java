@@ -26,14 +26,15 @@ public class University {
     private final String TEACHER_CSV = "src/edu/neu/csye6200/inputData/teacherData.txt";
     private final String CLASSGROUP_CSV = "src/edu/neu/csye6200/inputData/classGroupData.txt";
     private final String CLASS_CSV = "src/edu/neu/csye6200/inputData/classData.txt";
+    private final String VACCINE_CSV = "src/edu/neu/csye6200/inputData/vaccine.txt";
     private final String IMMUNIZATION_CSV = "src/edu/neu/csye6200/inputData/immunizationData.txt";
     
     private String name;
     private final StudentController studentController;
     private final TeacherController teacherController ;
-    private final ClassRoomGroupController classRoomGroupController =null;
-    private final ClassRoomController classRoomController =null;
-    private final ImmunizationController immunizationController=null;
+    private final ClassRoomGroupController classRoomGroupController;
+    private final ClassRoomController classRoomController ;
+    private final ImmunizationController immunizationController;
     
     public University(String name){
         
@@ -46,7 +47,7 @@ public class University {
         TeacherModel teacherModel = new TeacherModel(TEACHER_CSV);
         TeacherView teacherView = new TeacherView();//need to add proper input;
         teacherController = new TeacherController(teacherModel,teacherView);
-/*                
+               
         ClassRoomGroupModel classRoomGroupModel = new ClassRoomGroupModel(CLASSGROUP_CSV,teacherController,studentController);
         ClassRoomGroupView classRoomGroupView = new ClassRoomGroupView();//need to add proper input;
         classRoomGroupController = new ClassRoomGroupController(classRoomGroupModel,classRoomGroupView);       
@@ -55,9 +56,9 @@ public class University {
         ClassRoomView classRoomView = new ClassRoomView();//need to add proper input;
         classRoomController  = new ClassRoomController(classRoomModel,classRoomView);
         
-        ImmunizationModel immunizationModel = new ImmunizationModel(IMMUNIZATION_CSV);
+        ImmunizationModel immunizationModel = new ImmunizationModel(VACCINE_CSV,IMMUNIZATION_CSV,studentController);
         ImmunizationView immunizationView = new ImmunizationView();//need to add proper input;
-        immunizationController = new ImmunizationController(immunizationModel, immunizationView);   */  
+        immunizationController = new ImmunizationController(immunizationModel, immunizationView);   
     }
 
     public String getName() {
