@@ -10,7 +10,6 @@ import edu.neu.csye6200.health.Vaccine;
 import java.awt.CardLayout;
 import java.awt.Component;
 import javax.swing.JPanel;
-import jdk.jfr.Frequency;
 
 /**
  *
@@ -82,38 +81,14 @@ public class CreateNewVaccinationRecordJPanel extends javax.swing.JPanel {
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel2.setText("Id : ");
 
-        idjTextField.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                idjTextFieldActionPerformed(evt);
-            }
-        });
-
         jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel3.setText("Name : ");
-
-        namejTextField.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                namejTextFieldActionPerformed(evt);
-            }
-        });
 
         jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel4.setText("Dose Count : ");
 
-        doseCountjTextField.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                doseCountjTextFieldActionPerformed(evt);
-            }
-        });
-
         jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel5.setText("Frequency : ");
-
-        frequencyjComboBox.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                frequencyjComboBoxActionPerformed(evt);
-            }
-        });
 
         jButton2.setText("Save");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
@@ -208,18 +183,6 @@ public class CreateNewVaccinationRecordJPanel extends javax.swing.JPanel {
         cardLayout.previous(containerjPanel);
     }//GEN-LAST:event_jButton1ActionPerformed
 
-    private void idjTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_idjTextFieldActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_idjTextFieldActionPerformed
-
-    private void namejTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_namejTextFieldActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_namejTextFieldActionPerformed
-
-    private void doseCountjTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_doseCountjTextFieldActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_doseCountjTextFieldActionPerformed
-
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
         
@@ -242,10 +205,6 @@ public class CreateNewVaccinationRecordJPanel extends javax.swing.JPanel {
         frequencyjComboBox.setSelectedIndex(0);
     }
     
-    private void frequencyjComboBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_frequencyjComboBoxActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_frequencyjComboBoxActionPerformed
-
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField doseCountjTextField;
