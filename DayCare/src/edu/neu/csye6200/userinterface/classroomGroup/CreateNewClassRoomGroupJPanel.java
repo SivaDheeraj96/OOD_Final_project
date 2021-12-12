@@ -43,17 +43,18 @@ public class CreateNewClassRoomGroupJPanel extends javax.swing.JPanel {
             Teacher teacher  = (Teacher) person;
             teacherjComboBox.addItem(String.valueOf(teacher.getTId()) + "-" + teacher.getName());
         }
-        
-//        studentjComboBox.removeAllItems();
-        DefaultListModel model = (DefaultListModel) studentsjList.getModel();
-        model.clear();
-        
-        for(Person person:university.getStudentController().getUnassignedStudent()) {
-            
-            Student student = (Student) person;
-            model.addElement(String.valueOf(student.getSId()) + "-" + student.getName());
+                
+        List<String> studentsData = new ArrayList<>();
+        List<Person> studentList = university.getStudentController().getUnassignedStudent();
+        String[] inputData = new String[studentList.size()];
+        int i=0;
+        for(Person person:studentList) {
+            inputData[i]= ((Integer)((Student)person).getSId()).toString()+"-"+person.getName();
+            i++;
         }
         
+        studentsjList.setListData( inputData);
+
     }
     
     /**
