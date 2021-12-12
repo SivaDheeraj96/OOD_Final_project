@@ -160,6 +160,11 @@ public class VaccineManagementHomeJPanel extends javax.swing.JPanel {
         // TODO add your handling code here:
 
         DefaultTableModel vaccineRecordListModel = (DefaultTableModel) vaccinationDirectoryRecordsListjTable.getModel();
+        if(vaccinationDirectoryRecordsListjTable.getSelectedRow() < 0) {
+            JOptionPane.showMessageDialog(this, "Please select a row ");
+            return;
+        }
+        
         Vaccine vaccineRecord = (Vaccine) vaccineRecordListModel.getValueAt(vaccinationDirectoryRecordsListjTable.getSelectedRow(), 0);
 
         CardLayout cardLayout = (CardLayout) containerjPanel.getLayout();
