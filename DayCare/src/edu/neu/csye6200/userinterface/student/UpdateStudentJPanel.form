@@ -16,7 +16,7 @@
   <Layout>
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Group type="102" alignment="0" attributes="0">
+          <Group type="102" attributes="0">
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace min="-2" pref="328" max="-2" attributes="0"/>
@@ -24,11 +24,12 @@
                           <Group type="103" alignment="1" groupAlignment="0" attributes="0">
                               <Component id="jLabel1" alignment="0" min="-2" pref="85" max="-2" attributes="0"/>
                               <Group type="103" alignment="0" groupAlignment="1" max="-2" attributes="0">
-                                  <Component id="jLabel6" alignment="0" pref="77" max="32767" attributes="0"/>
+                                  <Component id="jLabel6" alignment="0" max="32767" attributes="0"/>
                                   <Component id="jLabel7" alignment="0" max="32767" attributes="0"/>
                                   <Component id="jLabel4" alignment="0" max="32767" attributes="0"/>
                                   <Component id="jLabel2" alignment="0" max="32767" attributes="0"/>
                                   <Component id="jLabel3" alignment="0" max="32767" attributes="0"/>
+                                  <Component id="jLabel8" alignment="0" max="32767" attributes="0"/>
                               </Group>
                           </Group>
                           <Group type="102" alignment="1" attributes="0">
@@ -37,14 +38,15 @@
                           </Group>
                       </Group>
                       <EmptySpace min="-2" pref="88" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="namejTextField" linkSize="1" alignment="0" min="-2" pref="114" max="-2" attributes="0"/>
-                          <Component id="agejTextField" linkSize="1" alignment="0" min="-2" pref="114" max="-2" attributes="0"/>
-                          <Component id="gpajTextField" linkSize="1" alignment="0" min="-2" pref="114" max="-2" attributes="0"/>
-                          <Component id="parentNamejTextField" linkSize="1" alignment="0" min="-2" pref="114" max="-2" attributes="0"/>
-                          <Component id="phoneNojTextField" linkSize="1" alignment="0" min="-2" pref="114" max="-2" attributes="0"/>
-                          <Component id="addressjTextField" linkSize="1" alignment="0" min="-2" pref="114" max="-2" attributes="0"/>
-                          <Component id="studentIdjTextField" linkSize="1" alignment="0" min="-2" pref="178" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                          <Component id="namejTextField" linkSize="1" alignment="0" pref="114" max="32767" attributes="0"/>
+                          <Component id="agejTextField" linkSize="1" alignment="0" pref="114" max="32767" attributes="0"/>
+                          <Component id="gpajTextField" linkSize="1" alignment="0" pref="114" max="32767" attributes="0"/>
+                          <Component id="parentNamejTextField" linkSize="1" alignment="0" pref="114" max="32767" attributes="0"/>
+                          <Component id="phoneNojTextField" linkSize="1" alignment="0" pref="114" max="32767" attributes="0"/>
+                          <Component id="addressjTextField" linkSize="1" alignment="0" pref="114" max="32767" attributes="0"/>
+                          <Component id="studentIdjTextField" linkSize="1" alignment="0" pref="178" max="32767" attributes="0"/>
+                          <Component id="renewelDatejTextField" alignment="0" max="32767" attributes="0"/>
                       </Group>
                   </Group>
                   <Group type="102" alignment="0" attributes="0">
@@ -54,7 +56,7 @@
                       <Component id="createStudentjLabel" min="-2" pref="266" max="-2" attributes="0"/>
                   </Group>
                   <Group type="102" alignment="0" attributes="0">
-                      <EmptySpace min="-2" pref="431" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="430" max="-2" attributes="0"/>
                       <Component id="updatejButton" min="-2" max="-2" attributes="0"/>
                   </Group>
               </Group>
@@ -106,8 +108,13 @@
                   <Component id="addressjTextField" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace type="separate" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="jLabel8" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="renewelDatejTextField" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace type="separate" max="-2" attributes="0"/>
               <Component id="updatejButton" min="-2" max="-2" attributes="0"/>
-              <EmptySpace pref="49" max="32767" attributes="0"/>
+              <EmptySpace pref="60" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -202,6 +209,17 @@
       </Events>
     </Component>
     <Component class="javax.swing.JTextField" name="studentIdjTextField">
+    </Component>
+    <Component class="javax.swing.JLabel" name="jLabel8">
+      <Properties>
+        <Property name="horizontalAlignment" type="int" value="4"/>
+        <Property name="text" type="java.lang.String" value="Renewel Date :"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JTextField" name="renewelDatejTextField">
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="renewelDatejTextFieldActionPerformed"/>
+      </Events>
     </Component>
   </SubComponents>
 </Form>

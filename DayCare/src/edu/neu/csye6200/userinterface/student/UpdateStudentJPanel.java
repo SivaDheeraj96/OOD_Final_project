@@ -9,6 +9,10 @@ import edu.neu.csye6200.University;
 import edu.neu.csye6200.student.Student;
 import java.awt.CardLayout;
 import java.awt.Component;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
@@ -44,6 +48,7 @@ public class UpdateStudentJPanel extends javax.swing.JPanel {
         agejTextField.setText(String.valueOf(student.getAge()));
         gpajTextField.setText(String.valueOf(student.getGpa()));
         studentIdjTextField.setText(String.valueOf(student.getSId()));
+        renewelDatejTextField.setText(student.getLastRenewedDate().toString());
     }
     /**
      * This method is called from within the constructor to initialize the form.
@@ -71,6 +76,8 @@ public class UpdateStudentJPanel extends javax.swing.JPanel {
         agejTextField = new javax.swing.JTextField();
         namejTextField = new javax.swing.JTextField();
         studentIdjTextField = new javax.swing.JTextField();
+        jLabel8 = new javax.swing.JLabel();
+        renewelDatejTextField = new javax.swing.JTextField();
 
         jLabel7.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel7.setText("Address :");
@@ -129,6 +136,15 @@ public class UpdateStudentJPanel extends javax.swing.JPanel {
             }
         });
 
+        jLabel8.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        jLabel8.setText("Renewel Date :");
+
+        renewelDatejTextField.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                renewelDatejTextFieldActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -141,30 +157,32 @@ public class UpdateStudentJPanel extends javax.swing.JPanel {
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                    .addComponent(jLabel6, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 77, Short.MAX_VALUE)
+                                    .addComponent(jLabel6, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                     .addComponent(jLabel7, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                     .addComponent(jLabel4, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                     .addComponent(jLabel2, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(jLabel3, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                                    .addComponent(jLabel3, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(jLabel8, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(jLabel5)
                                 .addGap(8, 8, 8)))
                         .addGap(88, 88, 88)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(namejTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(agejTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(gpajTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(parentNamejTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(phoneNojTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(addressjTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(studentIdjTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 178, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(namejTextField, javax.swing.GroupLayout.DEFAULT_SIZE, 114, Short.MAX_VALUE)
+                            .addComponent(agejTextField, javax.swing.GroupLayout.DEFAULT_SIZE, 114, Short.MAX_VALUE)
+                            .addComponent(gpajTextField, javax.swing.GroupLayout.DEFAULT_SIZE, 114, Short.MAX_VALUE)
+                            .addComponent(parentNamejTextField, javax.swing.GroupLayout.DEFAULT_SIZE, 114, Short.MAX_VALUE)
+                            .addComponent(phoneNojTextField, javax.swing.GroupLayout.DEFAULT_SIZE, 114, Short.MAX_VALUE)
+                            .addComponent(addressjTextField, javax.swing.GroupLayout.DEFAULT_SIZE, 114, Short.MAX_VALUE)
+                            .addComponent(studentIdjTextField, javax.swing.GroupLayout.DEFAULT_SIZE, 178, Short.MAX_VALUE)
+                            .addComponent(renewelDatejTextField)))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(54, 54, 54)
                         .addComponent(backjButton)
                         .addGap(228, 228, 228)
                         .addComponent(createStudentjLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 266, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(431, 431, 431)
+                        .addGap(430, 430, 430)
                         .addComponent(updatejButton)))
                 .addContainerGap(365, Short.MAX_VALUE))
         );
@@ -207,8 +225,12 @@ public class UpdateStudentJPanel extends javax.swing.JPanel {
                     .addComponent(jLabel7)
                     .addComponent(addressjTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel8)
+                    .addComponent(renewelDatejTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
                 .addComponent(updatejButton)
-                .addContainerGap(49, Short.MAX_VALUE))
+                .addContainerGap(60, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -235,6 +257,13 @@ public class UpdateStudentJPanel extends javax.swing.JPanel {
         tempStudent.setAge(Integer.valueOf(agejTextField.getText()));
         tempStudent.setGpa(Double.valueOf(gpajTextField.getText()));
         tempStudent.setSId(Integer.valueOf(studentIdjTextField.getText()));
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("mm-dd-yyy");
+        
+        try {
+            tempStudent.setLastRenewedDate(simpleDateFormat.parse(renewelDatejTextField.getText()));
+        } catch (ParseException ex) {
+        }
+        
         university.getStudentController().modifyStudent(student, tempStudent);
         student = tempStudent;
         JOptionPane.showMessageDialog(this, "Successfully updated Student record");
@@ -254,6 +283,10 @@ public class UpdateStudentJPanel extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_namejTextFieldActionPerformed
 
+    private void renewelDatejTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_renewelDatejTextFieldActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_renewelDatejTextFieldActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField addressjTextField;
@@ -268,9 +301,11 @@ public class UpdateStudentJPanel extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
     private javax.swing.JTextField namejTextField;
     private javax.swing.JTextField parentNamejTextField;
     private javax.swing.JTextField phoneNojTextField;
+    private javax.swing.JTextField renewelDatejTextField;
     private javax.swing.JTextField studentIdjTextField;
     private javax.swing.JButton updatejButton;
     // End of variables declaration//GEN-END:variables

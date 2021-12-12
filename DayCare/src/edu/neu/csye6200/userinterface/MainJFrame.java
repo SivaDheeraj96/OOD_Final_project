@@ -8,6 +8,7 @@ package edu.neu.csye6200.userinterface;
 import edu.neu.csye6200.University;
 import edu.neu.csye6200.userinterface.classroom.ClassRoomManagementHomeJPanel;
 import edu.neu.csye6200.userinterface.classroomGroup.ClassRoomGroupManagementHomeJPanel;
+import edu.neu.csye6200.userinterface.reviewManagement.TeacherStudentReviewHomeJPanel;
 import edu.neu.csye6200.userinterface.student.StudentMangementHomeJPanel;
 import edu.neu.csye6200.userinterface.teacher.TeacherManagementHomeJPanel;
 import edu.neu.csye6200.userinterface.vaccination.VaccineManagementHomeJPanel;
@@ -54,6 +55,7 @@ public class MainJFrame extends javax.swing.JFrame {
         madeWithjLabel = new javax.swing.JLabel();
         lovejLabel = new javax.swing.JLabel();
         neujLabel = new javax.swing.JLabel();
+        ratingManagejButton = new javax.swing.JButton();
         containerjPanel = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -101,6 +103,13 @@ public class MainJFrame extends javax.swing.JFrame {
 
         neujLabel.setText("@neu");
 
+        ratingManagejButton.setText("Rating-Management");
+        ratingManagejButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ratingManagejButtonActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout controljPanelLayout = new javax.swing.GroupLayout(controljPanel);
         controljPanel.setLayout(controljPanelLayout);
         controljPanelLayout.setHorizontalGroup(
@@ -121,11 +130,14 @@ public class MainJFrame extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(lovejLabel)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(neujLabel)))
+                        .addComponent(neujLabel))
+                    .addGroup(controljPanelLayout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(ratingManagejButton)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        controljPanelLayout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {classroomManagejButton, groupManagejButton, studentManagejButton, teacherManagejButton, vaccineManagejButton});
+        controljPanelLayout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {classroomManagejButton, groupManagejButton, ratingManagejButton, studentManagejButton, teacherManagejButton, vaccineManagejButton});
 
         controljPanelLayout.setVerticalGroup(
             controljPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -140,7 +152,9 @@ public class MainJFrame extends javax.swing.JFrame {
                 .addComponent(classroomManagejButton)
                 .addGap(18, 18, 18)
                 .addComponent(vaccineManagejButton)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 541, Short.MAX_VALUE)
+                .addGap(18, 18, 18)
+                .addComponent(ratingManagejButton)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 482, Short.MAX_VALUE)
                 .addGroup(controljPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, controljPanelLayout.createSequentialGroup()
                         .addComponent(neujLabel)
@@ -167,7 +181,7 @@ public class MainJFrame extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(mainjSplitPanel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 827, Short.MAX_VALUE)
+            .addComponent(mainjSplitPanel, javax.swing.GroupLayout.Alignment.TRAILING)
         );
 
         pack();
@@ -214,6 +228,13 @@ public class MainJFrame extends javax.swing.JFrame {
         cardLayout.next(containerjPanel);
     }//GEN-LAST:event_teacherManagejButtonActionPerformed
 
+    private void ratingManagejButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ratingManagejButtonActionPerformed
+        // TODO add your handling code here:
+        CardLayout cardLayout = (CardLayout) containerjPanel.getLayout();
+        containerjPanel.add("RatingManagementHomePanel", new TeacherStudentReviewHomeJPanel(university));
+        cardLayout.next(containerjPanel);
+    }//GEN-LAST:event_ratingManagejButtonActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -258,6 +279,7 @@ public class MainJFrame extends javax.swing.JFrame {
     private javax.swing.JLabel madeWithjLabel;
     private javax.swing.JSplitPane mainjSplitPanel;
     private javax.swing.JLabel neujLabel;
+    private javax.swing.JButton ratingManagejButton;
     private javax.swing.JButton studentManagejButton;
     private javax.swing.JButton teacherManagejButton;
     private javax.swing.JButton vaccineManagejButton;
