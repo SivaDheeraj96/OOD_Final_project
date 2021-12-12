@@ -6,7 +6,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 
 public class Student extends Person {
-    public static final DateFormat DATE_FORMAT = new SimpleDateFormat("mm-dd-yyyy");
+    public static final DateFormat DATE_FORMAT = new SimpleDateFormat("MM-dd-yyyy");
 
     private double gpa;
     private int sid;

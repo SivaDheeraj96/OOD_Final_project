@@ -11,7 +11,7 @@ import java.text.SimpleDateFormat;
 
 public class VaccineRecord {
 
-    public String DATE_FORMAT = "mm-dd-yyyy";
+    public String DATE_FORMAT = "MM-dd-yyyy";
     private int recordId;
     private Vaccine vaccine;
     private Date[] recievedDate;

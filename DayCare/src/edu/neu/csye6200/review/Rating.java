@@ -18,7 +18,7 @@ import java.util.Date;
  * @author dheeraj
  */
 public class Rating {
-    private static final DateFormat DATE_FORMAT= new SimpleDateFormat("mm-dd-yyyy");
+    private static final DateFormat DATE_FORMAT= new SimpleDateFormat("MM-dd-yyyy");
     private int rating;
     private Person teacher;
     private Person student;
