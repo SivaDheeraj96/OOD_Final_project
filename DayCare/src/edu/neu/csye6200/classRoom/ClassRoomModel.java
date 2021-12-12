@@ -6,8 +6,6 @@ import java.util.List;
 import edu.neu.csye6200.FileUtil;
 import edu.neu.csye6200.classRoomGroup.ClassRoomGroup;
 import edu.neu.csye6200.classRoomGroup.ClassRoomGroupController;
-import edu.neu.csye6200.student.StudentController;
-import edu.neu.csye6200.teacher.TeacherController;
 
 public class ClassRoomModel {
 

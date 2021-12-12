@@ -81,10 +81,16 @@ public class Vaccine {
 
 	public void setFrequency(FREQUENCY frequency) {
 		this.frequency = frequency;
-	} 
-	@Override
-	public String toString() {
+	}
+	public String toCSV() {
 		return "id: "+this.getId()+" name: "+this.getName()+" isOptional: "+this.isOptional()+" frequency: "+this.getFrequency();
 	}
+        @Override
+        public String toString()
+        {
+            return ((Integer)this.getId()).toString();
+        }
+        
+        
 
 }
