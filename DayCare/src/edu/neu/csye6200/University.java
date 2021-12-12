@@ -10,6 +10,9 @@ import edu.neu.csye6200.classRoomGroup.ClassRoomGroupView;
 import edu.neu.csye6200.health.ImmunizationController;
 import edu.neu.csye6200.health.ImmunizationModel;
 import edu.neu.csye6200.health.ImmunizationView;
+import edu.neu.csye6200.review.RatingController;
+import edu.neu.csye6200.review.RatingModel;
+import edu.neu.csye6200.review.RatingView;
 import edu.neu.csye6200.student.StudentController;
 import edu.neu.csye6200.student.StudentModel;
 import edu.neu.csye6200.student.StudentView;
@@ -28,6 +31,7 @@ public class University {
     private final String CLASS_CSV = "src/edu/neu/csye6200/inputData/classData.txt";
     private final String VACCINE_CSV = "src/edu/neu/csye6200/inputData/vaccineData.txt";
     private final String IMMUNIZATION_CSV = "src/edu/neu/csye6200/inputData/immunizationData.txt";
+    private final String RENEWAL_CSV = "src/edu/neu/csye6200/inputData/renewalData.txt";
     
     private String name;
     private final StudentController studentController;
@@ -35,6 +39,7 @@ public class University {
     private final ClassRoomGroupController classRoomGroupController;
     private final ClassRoomController classRoomController ;
     private final ImmunizationController immunizationController;
+    private final RatingController ratingController;
     
     public University(String name){
         
@@ -59,6 +64,13 @@ public class University {
         ImmunizationModel immunizationModel = new ImmunizationModel(VACCINE_CSV,IMMUNIZATION_CSV,studentController);
         ImmunizationView immunizationView = new ImmunizationView();//need to add proper input;
         immunizationController = new ImmunizationController(immunizationModel, immunizationView);   
+        
+        RatingModel ratingModel = new RatingModel(RENEWAL_CSV,studentController,teacherController);
+        RatingView ratingView = new RatingView();
+        this.ratingController = new RatingController(ratingModel, ratingView);
+        
+        
+        
     }
 
     public String getName() {

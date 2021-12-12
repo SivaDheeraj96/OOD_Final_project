@@ -8,6 +8,7 @@ import java.util.Map;
 import java.util.function.Predicate;
 
 import edu.neu.csye6200.Person;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.Optional;
 
@@ -54,6 +55,9 @@ public class StudentController {
                             return false;
                         }
                         break;
+                    case "STATUS":
+                    return (criteria.get("STATUS").equals("TRUE")) && (((Student)x).getLastRenewedDate().before(Calendar.getInstance().getTime()));
+
                 }
             }
             return true;
