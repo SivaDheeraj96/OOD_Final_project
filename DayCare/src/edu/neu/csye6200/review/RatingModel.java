@@ -22,7 +22,7 @@ public class RatingModel {
     public RatingModel(String inputFilePath, StudentController studentController, TeacherController teacherController)
     {
         this.filePath = inputFilePath;
-        FileUtil.getFileData(this.filePath).stream().map(x -> new Rating(x,studentController,teacherController)).forEach(ratings::add);
+        FileUtil.getFileData(this.filePath).stream().filter(x -> !x.equals("")).map(x -> new Rating(x,studentController,teacherController)).forEach(ratings::add);
     }
     
     void addRating(Person student, Person teacher, int rating, Date date)

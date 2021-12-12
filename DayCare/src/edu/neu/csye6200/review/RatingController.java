@@ -30,11 +30,11 @@ public class RatingController {
         this.model.addRating(student, teacher, rating, date);
     }
     
-    public Map<Person, Integer> getAllProfessorRatingsByYear(String year)
+    public Map<Person, Float> getAllProfessorRatingsByYear(String year)
     {
         int val = Integer.parseInt(year);
         Calendar cal = Calendar.getInstance(TimeZone.getTimeZone("US/Eastern"));
-        Map<Person, Integer> ratingMap = new HashMap<>();
+        Map<Person, Float> ratingMap = new HashMap<>();
         Map<Person, Integer> ratingCount = new HashMap<>();
 //        cal.setTime(date);
 //        int year = cal.get(Calendar.YEAR);
@@ -43,7 +43,7 @@ public class RatingController {
                     cal.setTime(x.getDate());
                     return cal.get(Calendar.YEAR)==val;})
                 .forEach(x -> {
-                    Integer rating = ratingMap.get(x.getTeacher());
+                    Float rating = ratingMap.get(x.getTeacher());
                     rating = rating==null?0:rating;
                     rating+=x.getRating();
                     ratingMap.put(x.getTeacher(), rating);
