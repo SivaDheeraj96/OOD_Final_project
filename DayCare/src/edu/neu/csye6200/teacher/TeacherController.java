@@ -98,4 +98,9 @@ public class TeacherController {
         this.model.getTeacherList().stream().filter(filter).forEach(result::add);
         return result;
     }
+     
+    public List<Person> getTeacherList()
+    {
+        return this.model.getTeacherList();
+    }
 }
