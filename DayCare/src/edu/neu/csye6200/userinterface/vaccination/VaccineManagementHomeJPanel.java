@@ -92,11 +92,6 @@ public class VaccineManagementHomeJPanel extends javax.swing.JPanel {
                 return canEdit [columnIndex];
             }
         });
-        vaccinationDirectoryRecordsListjTable.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                vaccinationDirectoryRecordsListjTableMouseClicked(evt);
-            }
-        });
         jScrollPane1.setViewportView(vaccinationDirectoryRecordsListjTable);
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
@@ -160,14 +155,6 @@ public class VaccineManagementHomeJPanel extends javax.swing.JPanel {
                 .addContainerGap(171, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
-
-    private void vaccinationDirectoryRecordsListjTableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_vaccinationDirectoryRecordsListjTableMouseClicked
-        // TODO add your handling code here:
-
-        DefaultTableModel classRoomListModel = (DefaultTableModel) vaccinationDirectoryRecordsListjTable.getModel();
-        VaccineRecord vaccineRecord = (VaccineRecord) classRoomListModel.getValueAt(vaccinationDirectoryRecordsListjTable.getSelectedRow(), 0);
-
-    }//GEN-LAST:event_vaccinationDirectoryRecordsListjTableMouseClicked
 
     private void updatejButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_updatejButtonActionPerformed
         // TODO add your handling code here:
