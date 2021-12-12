@@ -35,6 +35,8 @@ public class ClassRoomGroupModel {
     protected void removeClassGroup(ClassRoomGroup group)
     {
         this.groups.remove(group);
+        group.getTeacher().setIsAssigned(false);
+        group.getStudents().stream().forEach(x -> x.setIsAssigned(false));
         FileUtil.removeEntryInFile(inputFilePath, group.toString());
     }
     

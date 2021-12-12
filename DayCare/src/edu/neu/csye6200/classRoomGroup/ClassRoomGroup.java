@@ -14,7 +14,6 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import java.util.stream.Collectors;
 
 /**
  *
@@ -61,7 +60,7 @@ public class ClassRoomGroup {
         }
         catch(Exception e)
         {
-            LOGGER.log(Level.SEVERE,"error while creating students");
+            LOGGER.log(Level.SEVERE,"error while creating students",e);
         }    
     }
     protected ClassRoomGroup(int id, Teacher teacher, List<Person> students)
@@ -69,6 +68,8 @@ public class ClassRoomGroup {
         this.id = id;
         this.teacher = teacher;
         this.students = students;
+        this.teacher.setIsAssigned(true);
+        students.stream().forEach(x -> x.setIsAssigned(true));
     }
 
     public int getId() {
