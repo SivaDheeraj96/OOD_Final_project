@@ -8,7 +8,6 @@ package edu.neu.csye6200.userinterface.classroom;
 import edu.neu.csye6200.University;
 import edu.neu.csye6200.classRoom.ClassRoom;
 import edu.neu.csye6200.classRoomGroup.ClassRoomGroup;
-import edu.neu.csye6200.student.Student;
 import java.awt.CardLayout;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;

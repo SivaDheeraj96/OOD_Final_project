@@ -5,7 +5,13 @@
  */
 package edu.neu.csye6200.userinterface.classroomGroup;
 
+import edu.neu.csye6200.Person;
 import edu.neu.csye6200.University;
+import edu.neu.csye6200.student.Student;
+import edu.neu.csye6200.teacher.Teacher;
+import java.util.ArrayList;
+import java.util.List;
+import javax.swing.DefaultListModel;
 import javax.swing.JPanel;
 
 /**
@@ -25,8 +31,31 @@ public class CreateNewClassRoomGroupJPanel extends javax.swing.JPanel {
         initComponents();
         this.containerjPanel = containerjPanel;
         this.university = university;
+        
+        populateData();
     }
 
+    private void populateData() {
+        
+        teacherjComboBox.removeAllItems();
+        for(Person person:university.getTeacherController().getUnassignedTeacher()) {
+            
+            Teacher teacher  = (Teacher) person;
+            teacherjComboBox.addItem(String.valueOf(teacher.getTId()) + "-" + teacher.getName());
+        }
+        
+//        studentjComboBox.removeAllItems();
+        DefaultListModel model = (DefaultListModel) studentsjList.getModel();
+        model.clear();
+        
+        for(Person person:university.getStudentController().getUnassignedStudent()) {
+            
+            Student student = (Student) person;
+            model.addElement(String.valueOf(student.getSId()) + "-" + student.getName());
+        }
+        
+    }
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -36,19 +65,131 @@ public class CreateNewClassRoomGroupJPanel extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jLabel1 = new javax.swing.JLabel();
+        jButton1 = new javax.swing.JButton();
+        jLabel2 = new javax.swing.JLabel();
+        idjTextField = new javax.swing.JTextField();
+        jLabel3 = new javax.swing.JLabel();
+        teacherjComboBox = new javax.swing.JComboBox<>();
+        jLabel4 = new javax.swing.JLabel();
+        savejButton = new javax.swing.JButton();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        studentsjList = new javax.swing.JList<>();
+
+        jLabel1.setFont(new java.awt.Font("Lucida Grande", 1, 24)); // NOI18N
+        jLabel1.setText("Create New ClassRoom Group");
+
+        jButton1.setText("< < Back");
+
+        jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        jLabel2.setText("Id :");
+
+        idjTextField.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                idjTextFieldActionPerformed(evt);
+            }
+        });
+
+        jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        jLabel3.setText("Teacher :");
+
+        jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        jLabel4.setText("Student :");
+
+        savejButton.setText("Save");
+        savejButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                savejButtonActionPerformed(evt);
+            }
+        });
+
+        jScrollPane1.setViewportView(studentsjList);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(37, 37, 37)
+                        .addComponent(jButton1)
+                        .addGap(123, 123, 123)
+                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 385, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(241, 241, 241)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, 71, Short.MAX_VALUE)
+                            .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGap(33, 33, 33)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(idjTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 144, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(teacherjComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 219, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(287, 287, 287)
+                        .addComponent(savejButton)))
+                .addContainerGap(178, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(42, 42, 42)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButton1))
+                .addGap(48, 48, 48)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel2)
+                    .addComponent(idjTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel3)
+                    .addComponent(teacherjComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(23, 23, 23)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel4))
+                .addGap(37, 37, 37)
+                .addComponent(savejButton)
+                .addContainerGap(164, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
+    private void idjTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_idjTextFieldActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_idjTextFieldActionPerformed
+
+    private void savejButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_savejButtonActionPerformed
+        // TODO add your handling code here:
+        
+        int id = Integer.valueOf(idjTextField.getText());
+        int[] selectedStudents = studentsjList.getSelectedIndices();
+        
+        List<Person> students = new ArrayList<>();
+        for(int student:selectedStudents) {
+            students.add((Student) university.getStudentController().getStudentById(student));
+        }
+        
+        Teacher teacher  = (Teacher) university.getTeacherController().getUnassignedTeacher().get(teacherjComboBox.getSelectedIndex());
+        
+        university.getClassRoomGroupController()
+                .addClassRoomGroup( id, teacher , students);
+        
+    }//GEN-LAST:event_savejButtonActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JTextField idjTextField;
+    private javax.swing.JButton jButton1;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JButton savejButton;
+    private javax.swing.JList<String> studentsjList;
+    private javax.swing.JComboBox<String> teacherjComboBox;
     // End of variables declaration//GEN-END:variables
 }
