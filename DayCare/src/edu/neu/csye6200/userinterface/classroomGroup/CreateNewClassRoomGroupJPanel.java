@@ -46,12 +46,13 @@ public class CreateNewClassRoomGroupJPanel extends javax.swing.JPanel {
         university.getTeacherController().getUnassignedTeacher().stream().map(person -> (Teacher) person).forEachOrdered(teacher -> {
             teacherjComboBox.addItem(String.valueOf(teacher.getTId()) + "-" + teacher.getName());
         });
-                
-        ageGroupjComboBox.removeAllItems();
-        for( AgeGroup value : ClassRoomGroup.AgeGroup.values()){
-            ageGroupjComboBox.addItem(value.getDisplayValue());
-        }
-        ageGroupjComboBox.setSelectedIndex(AgeGroup.SIX_TWELVE.getValue());
+        
+        ageGroupjComboBox.setSelectedIndex(0);
+//        ageGroupjComboBox.removeAllItems();
+//        for( AgeGroup value : ClassRoomGroup.AgeGroup.values()){
+//            ageGroupjComboBox.addItem(value.getDisplayValue());
+//        }
+//        ageGroupjComboBox.setSelectedIndex(AgeGroup.SIX_TWELVE.getValue());
         
         
         studentsjList.removeAll();
@@ -124,6 +125,7 @@ public class CreateNewClassRoomGroupJPanel extends javax.swing.JPanel {
 
         jScrollPane1.setViewportView(studentsjList);
 
+        ageGroupjComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "6-12", "13-24", "25-35", "36-47", "48-59", "60-?" }));
         ageGroupjComboBox.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 ageGroupjComboBoxActionPerformed(evt);
