@@ -1,5 +1,8 @@
 package edu.neu.csye6200.health;
 
+import java.util.HashMap;
+import java.util.Map;
+
 public class Vaccine {
 
     public static enum FREQUENCY {
@@ -10,12 +13,23 @@ public class Vaccine {
         YEARLY(4),
         ONLYONCE(5);
 
+        private static Map map = new HashMap();
+        static {
+        for (FREQUENCY type : FREQUENCY.values()) {
+            map.put(type.value, type);
+        }
+    }
         private final int value;
 
         private FREQUENCY(int value) {
             this.value = value;
         }
 
+        public static FREQUENCY valueOf(int val)
+        {
+            System.out.print(val);
+            return (FREQUENCY)map.get(val);
+        }
         public int getValue() {
             return value;
         }
@@ -56,11 +70,14 @@ public class Vaccine {
             throw new RuntimeException("error while parsing optional in vaccine");
         }
 
-        this.frequency = FREQUENCY.valueOf(vals[3]);
+        this.frequency = FREQUENCY.valueOf(Integer.parseInt(vals[3]));
 
         try {
-            this.doseCount = Integer.parseInt(vals[3]);
+            this.doseCount = Integer.parseInt(vals[4]);
         } catch (Exception e) {
+            e.printStackTrace();
+            System.out.println();
+            System.out.println(data);
             throw new RuntimeException("error while parsing dose count in vaccine");
         }
     }
@@ -114,7 +131,7 @@ public class Vaccine {
     }
 
     public String toCSV() {
-        return "id: " + this.getId() + " name: " + this.getName() + " isOptional: " + this.isOptional() + " frequency: " + this.getFrequency();
+        return this.getId() + "," + this.getName() + "," + this.isOptional() + "," + ((Integer)this.getFrequency().getValue()).toString()+","+this.getDoseCount();
     }
 
     @Override

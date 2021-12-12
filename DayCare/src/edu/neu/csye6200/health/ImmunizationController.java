@@ -5,6 +5,7 @@
 package edu.neu.csye6200.health;
 
 import edu.neu.csye6200.Person;
+import edu.neu.csye6200.student.Student;
 import java.util.Date;
 import java.util.List;
 
@@ -69,5 +70,10 @@ public class ImmunizationController {
     public VaccineRecord getVaccineRecordById(int id)
     {
         return this.model.getVaccineRecords().stream().filter(x -> x.getRecordId()==id).findFirst().get();
+    }
+    
+    public VaccineRecord getVaccineRecordByStudentIdAndVaccine(Person student, Vaccine vaccine)
+    {
+        return this.model.getVaccineRecords().stream().filter(x -> ((Student)(x).getPerson()).getSId() == ((Student)student).getSId()).filter(x -> x.getVaccine().getId() == vaccine.getId()).findFirst().get();
     }
 }

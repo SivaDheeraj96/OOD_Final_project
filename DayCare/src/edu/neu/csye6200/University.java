@@ -26,7 +26,7 @@ public class University {
     private final String TEACHER_CSV = "src/edu/neu/csye6200/inputData/teacherData.txt";
     private final String CLASSGROUP_CSV = "src/edu/neu/csye6200/inputData/classGroupData.txt";
     private final String CLASS_CSV = "src/edu/neu/csye6200/inputData/classData.txt";
-    private final String VACCINE_CSV = "src/edu/neu/csye6200/inputData/vaccine.txt";
+    private final String VACCINE_CSV = "src/edu/neu/csye6200/inputData/vaccineData.txt";
     private final String IMMUNIZATION_CSV = "src/edu/neu/csye6200/inputData/immunizationData.txt";
     
     private String name;

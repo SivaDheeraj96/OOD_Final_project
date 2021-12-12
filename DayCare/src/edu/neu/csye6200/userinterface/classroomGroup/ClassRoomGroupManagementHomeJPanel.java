@@ -40,7 +40,7 @@ public class ClassRoomGroupManagementHomeJPanel extends javax.swing.JPanel {
         
         System.out.println(university.getClassRoomGroupController().getUnassignedClassRoomGroup().size());
         
-        university.getClassRoomGroupController().getUnassignedClassRoomGroup().stream()
+        university.getClassRoomGroupController().getAllClassRoomGroup().stream()
                 .map(x -> (ClassRoomGroup)x)
                 .map(x -> new Object[]{x, x.getTeacher().getName(),x.getIsAssigned(),x.getStudents().size()})
                 .forEach(x -> {classRoomGroupListModel.addRow(x);});

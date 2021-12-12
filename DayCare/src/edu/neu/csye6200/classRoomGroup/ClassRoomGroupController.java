@@ -61,4 +61,8 @@ public class ClassRoomGroupController {
         this.model.getClassRoomGroup().stream().filter(x -> !x.getIsAssigned()).forEach(list::add);
         return list;
     }
+    
+    public List<ClassRoomGroup> getAllClassRoomGroup() {
+        return this.model.getClassRoomGroup();
+    }
 }
