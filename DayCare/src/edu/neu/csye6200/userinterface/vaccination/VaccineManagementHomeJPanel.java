@@ -39,7 +39,7 @@ public class VaccineManagementHomeJPanel extends javax.swing.JPanel {
         DefaultTableModel vaccineRecorsListModel = (DefaultTableModel) vaccinationDirectoryRecordsListjTable.getModel();
         vaccineRecorsListModel.setRowCount(0);
         
-        for(Vaccine vaccine:university.getImmunizationController()) {
+        for(Vaccine vaccine:university.getImmunizationController().getVaccineList()) {
             
             Object[] row = new Object[5];
             row[0] = vaccine;
