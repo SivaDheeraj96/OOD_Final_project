@@ -9,6 +9,9 @@ import edu.neu.csye6200.Person;
 import edu.neu.csye6200.University;
 import edu.neu.csye6200.student.Student;
 import edu.neu.csye6200.teacher.Teacher;
+import edu.neu.csye6200.userinterface.student.StudentMangementHomeJPanel;
+import java.awt.CardLayout;
+import java.awt.Component;
 import java.util.ArrayList;
 import java.util.List;
 import javax.swing.DefaultListModel;
@@ -44,6 +47,8 @@ public class CreateNewClassRoomGroupJPanel extends javax.swing.JPanel {
             teacherjComboBox.addItem(String.valueOf(teacher.getTId()) + "-" + teacher.getName());
         }
                 
+        studentsjList.removeAll();
+        
         List<String> studentsData = new ArrayList<>();
         List<Person> studentList = university.getStudentController().getUnassignedStudent();
         String[] inputData = new String[studentList.size()];
@@ -81,6 +86,11 @@ public class CreateNewClassRoomGroupJPanel extends javax.swing.JPanel {
         jLabel1.setText("Create New ClassRoom Group");
 
         jButton1.setText("< < Back");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel2.setText("Id :");
@@ -170,7 +180,7 @@ public class CreateNewClassRoomGroupJPanel extends javax.swing.JPanel {
         
         List<Person> students = new ArrayList<>();
         for(int student:selectedStudents) {
-            students.add((Student) university.getStudentController().getStudentList().get(student));
+            students.add((Student) university.getStudentController().getUnassignedStudent().get(student));
         }
         
         Teacher teacher  = (Teacher) university.getTeacherController().getUnassignedTeacher().get(teacherjComboBox.getSelectedIndex());
@@ -180,7 +190,21 @@ public class CreateNewClassRoomGroupJPanel extends javax.swing.JPanel {
         university.getClassRoomGroupController()
                 .addClassRoomGroup( id, teacher , students);
         
+        populateData();
     }//GEN-LAST:event_savejButtonActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+        
+        containerjPanel.remove(this);
+        
+        Component[] components = containerjPanel.getComponents();
+        CreateNewClassRoomGroupJPanel createNewClassRoomGroupJPanel = (CreateNewClassRoomGroupJPanel) components[components.length-1];
+        createNewClassRoomGroupJPanel.populateData();
+        
+        CardLayout cardLayout = (CardLayout) containerjPanel.getLayout();
+        cardLayout.previous(containerjPanel);
+    }//GEN-LAST:event_jButton1ActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
