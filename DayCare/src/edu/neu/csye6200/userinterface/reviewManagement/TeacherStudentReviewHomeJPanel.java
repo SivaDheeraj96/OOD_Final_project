@@ -7,6 +7,7 @@ package edu.neu.csye6200.userinterface.reviewManagement;
 
 import edu.neu.csye6200.Person;
 import edu.neu.csye6200.University;
+import java.util.Date;
 import java.util.Map;
 import javax.swing.table.DefaultTableModel;
 
@@ -212,7 +213,10 @@ public class TeacherStudentReviewHomeJPanel extends javax.swing.JPanel {
         
         int rating = ratingjComboBox.getSelectedIndex()+1;
         
+        university.getRatingController().addRating(student, teacher, rating, new Date());
+        
         reset();
+        populateRatings();
     }//GEN-LAST:event_submitjButtonActionPerformed
 
     private void yearjComboBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_yearjComboBoxActionPerformed
