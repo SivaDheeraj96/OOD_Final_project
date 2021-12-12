@@ -11,6 +11,7 @@ import edu.neu.csye6200.health.Vaccine;
 import edu.neu.csye6200.health.VaccineRecord;
 import edu.neu.csye6200.student.Student;
 import java.awt.CardLayout;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
@@ -97,10 +98,11 @@ public class VaccineManagementHomeJPanel extends javax.swing.JPanel {
         
         VaccineRecord vaccineRecord = university.getImmunizationController().getVaccineRecordByStudentIdAndVaccine(student, vaccine);
         
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("MM-dd-yyyy");
         for(Date date: vaccineRecord.getRecievedDate()) {
             Object[] row = new Object[2];
             row[0] = vaccineRecord.getRecordId();
-            row[1] = date.toString();
+            row[1] = simpleDateFormat.format(date);
             
             vaccinationStudentModel.addRow(row);
         }

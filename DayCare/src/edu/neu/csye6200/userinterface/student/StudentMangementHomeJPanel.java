@@ -9,6 +9,7 @@ import edu.neu.csye6200.Person;
 import edu.neu.csye6200.University;
 import edu.neu.csye6200.student.Student;
 import java.awt.CardLayout;
+import java.text.SimpleDateFormat;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -42,10 +43,10 @@ public class StudentMangementHomeJPanel extends javax.swing.JPanel {
         studentListModel.setRowCount(0);
         
 //        System.out.println(university.getStudentController().getUnassignedStudent().size());
-        
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("MM-dd-yyyy");
         personList.stream()
                 .map(x -> (Student)x)
-                .map(x -> new Object[]{x, x.getName(),x.getAge(),x.getGpa(),x.getPhoneNumber(),x.getParentName(),x.getAddress(),x.getLastRenewedDate()})
+                .map(x -> new Object[]{x, x.getName(),x.getAge(),x.getGpa(),x.getPhoneNumber(),x.getParentName(),x.getAddress(),simpleDateFormat.format(x.getLastRenewedDate())})
                 .forEach(x -> {studentListModel.addRow(x);});
         
         System.out.println(studentListModel.getRowCount());

@@ -48,7 +48,9 @@ public class UpdateStudentJPanel extends javax.swing.JPanel {
         agejTextField.setText(String.valueOf(student.getAge()));
         gpajTextField.setText(String.valueOf(student.getGpa()));
         studentIdjTextField.setText(String.valueOf(student.getSId()));
-        renewelDatejTextField.setText(student.getLastRenewedDate().toString());
+        
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("MM-dd-yyyy");       
+        renewelDatejTextField.setText(simpleDateFormat.format(student.getLastRenewedDate()));
     }
     /**
      * This method is called from within the constructor to initialize the form.
@@ -257,7 +259,7 @@ public class UpdateStudentJPanel extends javax.swing.JPanel {
         tempStudent.setAge(Integer.valueOf(agejTextField.getText()));
         tempStudent.setGpa(Double.valueOf(gpajTextField.getText()));
         tempStudent.setSId(Integer.valueOf(studentIdjTextField.getText()));
-        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("mm-dd-yyy");
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("MM-dd-yyy");
         
         try {
             tempStudent.setLastRenewedDate(simpleDateFormat.parse(renewelDatejTextField.getText()));
