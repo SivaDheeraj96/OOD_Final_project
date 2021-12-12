@@ -54,7 +54,7 @@ public class ClassRoomManagementHomeJPanel extends javax.swing.JPanel {
         
         university.getClassRoomGroupController().getUnassignedClassRoomGroup().stream()
                 .map(x -> (ClassRoomGroup)x)
-                .map(x -> new Object[]{x, x.getTeacher().getName(),x.getIsAssigned(),x.getStudents().size()})
+                .map(x -> new Object[]{x, x.getTeacher().getName(),x.getIsAssigned(),x.getStudents().size(),x.getAgeGroup().getDisplayValue()})
                 .forEach(x -> {classRoomGroupListModel.addRow(x);});
     }
 
@@ -137,14 +137,14 @@ public class ClassRoomManagementHomeJPanel extends javax.swing.JPanel {
 
             },
             new String [] {
-                "Id", "Teacher", "IsAssigned", "No of Students"
+                "Id", "Teacher", "IsAssigned", "No of Students", "Age Group"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.Object.class, java.lang.String.class, java.lang.Boolean.class, java.lang.Integer.class
+                java.lang.Object.class, java.lang.String.class, java.lang.Boolean.class, java.lang.Integer.class, java.lang.String.class
             };
             boolean[] canEdit = new boolean [] {
-                false, false, false, false
+                false, false, false, false, true
             };
 
             public Class getColumnClass(int columnIndex) {

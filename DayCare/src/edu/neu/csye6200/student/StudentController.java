@@ -8,6 +8,7 @@ import java.util.Map;
 import java.util.function.Predicate;
 
 import edu.neu.csye6200.Person;
+import edu.neu.csye6200.classRoomGroup.ClassRoomGroup.AgeGroup;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.Optional;
@@ -103,6 +104,13 @@ public class StudentController {
     public List<Person> getStudentList()
     {
         return this.model.getStudents();
+    }
+    
+    public List<Person> getUnAssignedStudentListBasedOnAgeGroup(AgeGroup ageGroup)
+    {
+        List<Person> list = new ArrayList();
+        this.model.getUnassignedStudentList().stream().filter( x -> ageGroup.isSatisfied(x.getAge())).forEach((x) -> list.add(x));
+        return list;
     }
     
 

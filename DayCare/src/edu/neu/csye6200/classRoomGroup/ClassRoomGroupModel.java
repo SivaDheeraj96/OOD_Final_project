@@ -6,6 +6,7 @@ package edu.neu.csye6200.classRoomGroup;
 
 import edu.neu.csye6200.FileUtil;
 import edu.neu.csye6200.Person;
+import edu.neu.csye6200.classRoomGroup.ClassRoomGroup.AgeGroup;
 import edu.neu.csye6200.student.StudentController;
 import edu.neu.csye6200.teacher.Teacher;
 import edu.neu.csye6200.teacher.TeacherController;
@@ -40,9 +41,9 @@ public class ClassRoomGroupModel {
         FileUtil.removeEntryInFile(inputFilePath, group.toCSV());
     }
     
-    void addClassRoomGroup(int id, Teacher teacher, List<Person> students)
+    void addClassRoomGroup(int id, Teacher teacher, List<Person> students, AgeGroup ageGroup)
     {
-        ClassRoomGroup group = new ClassRoomGroup(id, teacher, students);
+        ClassRoomGroup group = new ClassRoomGroup(id, teacher, students,ageGroup );
         this.groups.add(group);
         FileUtil.appendEntryToFile(this.inputFilePath, group.toCSV());
     }

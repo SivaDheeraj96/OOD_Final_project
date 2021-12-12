@@ -53,9 +53,14 @@ public class UpdateClassRoomGroupJPanel extends javax.swing.JPanel {
         
         teacherjComboBox.setSelectedIndex(0);
         
+        ageGroupjComboBox1.removeAllItems();
+        for( ClassRoomGroup.AgeGroup value : ClassRoomGroup.AgeGroup.values()){
+            ageGroupjComboBox1.addItem(value.getDisplayValue());
+        }
+        ageGroupjComboBox1.setSelectedIndex(this.classRoomGroup.getAgeGroup().getValue());
         
         studentsjList.removeAll();
-        List<Person> studentList = university.getStudentController().getUnassignedStudent();
+        List<Person> studentList = university.getStudentController().getUnAssignedStudentListBasedOnAgeGroup(this.classRoomGroup.getAgeGroup());
         List<Person> currentStudents = this.classRoomGroup.getStudents();
         String[] inputData = new String[studentList.size()+currentStudents.size()];
         int i=0;
@@ -93,6 +98,8 @@ public class UpdateClassRoomGroupJPanel extends javax.swing.JPanel {
         jLabel1 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
+        ageGroupjComboBox1 = new javax.swing.JComboBox<>();
+        jLabel5 = new javax.swing.JLabel();
 
         idjTextField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -128,6 +135,15 @@ public class UpdateClassRoomGroupJPanel extends javax.swing.JPanel {
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel2.setText("Id :");
 
+        ageGroupjComboBox1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ageGroupjComboBox1ActionPerformed(evt);
+            }
+        });
+
+        jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        jLabel5.setText("Age Group");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -144,12 +160,14 @@ public class UpdateClassRoomGroupJPanel extends javax.swing.JPanel {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, 71, Short.MAX_VALUE)
-                            .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jLabel5, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 71, Short.MAX_VALUE))
                         .addGap(33, 33, 33)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(idjTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 144, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(teacherjComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 219, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(teacherjComboBox, 0, 219, Short.MAX_VALUE)
+                            .addComponent(ageGroupjComboBox1, 0, 219, Short.MAX_VALUE)
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(375, 375, 375)
                         .addComponent(updatejButton)))
@@ -167,16 +185,20 @@ public class UpdateClassRoomGroupJPanel extends javax.swing.JPanel {
                     .addComponent(jLabel2)
                     .addComponent(idjTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(teacherjComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel3))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(ageGroupjComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel3)
-                    .addComponent(teacherjComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(23, 23, 23)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel4))
-                .addGap(54, 54, 54)
+                    .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(updatejButton)
-                .addContainerGap(66, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -196,7 +218,7 @@ public class UpdateClassRoomGroupJPanel extends javax.swing.JPanel {
             selectedStudentList.add(studentList.get(index));
         }
         ClassRoomGroupController controller = university.getClassRoomGroupController();
-        controller.modifyClassRoomGroup(classRoomGroup, Integer.parseInt(id), (Teacher)teacher, selectedStudentList);
+        controller.modifyClassRoomGroup(classRoomGroup, Integer.parseInt(id), (Teacher)teacher, selectedStudentList,ClassRoomGroup.AgeGroup.valueOf(ageGroupjComboBox1.getSelectedIndex()+1));
         classRoomGroup = controller.getClassRoomGroupById(Integer.parseInt(id));
         JOptionPane.showMessageDialog(this, "Successfully updated Class Room Group record");
     }//GEN-LAST:event_updatejButtonActionPerformed
@@ -221,14 +243,28 @@ public class UpdateClassRoomGroupJPanel extends javax.swing.JPanel {
         cardLayout.previous(containerjPanel);
     }//GEN-LAST:event_jButton1ActionPerformed
 
+    private void ageGroupjComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ageGroupjComboBox1ActionPerformed
+        System.out.println("called");
+        List<Person> studentList = university.getStudentController().getUnAssignedStudentListBasedOnAgeGroup(ClassRoomGroup.AgeGroup.valueOf(ageGroupjComboBox1.getSelectedIndex()));
+        String[] inputData = new String[studentList.size()];
+        int i=0;
+        for(Person person:studentList) {
+            inputData[i]= ((Integer)((Student)person).getSId()).toString()+"-"+person.getName();
+            i++;
+        }
+        studentsjList.setListData( inputData);
+    }//GEN-LAST:event_ageGroupjComboBox1ActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JComboBox<String> ageGroupjComboBox1;
     private javax.swing.JTextField idjTextField;
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JList<String> studentsjList;
     private javax.swing.JComboBox<String> teacherjComboBox;

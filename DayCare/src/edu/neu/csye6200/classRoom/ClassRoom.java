@@ -29,6 +29,10 @@ public class ClassRoom {
             this.groups = groups;
             groups.stream().forEach(x -> x.setIsAssigned(true));
             this.isFull = groups.size()>0;
+            if(groups.get(1).getAgeGroup().getGroupCount()>groups.size())
+            {
+                throw new RuntimeException("group count exceeded in Classroom");
+            }
         }
         
         protected ClassRoom(String csvData, ClassRoomGroupController controller)
@@ -45,6 +49,10 @@ public class ClassRoom {
             this.name = data[1];
             this.groups = new ArrayList<>();
             Arrays.asList(data[2].split("_")).stream().map(x -> controller.getClassRoomGroupById(Integer.parseInt(x))).forEach(x -> {x.setIsAssigned(true);this.groups.add(x);});
+            if(groups.size()>0 && groups.get(0).getAgeGroup().getGroupCount()<groups.size())
+            {
+                throw new RuntimeException("group count exceeded in Classroom");
+            }
         }
 	public int getId() {
 		return id;

@@ -2,6 +2,7 @@ package edu.neu.csye6200.classRoomGroup;
 
 import edu.neu.csye6200.FileUtil;
 import edu.neu.csye6200.Person;
+import edu.neu.csye6200.classRoomGroup.ClassRoomGroup.AgeGroup;
 import edu.neu.csye6200.student.StudentController;
 import edu.neu.csye6200.teacher.Teacher;
 import edu.neu.csye6200.teacher.TeacherController;
@@ -35,8 +36,9 @@ public class ClassRoomGroupController {
         this.view.updateView();
     }
     
-    public void addClassRoomGroup(int id, Teacher teacher, List<Person> students) {
-        this.model.addClassRoomGroup( id,  teacher,  students);
+    public void addClassRoomGroup(int id, Teacher teacher, List<Person> students, AgeGroup ageGroup) {
+       
+        this.model.addClassRoomGroup( id,  teacher,  students,ageGroup);
         this.view.updateView();
     }
 
@@ -45,8 +47,8 @@ public class ClassRoomGroupController {
         this.view.updateView();
     }
 
-    public void modifyClassRoomGroup(ClassRoomGroup classRoomGroup, int id, Teacher teacher, List<Person> students) {
-        ClassRoomGroup tempClassRoomGroup = new ClassRoomGroup(id, teacher, students);
+    public void modifyClassRoomGroup(ClassRoomGroup classRoomGroup, int id, Teacher teacher, List<Person> students,AgeGroup ageGroup) {
+        ClassRoomGroup tempClassRoomGroup = new ClassRoomGroup(id, teacher, students,ageGroup);
         this.model.updateClassRoomGroup(classRoomGroup, tempClassRoomGroup);
         this.view.updateView();
     }
@@ -64,5 +66,12 @@ public class ClassRoomGroupController {
     
     public List<ClassRoomGroup> getAllClassRoomGroup() {
         return this.model.getClassRoomGroup();
+    }
+    
+    public List<ClassRoomGroup> getUnAssignedClassRoomGroupBasedOnAgeGroup(AgeGroup ageGroup)
+    {
+        List<ClassRoomGroup> list = new ArrayList();
+        this.model.getUnassignedClassRoomGroup().stream().filter(x -> x.getAgeGroup() == ageGroup).forEach(list::add);
+        return list;
     }
 }
