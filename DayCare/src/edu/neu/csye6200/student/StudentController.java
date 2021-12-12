@@ -46,12 +46,12 @@ public class StudentController {
                         }
                         break;
                     case "PARENT_NAME":
-                        if (x.getParentName().toLowerCase().contains(value)) {
+                        if (!(x.getParentName().toLowerCase().contains(value))) {
                             return false;
                         }
                         break;
                     case "PHONE_NUMBER":
-                        if (x.getParentName().toLowerCase().contains(value)) {
+                        if (!(String.valueOf(x.getPhoneNumber()).contains(value))) {
                             return false;
                         }
                         break;
