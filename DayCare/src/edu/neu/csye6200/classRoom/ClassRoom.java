@@ -27,6 +27,7 @@ public class ClassRoom {
             this.id = id;
             this.name = name;
             this.groups = groups;
+            groups.stream().forEach(x -> x.setIsAssigned(true));
             this.isFull = groups.size()>0;
         }
         
@@ -43,7 +44,7 @@ public class ClassRoom {
             }
             this.name = data[1];
             this.groups = new ArrayList<>();
-            Arrays.asList(data[2].split("_")).stream().map(x -> controller.getClassRoomGroupById(Integer.parseInt(x))).forEach(groups::add);
+            Arrays.asList(data[2].split("_")).stream().map(x -> controller.getClassRoomGroupById(Integer.parseInt(x))).forEach(x -> {x.setIsAssigned(true);this.groups.add(x);});
         }
 	public int getId() {
 		return id;

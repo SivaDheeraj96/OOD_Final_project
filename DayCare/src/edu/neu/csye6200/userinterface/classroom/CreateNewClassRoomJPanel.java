@@ -6,6 +6,13 @@
 package edu.neu.csye6200.userinterface.classroom;
 
 import edu.neu.csye6200.University;
+import edu.neu.csye6200.classRoomGroup.ClassRoomGroup;
+import edu.neu.csye6200.userinterface.classroomGroup.ClassRoomGroupManagementHomeJPanel;
+import java.awt.CardLayout;
+import java.awt.Component;
+import java.util.ArrayList;
+import java.util.List;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
 /**
@@ -25,6 +32,8 @@ public class CreateNewClassRoomJPanel extends javax.swing.JPanel {
         initComponents();
         this.containerjPanel = containerjPanel;
         this.university = university;
+        
+        populateDate();
     }
 
     /**
@@ -36,19 +45,186 @@ public class CreateNewClassRoomJPanel extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        backJButton = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        idJField = new javax.swing.JTextField();
+        jLabel3 = new javax.swing.JLabel();
+        nameJField = new javax.swing.JTextField();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        groupsJList = new javax.swing.JList<>();
+        jLabel4 = new javax.swing.JLabel();
+        saveJButton = new javax.swing.JButton();
+
+        backJButton.setText("<< Back");
+        backJButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                backJButtonActionPerformed(evt);
+            }
+        });
+
+        jLabel1.setFont(new java.awt.Font("sansserif", 0, 24)); // NOI18N
+        jLabel1.setText("Add ClassRoom");
+
+        jLabel2.setText("Id");
+
+        idJField.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                idJFieldActionPerformed(evt);
+            }
+        });
+
+        jLabel3.setText("Name");
+
+        jScrollPane1.setViewportView(groupsJList);
+
+        jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        jLabel4.setText("Class Room Groups");
+
+        saveJButton.setText("save");
+        saveJButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                saveJButtonActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 814, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(54, 54, 54)
+                        .addComponent(backJButton)
+                        .addGap(129, 129, 129)
+                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 258, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addContainerGap()
+                                .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, 347, Short.MAX_VALUE))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addGap(0, 0, Short.MAX_VALUE)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel3, javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(jLabel2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(nameJField, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(idJField, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(saveJButton))))
+                .addContainerGap(287, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 393, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(32, 32, 32)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(backJButton)
+                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(39, 39, 39)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel2)
+                    .addComponent(idJField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel3)
+                    .addComponent(nameJField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(26, 26, 26)
+                        .addComponent(jLabel4))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(18, 18, 18)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(saveJButton)
+                .addContainerGap(125, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
+    private void backJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backJButtonActionPerformed
+        /*
+          containerjPanel.remove(this);
+        
+        Component[] components = containerjPanel.getComponents();
+        ClassRoomGroupManagementHomeJPanel classRoomGroupManagementHomeJPanel = (ClassRoomGroupManagementHomeJPanel) components[components.length-1];
+        classRoomGroupManagementHomeJPanel.populateClassRoomgroups();
+        
+        CardLayout cardLayout = (CardLayout) containerjPanel.getLayout();
+        cardLayout.previous(containerjPanel);
+        */
+        
+        containerjPanel.remove(this);
+        Component[] components = containerjPanel.getComponents();
+        ClassRoomManagementHomeJPanel classRoomHomePanel = (ClassRoomManagementHomeJPanel) components[components.length-1];
+        classRoomHomePanel.populateClassRooms();
+        
+        CardLayout cardLayout = (CardLayout) containerjPanel.getLayout();
+        cardLayout.previous(containerjPanel);
+    }//GEN-LAST:event_backJButtonActionPerformed
+
+    private void idJFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_idJFieldActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_idJFieldActionPerformed
+
+    private void saveJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_saveJButtonActionPerformed
+        // TODO add your handling code here:
+        if(idJField.getText()=="")
+        {
+            JOptionPane.showMessageDialog(this, "Please input valid id");
+            return;
+        }
+        int id = Integer.parseInt(idJField.getText());
+        String name = nameJField.getText();
+        if(name=="")
+        {
+            JOptionPane.showMessageDialog(this, "Please input valid name");
+            return;
+        }
+        List<ClassRoomGroup> groups = new ArrayList();
+        int[] indices = groupsJList.getSelectedIndices();
+        List<ClassRoomGroup> unassignedGroups = university.getClassRoomGroupController().getUnassignedClassRoomGroup();
+        for(int i=0;i<indices.length;i++)
+        {
+            groups.add(unassignedGroups.get(i));
+        }
+        if(indices.length<0)
+        {
+            JOptionPane.showMessageDialog(this, "Please input valid name");
+            return;
+        }
+        university.getClassRoomController().addClassRoom(id,name, groups);
+        JOptionPane.showMessageDialog(this, "Successfully add classRoom record");
+        populateDate();
+    }//GEN-LAST:event_saveJButtonActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton backJButton;
+    private javax.swing.JList<String> groupsJList;
+    private javax.swing.JTextField idJField;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTextField nameJField;
+    private javax.swing.JButton saveJButton;
     // End of variables declaration//GEN-END:variables
+
+    private void populateDate() {
+        idJField.setText("");
+        nameJField.setText("");
+        groupsJList.removeAll();
+        List<ClassRoomGroup> groups = university.getClassRoomGroupController().getUnassignedClassRoomGroup();
+        String[] groupList = new String[groups.size()];
+        for(int i=0;i<groups.size();i++)
+        {
+            groupList[i] = groups.get(i).getId()+"-"+groups.get(i).getTeacher().getName();
+        }
+        groupsJList.setListData(groupList);
+    }
 }

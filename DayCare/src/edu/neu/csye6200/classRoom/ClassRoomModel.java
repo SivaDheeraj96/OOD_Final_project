@@ -30,7 +30,7 @@ public class ClassRoomModel {
     }
     protected void addClassRoom(ClassRoom classRoom) {
         this.data.add(classRoom);
-        FileUtil.appendEntryToFile(inputData, classRoom.toString());
+        FileUtil.appendEntryToFile(inputData, classRoom.toCSV());
     }
     protected List<ClassRoom> getClassRooms(){
             return data;
@@ -39,14 +39,17 @@ public class ClassRoomModel {
     protected void removeClassRoom(ClassRoom classRoom)
     {
         this.data.remove(classRoom);
-        FileUtil.removeEntryInFile(inputData, classRoom.toString());
+        classRoom.getGroups().stream().forEach(x -> x.setIsAssigned(false));
+        FileUtil.removeEntryInFile(inputData, classRoom.toCSV());
     }
     
     protected void updateClassRoom(ClassRoom oldClass, ClassRoom newClass)
     {
         this.data.remove(oldClass);
+        oldClass.getGroups().stream().forEach(x -> x.setIsAssigned(false));
         this.data.add(newClass);
-        FileUtil.modifyEntryInFile(inputData, oldClass.toString(), newClass.toString());
+        newClass.getGroups().stream().forEach(x -> x.setIsAssigned(true));
+        FileUtil.modifyEntryInFile(inputData, oldClass.toCSV(), newClass.toCSV());
     }
         
     protected List<ClassRoom> getUnassignedClassRoom()

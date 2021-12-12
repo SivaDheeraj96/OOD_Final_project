@@ -26,6 +26,9 @@ public class ClassRoomController {
     public void addClassRoom(ClassRoom classRoom) {
         this.model.addClassRoom(classRoom);
     }
+    public void addClassRoom(int id, String name, List<ClassRoomGroup> groups) {
+        this.model.addClassRoom(id,name,groups);
+    }
 
     public void updateView() {
         this.view.updateView();

@@ -8,6 +8,8 @@ package edu.neu.csye6200.userinterface.classroom;
 import edu.neu.csye6200.University;
 import edu.neu.csye6200.classRoom.ClassRoom;
 import edu.neu.csye6200.classRoomGroup.ClassRoomGroup;
+import edu.neu.csye6200.userinterface.classroom.CreateNewClassRoomJPanel;
+import edu.neu.csye6200.userinterface.classroom.UpdateClassRoomJPanel;
 import java.awt.CardLayout;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
@@ -246,8 +248,6 @@ public class ClassRoomManagementHomeJPanel extends javax.swing.JPanel {
                 .map(x -> (ClassRoomGroup)x)
                 .map(x -> new Object[]{x, x.getTeacher().getName(),x.getIsAssigned(),x.getStudents().size()})
                 .forEach(x -> {classRoomGroupListModel.addRow(x);});
-        
-        
     }//GEN-LAST:event_classRoomsListjTableMouseClicked
 
 

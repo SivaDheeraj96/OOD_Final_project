@@ -41,15 +41,12 @@ public class CreateNewClassRoomGroupJPanel extends javax.swing.JPanel {
     private void populateData() {
         
         teacherjComboBox.removeAllItems();
-        for(Person person:university.getTeacherController().getUnassignedTeacher()) {
-            
-            Teacher teacher  = (Teacher) person;
+        university.getTeacherController().getUnassignedTeacher().stream().map(person -> (Teacher) person).forEachOrdered(teacher -> {
             teacherjComboBox.addItem(String.valueOf(teacher.getTId()) + "-" + teacher.getName());
-        }
+        });
                 
         studentsjList.removeAll();
         
-        List<String> studentsData = new ArrayList<>();
         List<Person> studentList = university.getStudentController().getUnassignedStudent();
         String[] inputData = new String[studentList.size()];
         int i=0;
@@ -57,9 +54,7 @@ public class CreateNewClassRoomGroupJPanel extends javax.swing.JPanel {
             inputData[i]= ((Integer)((Student)person).getSId()).toString()+"-"+person.getName();
             i++;
         }
-        
         studentsjList.setListData( inputData);
-
     }
     
     /**
@@ -139,7 +134,7 @@ public class CreateNewClassRoomGroupJPanel extends javax.swing.JPanel {
                             .addComponent(teacherjComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 219, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(287, 287, 287)
+                        .addGap(291, 291, 291)
                         .addComponent(savejButton)))
                 .addContainerGap(178, Short.MAX_VALUE))
         );
@@ -158,13 +153,17 @@ public class CreateNewClassRoomGroupJPanel extends javax.swing.JPanel {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel3)
                     .addComponent(teacherjComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(23, 23, 23)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel4))
-                .addGap(37, 37, 37)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(39, 39, 39)
+                        .addComponent(jLabel4)
+                        .addGap(84, 84, 84))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(8, 8, 8)))
                 .addComponent(savejButton)
-                .addContainerGap(164, Short.MAX_VALUE))
+                .addContainerGap(117, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
