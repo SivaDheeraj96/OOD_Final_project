@@ -5,10 +5,13 @@
  */
 package edu.neu.csye6200.userinterface.vaccination;
 
+import edu.neu.csye6200.Person;
 import edu.neu.csye6200.University;
 import edu.neu.csye6200.health.Vaccine;
 import edu.neu.csye6200.health.VaccineRecord;
+import edu.neu.csye6200.student.Student;
 import java.awt.CardLayout;
+import java.util.Date;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.table.DefaultTableModel;
@@ -51,8 +54,58 @@ public class VaccineManagementHomeJPanel extends javax.swing.JPanel {
             vaccineRecorsListModel.addRow(row);
         }
         
+        populateStudents();
+        populateVaccinationTypes();
+        searchVaccinationHistory();
+        
     }
     
+    private void populateStudents() {
+        
+        studentjComboBox.removeAllItems();
+        
+        for(Person person:university.getStudentController().getStudentList()) {
+            Student student = (Student) person;
+            studentjComboBox.addItem(student.getSId()+ "-" + student.getName());
+        }
+    }
+    
+    private void populateVaccinationTypes() {
+        
+        vaccinneTypejComboBox.removeAllItems();
+        
+        for(Vaccine vaccine:university.getImmunizationController().getVaccineList()) {
+            vaccinneTypejComboBox.addItem(vaccine.getName());
+        }
+    }
+    
+    private void searchVaccinationHistory() {
+        
+        int studentIndex = studentjComboBox.getSelectedIndex();
+        int vaccineTypeIndex = vaccinneTypejComboBox.getSelectedIndex();
+        
+        if(studentIndex < 0 || vaccineTypeIndex < 0) {
+            JOptionPane.showMessageDialog(this, "Students or vaccineTypes is empty. Cannot proceed ahead");
+            return;
+        }
+        
+        Vaccine vaccine = university.getImmunizationController().getVaccineList().get(vaccinneTypejComboBox.getSelectedIndex());
+        Student student = (Student) university.getStudentController().getStudentList().get(studentIndex);
+        
+        DefaultTableModel vaccinationStudentModel = (DefaultTableModel) vaccinationStudentRecordsListjTable.getModel();
+        vaccinationStudentModel.setRowCount(0);
+        
+        VaccineRecord vaccineRecord = university.getImmunizationController().getVaccineRecordByStudentIdAndVaccine(student, vaccine);
+        
+        for(Date date: vaccineRecord.getRecievedDate()) {
+            Object[] row = new Object[2];
+            row[0] = vaccineRecord.getRecordId();
+            row[1] = date.toString();
+            
+            vaccinationStudentModel.addRow(row);
+        }
+        
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -68,6 +121,17 @@ public class VaccineManagementHomeJPanel extends javax.swing.JPanel {
         updatejButton = new javax.swing.JButton();
         deletejButton = new javax.swing.JButton();
         createjButton = new javax.swing.JButton();
+        updatejButton1 = new javax.swing.JButton();
+        deletejButton1 = new javax.swing.JButton();
+        createjButton1 = new javax.swing.JButton();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        vaccinationStudentRecordsListjTable = new javax.swing.JTable();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        studentjComboBox = new javax.swing.JComboBox<>();
+        jLabel4 = new javax.swing.JLabel();
+        vaccinneTypejComboBox = new javax.swing.JComboBox<>();
+        searchjButton = new javax.swing.JButton();
 
         vaccinationDirectoryRecordsListjTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -93,6 +157,11 @@ public class VaccineManagementHomeJPanel extends javax.swing.JPanel {
             }
         });
         jScrollPane1.setViewportView(vaccinationDirectoryRecordsListjTable);
+        if (vaccinationDirectoryRecordsListjTable.getColumnModel().getColumnCount() > 0) {
+            vaccinationDirectoryRecordsListjTable.getColumnModel().getColumn(1).setHeaderValue("Vaccine Name");
+            vaccinationDirectoryRecordsListjTable.getColumnModel().getColumn(3).setHeaderValue("Is Optional");
+            vaccinationDirectoryRecordsListjTable.getColumnModel().getColumn(4).setHeaderValue("Dose Count");
+        }
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -119,6 +188,67 @@ public class VaccineManagementHomeJPanel extends javax.swing.JPanel {
             }
         });
 
+        updatejButton1.setText("Update");
+        updatejButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                updatejButton1ActionPerformed(evt);
+            }
+        });
+
+        deletejButton1.setText("Delete");
+        deletejButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                deletejButton1ActionPerformed(evt);
+            }
+        });
+
+        createjButton1.setText("Create >");
+        createjButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                createjButton1ActionPerformed(evt);
+            }
+        });
+
+        vaccinationStudentRecordsListjTable.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "Record-Id", "Received Date"
+            }
+        ) {
+            Class[] types = new Class [] {
+                java.lang.Object.class, java.lang.String.class
+            };
+            boolean[] canEdit = new boolean [] {
+                false, false
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        jScrollPane2.setViewportView(vaccinationStudentRecordsListjTable);
+
+        jLabel2.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel2.setText("Student Vaccination Records");
+
+        jLabel3.setText("Student :");
+
+        jLabel4.setText("VaccineType :");
+
+        searchjButton.setText("Search");
+        searchjButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                searchjButtonActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -128,13 +258,36 @@ public class VaccineManagementHomeJPanel extends javax.swing.JPanel {
                     .addGroup(layout.createSequentialGroup()
                         .addGap(36, 36, 36)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 906, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(updatejButton)
+                                .addComponent(updatejButton1)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(deletejButton)
+                                .addComponent(deletejButton1)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(createjButton))
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 906, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addComponent(createjButton1))
+                            .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 906, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(jLabel3)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(studentjComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(37, 37, 37)
+                                        .addComponent(jLabel4)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(vaccinneTypejComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(139, 139, 139))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 275, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(62, 62, 62)))
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(searchjButton)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(updatejButton)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(deletejButton)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(createjButton))))))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(368, 368, 368)
                         .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 246, javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -148,11 +301,30 @@ public class VaccineManagementHomeJPanel extends javax.swing.JPanel {
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 236, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(deletejButton)
+                            .addComponent(createjButton)
+                            .addComponent(updatejButton))
+                        .addGap(39, 39, 39))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(deletejButton)
-                    .addComponent(createjButton)
-                    .addComponent(updatejButton))
-                .addContainerGap(171, Short.MAX_VALUE))
+                    .addComponent(jLabel3)
+                    .addComponent(studentjComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel4)
+                    .addComponent(vaccinneTypejComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(searchjButton))
+                .addGap(18, 18, 18)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 236, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(deletejButton1)
+                    .addComponent(createjButton1)
+                    .addComponent(updatejButton1))
+                .addContainerGap(72, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -191,13 +363,85 @@ public class VaccineManagementHomeJPanel extends javax.swing.JPanel {
         cardLayout.next(containerjPanel);
     }//GEN-LAST:event_createjButtonActionPerformed
 
+    private void updatejButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_updatejButton1ActionPerformed
+        // TODO add your handling code here:
+        DefaultTableModel vaccinationStudentModel = (DefaultTableModel) vaccinationStudentRecordsListjTable.getModel();
+        if(vaccinationStudentRecordsListjTable.getSelectedRow() < 0) {
+            JOptionPane.showMessageDialog(this, "Please select a record to update");
+            return;
+        }
+        
+        int studentIndex = studentjComboBox.getSelectedIndex();
+        int vaccineTypeIndex = vaccinneTypejComboBox.getSelectedIndex();
+        
+        if(studentIndex < 0 || vaccineTypeIndex < 0) {
+            JOptionPane.showMessageDialog(this, "Students or vaccineTypes is empty. Cannot proceed ahead");
+            return;
+        }
+        
+        Vaccine vaccine = university.getImmunizationController().getVaccineList().get(vaccinneTypejComboBox.getSelectedIndex());
+        Student student = (Student) university.getStudentController().getStudentList().get(studentIndex);
+        
+        VaccineRecord vaccineRecord = (VaccineRecord) vaccinationStudentModel.getValueAt(vaccinationStudentRecordsListjTable.getSelectedRow(), 0);
+        CardLayout cardLayout = (CardLayout) containerjPanel.getLayout();
+        containerjPanel.add("UpdateVaccinationStudentRecordJpanel", new UpdateVaccinationStudentRecordJPanel(containerjPanel, university, student, vaccine, vaccineRecord));
+        cardLayout.next(containerjPanel);
+                
+    }//GEN-LAST:event_updatejButton1ActionPerformed
+
+    private void deletejButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deletejButton1ActionPerformed
+        // TODO add your handling code here:
+        
+        DefaultTableModel vaccinationStudentModel = (DefaultTableModel) vaccinationStudentRecordsListjTable.getModel();
+        VaccineRecord vaccineRecord = (VaccineRecord) vaccinationStudentModel.getValueAt(vaccinationStudentRecordsListjTable.getSelectedRow(), 0);
+        
+        university.getImmunizationController().removeVaccineRecord(vaccineRecord);
+        populateVaccineDirectoryRecords();
+    }//GEN-LAST:event_deletejButton1ActionPerformed
+
+    private void createjButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_createjButton1ActionPerformed
+        // TODO add your handling code here:
+        
+        int studentIndex = studentjComboBox.getSelectedIndex();
+        int vaccineTypeIndex = vaccinneTypejComboBox.getSelectedIndex();
+        
+        if(studentIndex < 0 || vaccineTypeIndex < 0) {
+            JOptionPane.showMessageDialog(this, "Students or vaccineTypes is empty. Cannot proceed ahead");
+            return;
+        }
+        
+        Vaccine vaccine = university.getImmunizationController().getVaccineList().get(vaccinneTypejComboBox.getSelectedIndex());
+        Student student = (Student) university.getStudentController().getStudentList().get(studentIndex);
+        
+        CardLayout cardLayout = (CardLayout) containerjPanel.getLayout();
+        containerjPanel.add("CreateVaccinationStudentRecordJpanel", new CreateNewVaccinationStudentRecordJPanel(containerjPanel, university, student, vaccine));
+        cardLayout.next(containerjPanel);
+        
+    }//GEN-LAST:event_createjButton1ActionPerformed
+
+    private void searchjButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchjButtonActionPerformed
+        // TODO add your handling code here:
+        searchVaccinationHistory();
+    }//GEN-LAST:event_searchjButtonActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton createjButton;
+    private javax.swing.JButton createjButton1;
     private javax.swing.JButton deletejButton;
+    private javax.swing.JButton deletejButton1;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JButton searchjButton;
+    private javax.swing.JComboBox<String> studentjComboBox;
     private javax.swing.JButton updatejButton;
+    private javax.swing.JButton updatejButton1;
     private javax.swing.JTable vaccinationDirectoryRecordsListjTable;
+    private javax.swing.JTable vaccinationStudentRecordsListjTable;
+    private javax.swing.JComboBox<String> vaccinneTypejComboBox;
     // End of variables declaration//GEN-END:variables
 }
