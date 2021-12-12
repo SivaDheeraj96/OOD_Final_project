@@ -199,8 +199,8 @@ public class CreateNewClassRoomGroupJPanel extends javax.swing.JPanel {
         containerjPanel.remove(this);
         
         Component[] components = containerjPanel.getComponents();
-        CreateNewClassRoomGroupJPanel createNewClassRoomGroupJPanel = (CreateNewClassRoomGroupJPanel) components[components.length-1];
-        createNewClassRoomGroupJPanel.populateData();
+        ClassRoomGroupManagementHomeJPanel classRoomGroupManagementHomeJPanel = (ClassRoomGroupManagementHomeJPanel) components[components.length-1];
+        classRoomGroupManagementHomeJPanel.populateClassRoomgroups();
         
         CardLayout cardLayout = (CardLayout) containerjPanel.getLayout();
         cardLayout.previous(containerjPanel);

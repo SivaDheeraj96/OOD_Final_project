@@ -6,6 +6,7 @@
 package edu.neu.csye6200.userinterface.vaccination;
 
 import edu.neu.csye6200.University;
+import edu.neu.csye6200.health.Vaccine;
 import edu.neu.csye6200.health.VaccineRecord;
 import java.awt.CardLayout;
 import javax.swing.JOptionPane;
@@ -30,13 +31,25 @@ public class VaccineManagementHomeJPanel extends javax.swing.JPanel {
         this.containerjPanel = containerjPanel;
         this.university = university;
         
-        populateVaccineRecords();
+        populateVaccineDirectoryRecords();
     }
 
-    public void populateVaccineRecords() {
+    public void populateVaccineDirectoryRecords() {
         
-        DefaultTableModel vaccineRecorsListModel = (DefaultTableModel) vaccinationRecordsListjTable.getModel();
+        DefaultTableModel vaccineRecorsListModel = (DefaultTableModel) vaccinationDirectoryRecordsListjTable.getModel();
         vaccineRecorsListModel.setRowCount(0);
+        
+        for(Vaccine vaccine:university.getImmunizationController()) {
+            
+            Object[] row = new Object[5];
+            row[0] = vaccine;
+            row[1] = vaccine.getName();
+            row[2] = vaccine.getFrequency().name();
+            row[3] = vaccine.isIsOptional();
+            row[4] = vaccine.getDoseCount();
+            
+            vaccineRecorsListModel.addRow(row);
+        }
         
     }
     
@@ -50,25 +63,25 @@ public class VaccineManagementHomeJPanel extends javax.swing.JPanel {
     private void initComponents() {
 
         jScrollPane1 = new javax.swing.JScrollPane();
-        vaccinationRecordsListjTable = new javax.swing.JTable();
+        vaccinationDirectoryRecordsListjTable = new javax.swing.JTable();
         jLabel1 = new javax.swing.JLabel();
         updatejButton = new javax.swing.JButton();
         deletejButton = new javax.swing.JButton();
         createjButton = new javax.swing.JButton();
 
-        vaccinationRecordsListjTable.setModel(new javax.swing.table.DefaultTableModel(
+        vaccinationDirectoryRecordsListjTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
             new String [] {
-                "Record-Id", "Name", "Vaccine", "Date Received"
+                "Id", "Name", "frequency", "Is Optional", "Dose Count"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.Object.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
+                java.lang.Object.class, java.lang.String.class, java.lang.String.class, java.lang.Boolean.class, java.lang.Integer.class
             };
             boolean[] canEdit = new boolean [] {
-                false, false, false, false
+                false, false, false, false, false
             };
 
             public Class getColumnClass(int columnIndex) {
@@ -79,16 +92,16 @@ public class VaccineManagementHomeJPanel extends javax.swing.JPanel {
                 return canEdit [columnIndex];
             }
         });
-        vaccinationRecordsListjTable.addMouseListener(new java.awt.event.MouseAdapter() {
+        vaccinationDirectoryRecordsListjTable.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                vaccinationRecordsListjTableMouseClicked(evt);
+                vaccinationDirectoryRecordsListjTableMouseClicked(evt);
             }
         });
-        jScrollPane1.setViewportView(vaccinationRecordsListjTable);
+        jScrollPane1.setViewportView(vaccinationDirectoryRecordsListjTable);
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setText("Vaccination Records");
+        jLabel1.setText("Vaccination Directory");
 
         updatejButton.setText("Update");
         updatejButton.addActionListener(new java.awt.event.ActionListener() {
@@ -148,19 +161,19 @@ public class VaccineManagementHomeJPanel extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    private void vaccinationRecordsListjTableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_vaccinationRecordsListjTableMouseClicked
+    private void vaccinationDirectoryRecordsListjTableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_vaccinationDirectoryRecordsListjTableMouseClicked
         // TODO add your handling code here:
 
-        DefaultTableModel classRoomListModel = (DefaultTableModel) vaccinationRecordsListjTable.getModel();
-        VaccineRecord vaccineRecord = (VaccineRecord) classRoomListModel.getValueAt(vaccinationRecordsListjTable.getSelectedRow(), 0);
+        DefaultTableModel classRoomListModel = (DefaultTableModel) vaccinationDirectoryRecordsListjTable.getModel();
+        VaccineRecord vaccineRecord = (VaccineRecord) classRoomListModel.getValueAt(vaccinationDirectoryRecordsListjTable.getSelectedRow(), 0);
 
-    }//GEN-LAST:event_vaccinationRecordsListjTableMouseClicked
+    }//GEN-LAST:event_vaccinationDirectoryRecordsListjTableMouseClicked
 
     private void updatejButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_updatejButtonActionPerformed
         // TODO add your handling code here:
 
-        DefaultTableModel vaccineRecordListModel = (DefaultTableModel) vaccinationRecordsListjTable.getModel();
-        VaccineRecord vaccineRecord = (VaccineRecord) vaccineRecordListModel.getValueAt(vaccinationRecordsListjTable.getSelectedRow(), 0);
+        DefaultTableModel vaccineRecordListModel = (DefaultTableModel) vaccinationDirectoryRecordsListjTable.getModel();
+        VaccineRecord vaccineRecord = (VaccineRecord) vaccineRecordListModel.getValueAt(vaccinationDirectoryRecordsListjTable.getSelectedRow(), 0);
 
         CardLayout cardLayout = (CardLayout) containerjPanel.getLayout();
         containerjPanel.add("UpdateStudentJPanel", new UpdateVaccinationRecordJPanel(containerjPanel, university, vaccineRecord));
@@ -170,13 +183,13 @@ public class VaccineManagementHomeJPanel extends javax.swing.JPanel {
     private void deletejButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deletejButtonActionPerformed
         // TODO add your handling code here:
 
-        DefaultTableModel vaccineRecordListModel = (DefaultTableModel) vaccinationRecordsListjTable.getModel();
-        VaccineRecord vaccineRecord = (VaccineRecord) vaccineRecordListModel.getValueAt(vaccinationRecordsListjTable.getSelectedRow(), 0);
-//        university.getClassRoomGroupController().removeClassRoomGroup(vaccineRecord);
+        DefaultTableModel vaccineRecordListModel = (DefaultTableModel) vaccinationDirectoryRecordsListjTable.getModel();
+        Vaccine vaccineRecord = (Vaccine) vaccineRecordListModel.getValueAt(vaccinationDirectoryRecordsListjTable.getSelectedRow(), 0);
+        university.getImmunizationController().removeVaccine(vaccineRecord);
 
-        JOptionPane.showMessageDialog(this, "Successfully deleted Vaccination record");
+        JOptionPane.showMessageDialog(this, "Successfully deleted Vaccine record");
 
-        populateVaccineRecords();
+        populateVaccineDirectoryRecords();
     }//GEN-LAST:event_deletejButtonActionPerformed
 
     private void createjButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_createjButtonActionPerformed
@@ -193,6 +206,6 @@ public class VaccineManagementHomeJPanel extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JButton updatejButton;
-    private javax.swing.JTable vaccinationRecordsListjTable;
+    private javax.swing.JTable vaccinationDirectoryRecordsListjTable;
     // End of variables declaration//GEN-END:variables
 }
