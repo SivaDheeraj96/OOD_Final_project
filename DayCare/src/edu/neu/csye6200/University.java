@@ -99,5 +99,9 @@ public class University {
     public ImmunizationController getImmunizationController() {
         return this.immunizationController;
     }
+
+    public RatingController getRatingController() {
+        return ratingController;
+    }
     
 }
