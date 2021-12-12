@@ -94,5 +94,10 @@ public class StudentController {
         Optional<Person> temp = this.model.getStudents().stream().filter(x -> ((Student)x).getSId()==id).findFirst();
         return temp.get();
     }
+    
+    public List<Person> getStudentList()
+    {
+        return this.model.getStudents();
+    }
 
 }

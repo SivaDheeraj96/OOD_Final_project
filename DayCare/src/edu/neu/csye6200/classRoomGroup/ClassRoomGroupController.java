@@ -14,8 +14,8 @@ import java.util.List;
  */
 public class ClassRoomGroupController {
 
-    private ClassRoomGroupModel model;
-    private ClassRoomGroupView view;
+    private final ClassRoomGroupModel model;
+    private final ClassRoomGroupView view;
 
     public ClassRoomGroupController(ClassRoomGroupModel model, ClassRoomGroupView view) {
         this.model = model;
