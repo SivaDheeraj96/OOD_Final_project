@@ -244,7 +244,7 @@ public class CreateNewStudentJPanel extends javax.swing.JPanel {
         
         Component[] components = containerjPanel.getComponents();
         StudentMangementHomeJPanel studentMangementHomeJPanel = (StudentMangementHomeJPanel) components[components.length-1];
-        studentMangementHomeJPanel.populateTable();
+        studentMangementHomeJPanel.populateTable(university.getStudentController().getStudentList());
         
         CardLayout cardLayout = (CardLayout) containerjPanel.getLayout();
         cardLayout.previous(containerjPanel);
