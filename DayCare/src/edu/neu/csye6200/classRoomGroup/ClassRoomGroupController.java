@@ -53,7 +53,7 @@ public class ClassRoomGroupController {
 
     public List<ClassRoomGroup> getUnassignedClassRoomGroup() {
         List<ClassRoomGroup> list = new ArrayList<>();
-        this.model.getClassRoomGroup().stream().filter(x -> x.getIsAssigned()).forEach(list::add);
+        this.model.getClassRoomGroup().stream().filter(x -> !x.getIsAssigned()).forEach(list::add);
         return list;
     }
 }

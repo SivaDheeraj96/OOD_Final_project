@@ -52,6 +52,9 @@ public class Teacher extends Person {
 			System.err.println("Error while parsing teacher id"+vals[6]);	
 		}
 	}
+
+    public Teacher() {
+    }
 	@Override
         public String toString()
         {

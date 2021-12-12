@@ -23,14 +23,14 @@ import edu.neu.csye6200.teacher.TeacherView;
 
 public class University {
     private final String STUDENT_CSV = "src/edu/neu/csye6200/inputData/studentData.txt"; 
-    private final String TEACHER_CSV = "edu/neu/csye6200/inputData/teacherData.txt";
-    private final String CLASSGROUP_CSV = "edu/neu/csye6200/inputData/classGroupData.txt";
-    private final String CLASS_CSV = "edu/neu/csye6200/inputData/classData.txt";
-    private final String IMMUNIZATION_CSV = "edu/neu/csye6200/inputData/immunizationData.txt";
+    private final String TEACHER_CSV = "src/edu/neu/csye6200/inputData/teacherData.txt";
+    private final String CLASSGROUP_CSV = "src/edu/neu/csye6200/inputData/classGroupData.txt";
+    private final String CLASS_CSV = "src/edu/neu/csye6200/inputData/classData.txt";
+    private final String IMMUNIZATION_CSV = "src/edu/neu/csye6200/inputData/immunizationData.txt";
     
     private String name;
     private final StudentController studentController;
-    private final TeacherController teacherController = null;
+    private final TeacherController teacherController ;
     private final ClassRoomGroupController classRoomGroupController =null;
     private final ClassRoomController classRoomController =null;
     private final ImmunizationController immunizationController=null;
@@ -43,10 +43,10 @@ public class University {
         StudentView studentView = new StudentView(); //need to add proper input;
         studentController = new StudentController(studentModel,studentView);
         
-/*        TeacherModel teacherModel = new TeacherModel(TEACHER_CSV);
+        TeacherModel teacherModel = new TeacherModel(TEACHER_CSV);
         TeacherView teacherView = new TeacherView();//need to add proper input;
         teacherController = new TeacherController(teacherModel,teacherView);
-        
+/*                
         ClassRoomGroupModel classRoomGroupModel = new ClassRoomGroupModel(CLASSGROUP_CSV,teacherController,studentController);
         ClassRoomGroupView classRoomGroupView = new ClassRoomGroupView();//need to add proper input;
         classRoomGroupController = new ClassRoomGroupController(classRoomGroupModel,classRoomGroupView);       

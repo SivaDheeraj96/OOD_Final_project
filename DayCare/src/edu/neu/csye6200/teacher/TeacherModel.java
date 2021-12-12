@@ -47,7 +47,7 @@ public class TeacherModel {
     
     protected List<Person> getUnassignedTeacherList(){
         List<Person> list = new ArrayList<>();
-        teacherList.stream().filter(x -> x.getIsAssigned()).forEach(list::add);
+        teacherList.stream().filter(x -> !x.getIsAssigned()).forEach(list::add);
         return list;
         
     }

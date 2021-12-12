@@ -46,7 +46,7 @@ public class ClassRoomGroupModel {
     protected List<ClassRoomGroup> getUnassignedClassRoomGroup()
     {
         List<ClassRoomGroup> list = new ArrayList<>();
-        this.groups.stream().filter(x -> x.getIsAssigned()).forEach(list::add);
+        this.groups.stream().filter(x -> !x.getIsAssigned()).forEach(list::add);
         return list;
     }
     

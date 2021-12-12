@@ -94,7 +94,7 @@ public class FileUtil {
      FileWriter fr= null;
      BufferedWriter bw = null ;
      try {
-          fr = new FileWriter(fileName);
+          fr = new FileWriter(fileName,true);
           bw = new BufferedWriter(fr);
           bw.append(lineData+"\n");
      } catch (IOException ex) {
@@ -177,7 +177,7 @@ public class FileUtil {
                     bout.write(newData+"\n");
                 }
                 else{
-                    bout.write(currentLine);
+                    bout.write(currentLine+"\n");
                 }
             }
         } catch (IOException ex) {

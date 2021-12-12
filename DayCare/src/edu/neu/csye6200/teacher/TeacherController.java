@@ -39,6 +39,11 @@ public class TeacherController {
         this.view.updateView();
     }
     
+    public void modifyTeacher(Teacher oldTeacher, Teacher newTeacher){
+        this.model.updateTeacher(oldTeacher, newTeacher);
+        this.view.updateView();
+    }
+    
     public List<Person> getUnassignedTeacher(){
         return this.model.getUnassignedTeacherList();
     }

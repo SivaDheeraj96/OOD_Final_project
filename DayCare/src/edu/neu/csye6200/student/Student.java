@@ -48,6 +48,9 @@ public class Student extends Person {
             System.err.println("Error while parsing student id" + vals[6]);
         }
     }
+
+    public Student() {
+    }
     @Override
     public String toString()
     {

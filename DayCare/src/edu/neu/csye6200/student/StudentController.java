@@ -62,10 +62,16 @@ public class StudentController {
         this.view.updateView();
     }
     
-    public void modifyTeacher(Student s, String name, String parentName, long phoneNumber, String address,int age,double gpa, int sid)
+    public void modifyStudent(Student s, String name, String parentName, long phoneNumber, String address,int age,double gpa, int sid)
     {
         Student tempStudent = new Student(name, parentName, phoneNumber, address,age,gpa,sid);
         this.model.updateStudent(s, tempStudent);
+        this.view.updateView();
+    }
+    
+    public void modifyStudent(Student oldStudent, Student newStudent)
+    {
+        this.model.updateStudent(oldStudent, newStudent);
         this.view.updateView();
     }
     

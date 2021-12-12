@@ -212,12 +212,12 @@ public class CreateNewStudentJPanel extends javax.swing.JPanel {
         // TODO add your handling code here:
         StringBuilder stringBuilder = new StringBuilder();
         
-        stringBuilder.append(namejTextField.getText());
-        stringBuilder.append(parentNamejTextField.getText());
-        stringBuilder.append(phoneNojTextField.getText());
-        stringBuilder.append(addressjTextField.getText());
-        stringBuilder.append(agejTextField.getText());
-        stringBuilder.append(gpajTextField.getText());
+        stringBuilder.append(namejTextField.getText()).append(",");
+        stringBuilder.append(parentNamejTextField.getText()).append(",");
+        stringBuilder.append(phoneNojTextField.getText()).append(",");
+        stringBuilder.append(addressjTextField.getText()).append(",");
+        stringBuilder.append(agejTextField.getText()).append(",");
+        stringBuilder.append(gpajTextField.getText()).append(",");
         stringBuilder.append(studentIdjTextField.getText());
         
         university.getStudentController().addStudent(new Student(stringBuilder.toString()));

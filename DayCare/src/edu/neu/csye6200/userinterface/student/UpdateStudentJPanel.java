@@ -227,14 +227,16 @@ public class UpdateStudentJPanel extends javax.swing.JPanel {
     private void updatejButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_updatejButtonActionPerformed
         // TODO add your handling code here:
 
-        student.setName(namejTextField.getText());
-        student.setParentName(parentNamejTextField.getText());
-        student.setPhoneNumber(Long.valueOf(phoneNojTextField.getText()));
-        student.setAddress(addressjTextField.getText());
-        student.setAge(Integer.valueOf(agejTextField.getText()));
-        student.setGpa(Double.valueOf(gpajTextField.getText()));
-        student.setSId(Integer.valueOf(studentIdjTextField.getText()));
-        
+        Student tempStudent = new Student();
+        tempStudent.setName(namejTextField.getText());
+        tempStudent.setParentName(parentNamejTextField.getText());
+        tempStudent.setPhoneNumber(Long.valueOf(phoneNojTextField.getText()));
+        tempStudent.setAddress(addressjTextField.getText());
+        tempStudent.setAge(Integer.valueOf(agejTextField.getText()));
+        tempStudent.setGpa(Double.valueOf(gpajTextField.getText()));
+        tempStudent.setSId(Integer.valueOf(studentIdjTextField.getText()));
+        university.getStudentController().modifyStudent(student, tempStudent);
+        student = tempStudent;
         JOptionPane.showMessageDialog(this, "Successfully updated Student record");
 
 

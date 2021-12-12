@@ -248,15 +248,15 @@ public class UpdateTeacherJPanel extends javax.swing.JPanel {
     private void updatejButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_updatejButtonActionPerformed
         // TODO add your handling code here:
 
-        
-        teacher.setName(namejTextField.getText());
-        teacher.setParentName(parentNamejTextField.getText());
-        teacher.setPhoneNumber(Long.valueOf(phoneNojTextField.getText()));
-        teacher.setAddress(addressjTextField.getText());
-        teacher.setAge(Integer.valueOf(agejTextField.getText()));
-        teacher.setSalary(Integer.valueOf(salaryjTextField.getText()));
-        teacher.setTId(Integer.valueOf(teacherIdjTextField.getText()));
-        
+        Teacher tempTeacher = new Teacher();
+        tempTeacher.setName(namejTextField.getText());
+        tempTeacher.setParentName(parentNamejTextField.getText());
+        tempTeacher.setPhoneNumber(Long.valueOf(phoneNojTextField.getText()));
+        tempTeacher.setAddress(addressjTextField.getText());
+        tempTeacher.setAge(Integer.valueOf(agejTextField.getText()));
+        tempTeacher.setSalary(Integer.valueOf(salaryjTextField.getText()));
+        tempTeacher.setTId(Integer.valueOf(teacherIdjTextField.getText()));
+        university.getTeacherController().modifyTeacher(teacher, tempTeacher);
         JOptionPane.showMessageDialog(this, "Successfully updated the Teacher record");
     }//GEN-LAST:event_updatejButtonActionPerformed
 
