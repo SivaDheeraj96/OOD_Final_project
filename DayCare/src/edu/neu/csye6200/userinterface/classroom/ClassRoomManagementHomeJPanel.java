@@ -38,17 +38,22 @@ public class ClassRoomManagementHomeJPanel extends javax.swing.JPanel {
         DefaultTableModel classRoomListModel = (DefaultTableModel) classRoomsListjTable.getModel();
         classRoomListModel.setRowCount(0);
         
-        System.out.println(university.getClassRoomController().getUnassignedClassRoom().size());
+        System.out.println("class room count - "+university.getClassRoomController().getUnassignedClassRoom().size());
         
         university.getClassRoomController().getUnassignedClassRoom().stream()
                 .map(x -> (ClassRoom)x)
                 .map(x -> new Object[]{x, x.getName(),x.getIsFull(),x.getGroups().size()})
                 .forEach(x -> {classRoomListModel.addRow(x);});
         
-        System.out.println(classRoomListModel.getRowCount());
+        System.out.println("model row count"+classRoomListModel.getRowCount());
         
         DefaultTableModel classRoomGroupListModel = (DefaultTableModel) classRoomGroupsListjTable.getModel();
         classRoomGroupListModel.setRowCount(0);
+        
+        university.getClassRoomGroupController().getUnassignedClassRoomGroup().stream()
+                .map(x -> (ClassRoomGroup)x)
+                .map(x -> new Object[]{x, x.getTeacher().getName(),x.getIsAssigned(),x.getStudents().size()})
+                .forEach(x -> {classRoomGroupListModel.addRow(x);});
     }
 
     /**
