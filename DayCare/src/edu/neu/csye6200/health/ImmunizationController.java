@@ -6,6 +6,7 @@ package edu.neu.csye6200.health;
 
 import edu.neu.csye6200.Person;
 import java.util.Date;
+import java.util.List;
 
 /**
  *
@@ -36,6 +37,11 @@ public class ImmunizationController {
         this.model.getVaccineDirectory().modifyVaccine(oldVaccine, newVaccine);
     }
     
+    public List<Vaccine> getVaccineList()
+    {
+        return this.model.getVaccineDirectory().getVaccineList();
+    }
+    
     public void addVaccineRecord(int id, Vaccine vaccine, Person person, Date[] recievedDate)
     {
         this.model.addVaccineRecord(id, vaccine, person, recievedDate);
@@ -48,5 +54,20 @@ public class ImmunizationController {
     public void modifyVaccineRecord(VaccineRecord oldVaccineRecord, VaccineRecord newVaccineRecord)
     {
         this.model.modifyVaccineRecord(oldVaccineRecord, newVaccineRecord);
+    }
+    
+    public List<VaccineRecord> getVaccineRecordList()
+    {
+        return this.model.getVaccineRecords();
+    }
+    
+    public Vaccine getVaccineById(int id)
+    {
+        return this.model.getVaccineDirectory().getVaccineById(id);
+    }
+    
+    public VaccineRecord getVaccineRecordById(int id)
+    {
+        return this.model.getVaccineRecords().stream().filter(x -> x.getRecordId()==id).findFirst().get();
     }
 }

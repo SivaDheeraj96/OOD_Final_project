@@ -58,6 +58,13 @@ public class ImmunizationModel {
             this.vaccineList.remove(vaccine);
             FileUtil.removeEntryInFile(this.inputFilePath, vaccine.toCSV());
         }
+        
+        public List<Vaccine> getVaccineList()
+        {
+            return this.vaccineList;
+        }
+        
+        
     }
     
     
@@ -80,7 +87,10 @@ public class ImmunizationModel {
         this.vaccineRecords.remove(vaccine);
         FileUtil.removeEntryInFile(this.vaccineRecordFilePath, vaccine.toCSV());
     }
-    
+    public List<VaccineRecord> getVaccineRecords()
+    {
+        return this.vaccineRecords;
+    }
     /**
      *
      * @return
