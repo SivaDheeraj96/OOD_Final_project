@@ -34,7 +34,7 @@ public class StudentController {
                 String value = criteria.get(type);
                 switch (type) {
                     case "ID":
-                        if (!(Integer.toString(x.getAge()).toLowerCase().contains(value))) {
+                        if (!(Integer.toString(((Student)x).getSId()).toLowerCase().contains(value))) {
                             return false;
                         }
                         break;
@@ -43,8 +43,13 @@ public class StudentController {
                             return false;
                         }
                         break;
-                    case "AGE":
-                        if (!(Double.toString(x.getAge()).toLowerCase().contains(value))) {
+                    case "PARENT_NAME":
+                        if (x.getParentName().toLowerCase().contains(value)) {
+                            return false;
+                        }
+                        break;
+                    case "PHONE_NUMBER":
+                        if (x.getParentName().toLowerCase().contains(value)) {
                             return false;
                         }
                         break;

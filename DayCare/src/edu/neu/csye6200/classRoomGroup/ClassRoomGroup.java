@@ -5,6 +5,7 @@
 package edu.neu.csye6200.classRoomGroup;
 
 import edu.neu.csye6200.Person;
+import edu.neu.csye6200.student.Student;
 import edu.neu.csye6200.student.StudentController;
 import edu.neu.csye6200.teacher.Teacher;
 import edu.neu.csye6200.teacher.TeacherController;
@@ -13,6 +14,7 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import java.util.stream.Collectors;
 
 /**
  *
@@ -100,6 +102,19 @@ public class ClassRoomGroup {
     public void setIsAssigned(boolean isAssigned) {
         this.isAssigned = isAssigned;
     }
-    
+    @Override
+    public String toString()
+    {
+        return ((Integer)this.getId()).toString();
+    }
+    public String toCSV()
+    {
+        StringBuilder studentIds = new StringBuilder();
+        this.getStudents().stream()
+                .map(x -> ((Student)x).getSId())
+                .forEach(x -> studentIds.append(x).append("_"));
+        String substring = studentIds.toString().substring(0, studentIds.toString().length()-1);
+        return this.getId()+","+((Integer)((Teacher)this.getTeacher()).getTId()).toString()+","+substring;
+    }
     
 }

@@ -5,7 +5,9 @@
 package edu.neu.csye6200.classRoomGroup;
 
 import edu.neu.csye6200.FileUtil;
+import edu.neu.csye6200.Person;
 import edu.neu.csye6200.student.StudentController;
+import edu.neu.csye6200.teacher.Teacher;
 import edu.neu.csye6200.teacher.TeacherController;
 import java.util.ArrayList;
 import java.util.List;
@@ -27,7 +29,7 @@ public class ClassRoomGroupModel {
     protected void addClassRoomGroup(ClassRoomGroup group)
     {
         this.groups.add(group);
-        FileUtil.appendEntryToFile(this.inputFilePath, group.toString());
+        FileUtil.appendEntryToFile(this.inputFilePath, group.toCSV());
     }
     
     protected void removeClassGroup(ClassRoomGroup group)
@@ -36,11 +38,18 @@ public class ClassRoomGroupModel {
         FileUtil.removeEntryInFile(inputFilePath, group.toString());
     }
     
+    void addClassRoomGroup(int id, Teacher teacher, List<Person> students)
+    {
+        ClassRoomGroup group = new ClassRoomGroup(id, teacher, students);
+        this.groups.add(group);
+        FileUtil.appendEntryToFile(this.inputFilePath, group.toCSV());
+    }
+    
     protected void updateClassRoomGroup(ClassRoomGroup oldGroup,ClassRoomGroup newGroup)
     {
         this.groups.remove(oldGroup);
         this.groups.add(newGroup);
-        FileUtil.modifyEntryInFile(inputFilePath, oldGroup.toString(), newGroup.toString());
+        FileUtil.modifyEntryInFile(inputFilePath, oldGroup.toCSV(), newGroup.toCSV());
     }
     
     protected List<ClassRoomGroup> getUnassignedClassRoomGroup()

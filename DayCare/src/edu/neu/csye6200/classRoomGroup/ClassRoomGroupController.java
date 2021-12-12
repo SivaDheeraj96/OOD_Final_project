@@ -34,6 +34,11 @@ public class ClassRoomGroupController {
         this.model.addClassRoomGroup(classRoomGroup);
         this.view.updateView();
     }
+    
+    public void addClassRoomGroup(int id, Teacher teacher, List<Person> students) {
+        this.model.addClassRoomGroup( id,  teacher,  students);
+        this.view.updateView();
+    }
 
     public void removeClassRoomGroup(ClassRoomGroup classRoomGroup) {
         this.model.removeClassGroup(classRoomGroup);

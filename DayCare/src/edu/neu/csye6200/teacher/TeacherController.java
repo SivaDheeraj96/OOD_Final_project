@@ -6,8 +6,13 @@ package edu.neu.csye6200.teacher;
 
 import edu.neu.csye6200.FileUtil;
 import edu.neu.csye6200.Person;
+import edu.neu.csye6200.student.Student;
+import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
+import java.util.function.Predicate;
 
 /**
  *
@@ -58,4 +63,39 @@ public class TeacherController {
         FileUtil.getFileData(filePath).stream().map(x ->new Teacher(x)).forEach(this.model::addTeacher);
     }
     
+     public List<Person> searchTeacher(Map<String, String> criteria) {
+        List<Person> result = new ArrayList<>();
+        Predicate<Person> filter = (x) -> {
+            Iterator<String> ite = criteria.keySet().iterator();
+            while (ite.hasNext()) {
+                String type = ite.next();
+                String value = criteria.get(type);
+                switch (type) {
+                    case "ID":
+                        if (!(Integer.toString(((Teacher)x).getTId()).toLowerCase().contains(value))) {
+                            return false;
+                        }
+                        break;
+                    case "NAME":
+                        if (!(x.getName().toLowerCase().contains(value))) {
+                            return false;
+                        }
+                        break;
+                    case "PARENT_NAME":
+                        if (x.getParentName().toLowerCase().contains(value)) {
+                            return false;
+                        }
+                        break;
+                    case "PHONE_NUMBER":
+                        if (x.getParentName().toLowerCase().contains(value)) {
+                            return false;
+                        }
+                        break;
+                }
+            }
+            return true;
+        };
+        this.model.getTeacherList().stream().filter(filter).forEach(result::add);
+        return result;
+    }
 }
