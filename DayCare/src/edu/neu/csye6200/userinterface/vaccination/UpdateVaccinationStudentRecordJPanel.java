@@ -50,11 +50,11 @@ public class UpdateVaccinationStudentRecordJPanel extends javax.swing.JPanel {
         idjTextField.setText(String.valueOf(vaccineRecord.getRecordId()));
         StringBuilder st = new StringBuilder();
         for(Date date:vaccineRecord.getRecievedDate()){
-            st.append(date.toString());
+            st.append(Student.DATE_FORMAT.format(date));
             st.append(",");
         }
         
-        datejTextField.setText(st.toString().substring(0, st.toString().length()-2));
+        datejTextField.setText(st.toString().substring(0, st.toString().length()-1));
     }
 
     /**
@@ -166,11 +166,11 @@ public class UpdateVaccinationStudentRecordJPanel extends javax.swing.JPanel {
         String dateInString = datejTextField.getText();
         String[] dates = dateInString.split(",");
         Date[] dateArray = new Date[dates.length];
-        SimpleDateFormat dateFormat =  new SimpleDateFormat("mm-dd-yyyy");
+//        SimpleDateFormat dateFormat =  new SimpleDateFormat("mm-dd-yyyy");
         for(int i =0;i<dates.length;i++) {
             
             try {
-                dateArray[i] = dateFormat.parse(dates[i]);
+                dateArray[i] = Student.DATE_FORMAT.parse(dates[i]);
             } catch (ParseException ex) {
                 
             }

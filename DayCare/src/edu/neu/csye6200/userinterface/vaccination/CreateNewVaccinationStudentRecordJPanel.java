@@ -147,11 +147,11 @@ public class CreateNewVaccinationStudentRecordJPanel extends javax.swing.JPanel 
         String dateInString = datejTextField.getText();
         String[] dates = dateInString.split(",");
         Date[] dateArray = new Date[dates.length];
-        SimpleDateFormat dateFormat =  new SimpleDateFormat("mm-dd-yyyy");
+//        SimpleDateFormat dateFormat =  new SimpleDateFormat("mm-dd-yyyy");
         for(int i =0;i<dates.length;i++) {
             
             try {
-                dateArray[i] = dateFormat.parse(dates[i]);
+                dateArray[i] = Student.DATE_FORMAT.parse(dates[i]);
             } catch (ParseException ex) {
                 
             }

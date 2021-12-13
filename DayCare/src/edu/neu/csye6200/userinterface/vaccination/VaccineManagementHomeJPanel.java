@@ -102,7 +102,7 @@ public class VaccineManagementHomeJPanel extends javax.swing.JPanel {
             Date lastUpdatedDate = null;
             for(Date date: vaccineRecord.getRecievedDate()) {
                 Object[] row = new Object[2];
-                row[0] = vaccineRecord.getRecordId();
+                row[0] = vaccineRecord;
                 row[1] = simpleDateFormat.format(date);
 
                 vaccinationStudentModel.addRow(row);
@@ -120,6 +120,8 @@ public class VaccineManagementHomeJPanel extends javax.swing.JPanel {
                 boolean vaccinationStatus = isVaccinePending(lastUpdatedDate, vaccine);
                 if(vaccinationStatus) {
                     vaccineStatusjLabel.setText("PENDING");
+                }else{
+                    vaccineStatusjLabel.setText("OK");
                 }
             }
         }else{
@@ -129,10 +131,7 @@ public class VaccineManagementHomeJPanel extends javax.swing.JPanel {
     
     private boolean isVaccinePending(Date lastUpdatedDate, Vaccine vaccine) {
         
-        if((lastUpdatedDate.getTime()-new Date().getTime())/60000>(1440)*vaccine.getFrequency().getDays()){
-            return true;
-        }
-        return false;
+        return ((new Date().getTime()-lastUpdatedDate.getTime())/60000>(1440)*vaccine.getFrequency().getDays());
     }
     /**
      * This method is called from within the constructor to initialize the form.
@@ -160,7 +159,6 @@ public class VaccineManagementHomeJPanel extends javax.swing.JPanel {
         jLabel4 = new javax.swing.JLabel();
         vaccinneTypejComboBox = new javax.swing.JComboBox<>();
         searchjButton = new javax.swing.JButton();
-        jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
         vaccineStatusjLabel = new javax.swing.JLabel();
 
@@ -280,8 +278,6 @@ public class VaccineManagementHomeJPanel extends javax.swing.JPanel {
             }
         });
 
-        jLabel5.setText("jLabel5");
-
         jLabel6.setFont(new java.awt.Font("Lucida Grande", 3, 14)); // NOI18N
         jLabel6.setText("Vaccine Status :");
 
@@ -294,7 +290,7 @@ public class VaccineManagementHomeJPanel extends javax.swing.JPanel {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addGroup(layout.createSequentialGroup()
                             .addGap(368, 368, 368)
@@ -333,8 +329,6 @@ public class VaccineManagementHomeJPanel extends javax.swing.JPanel {
                             .addComponent(vaccineStatusjLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(45, 45, 45)
-                        .addComponent(jLabel5)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(updatejButton1)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(deletejButton1)
@@ -360,24 +354,21 @@ public class VaccineManagementHomeJPanel extends javax.swing.JPanel {
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)))
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel3)
-                            .addComponent(studentjComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel4)
-                            .addComponent(vaccinneTypejComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(searchjButton))
-                        .addGap(18, 18, 18)
-                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 236, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(deletejButton1)
-                            .addComponent(createjButton1)
-                            .addComponent(updatejButton1)
-                            .addComponent(jLabel6)
-                            .addComponent(vaccineStatusjLabel)))
-                    .addComponent(jLabel5))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel3)
+                    .addComponent(studentjComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel4)
+                    .addComponent(vaccinneTypejComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(searchjButton))
+                .addGap(18, 18, 18)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 236, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(deletejButton1)
+                    .addComponent(createjButton1)
+                    .addComponent(updatejButton1)
+                    .addComponent(jLabel6)
+                    .addComponent(vaccineStatusjLabel))
                 .addContainerGap(72, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
@@ -488,7 +479,6 @@ public class VaccineManagementHomeJPanel extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
