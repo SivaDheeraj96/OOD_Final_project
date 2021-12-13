@@ -253,6 +253,10 @@ public class StudentMangementHomeJPanel extends javax.swing.JPanel {
         // TODO add your handling code here:
         
         DefaultTableModel studentsModel = (DefaultTableModel) studentsListjTable.getModel();
+        if(studentsListjTable.getSelectedRow() < 0) {
+            JOptionPane.showMessageDialog(this, "Please select a row to update");
+            return;
+        }
         Student student = (Student) studentsModel.getValueAt(studentsListjTable.getSelectedRow(), 0);        
         
         CardLayout cardLayout = (CardLayout) containerjPanel.getLayout();
