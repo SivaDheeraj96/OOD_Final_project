@@ -13,6 +13,8 @@ import edu.neu.csye6200.userinterface.student.StudentMangementHomeJPanel;
 import edu.neu.csye6200.userinterface.teacher.TeacherManagementHomeJPanel;
 import edu.neu.csye6200.userinterface.vaccination.VaccineManagementHomeJPanel;
 import java.awt.CardLayout;
+import java.awt.Desktop;
+import java.net.URL;
 
 /**
  *
@@ -65,6 +67,7 @@ public class MainJFrame extends javax.swing.JFrame {
         lovejLabel = new javax.swing.JLabel();
         neujLabel = new javax.swing.JLabel();
         ratingManagejButton = new javax.swing.JButton();
+        githubjButton = new javax.swing.JButton();
         containerjPanel = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -119,6 +122,15 @@ public class MainJFrame extends javax.swing.JFrame {
             }
         });
 
+        githubjButton.setFont(new java.awt.Font("Lucida Grande", 1, 13)); // NOI18N
+        githubjButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/edu/neu/csye6200/github-2.png"))); // NOI18N
+        githubjButton.setText("Github");
+        githubjButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                githubjButtonActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout controljPanelLayout = new javax.swing.GroupLayout(controljPanel);
         controljPanel.setLayout(controljPanelLayout);
         controljPanelLayout.setHorizontalGroup(
@@ -134,6 +146,9 @@ public class MainJFrame extends javax.swing.JFrame {
                             .addComponent(vaccineManagejButton)
                             .addComponent(classroomManagejButton)))
                     .addGroup(controljPanelLayout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(ratingManagejButton))
+                    .addGroup(controljPanelLayout.createSequentialGroup()
                         .addGap(16, 16, 16)
                         .addComponent(madeWithjLabel)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -141,8 +156,8 @@ public class MainJFrame extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(neujLabel))
                     .addGroup(controljPanelLayout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(ratingManagejButton)))
+                        .addGap(42, 42, 42)
+                        .addComponent(githubjButton)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -163,7 +178,9 @@ public class MainJFrame extends javax.swing.JFrame {
                 .addComponent(vaccineManagejButton)
                 .addGap(18, 18, 18)
                 .addComponent(ratingManagejButton)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 482, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 436, Short.MAX_VALUE)
+                .addComponent(githubjButton)
+                .addGap(18, 18, 18)
                 .addGroup(controljPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, controljPanelLayout.createSequentialGroup()
                         .addComponent(neujLabel)
@@ -251,6 +268,13 @@ public class MainJFrame extends javax.swing.JFrame {
         cardLayout.next(containerjPanel);
     }//GEN-LAST:event_ratingManagejButtonActionPerformed
 
+    private void githubjButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_githubjButtonActionPerformed
+        // TODO add your handling code here:
+        try {
+            Desktop.getDesktop().browse(new URL("https://github.com/dheeraj0/OOD_Final_project").toURI());
+        } catch (Exception e) {}
+    }//GEN-LAST:event_githubjButtonActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -290,6 +314,7 @@ public class MainJFrame extends javax.swing.JFrame {
     private javax.swing.JButton classroomManagejButton;
     private javax.swing.JPanel containerjPanel;
     private javax.swing.JPanel controljPanel;
+    private javax.swing.JButton githubjButton;
     private javax.swing.JButton groupManagejButton;
     private javax.swing.JLabel lovejLabel;
     private javax.swing.JLabel madeWithjLabel;
