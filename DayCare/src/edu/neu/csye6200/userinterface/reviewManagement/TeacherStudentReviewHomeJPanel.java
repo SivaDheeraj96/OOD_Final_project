@@ -111,6 +111,7 @@ public class TeacherStudentReviewHomeJPanel extends javax.swing.JPanel {
         jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel5.setText("Ratings of Teachers");
 
+        ratingsjTable.setAutoCreateRowSorter(true);
         ratingsjTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null},

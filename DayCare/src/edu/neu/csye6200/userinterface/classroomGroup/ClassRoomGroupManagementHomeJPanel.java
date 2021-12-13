@@ -63,6 +63,7 @@ public class ClassRoomGroupManagementHomeJPanel extends javax.swing.JPanel {
         createjButton = new javax.swing.JButton();
         updatejButton = new javax.swing.JButton();
 
+        classRoomsListjTable.setAutoCreateRowSorter(true);
         classRoomsListjTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 

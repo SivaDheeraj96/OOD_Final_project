@@ -77,6 +77,7 @@ public class ClassRoomManagementHomeJPanel extends javax.swing.JPanel {
         classRoomGroupsListjTable = new javax.swing.JTable();
         jLabel2 = new javax.swing.JLabel();
 
+        classRoomsListjTable.setAutoCreateRowSorter(true);
         classRoomsListjTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
@@ -132,6 +133,7 @@ public class ClassRoomManagementHomeJPanel extends javax.swing.JPanel {
             }
         });
 
+        classRoomGroupsListjTable.setAutoCreateRowSorter(true);
         classRoomGroupsListjTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
