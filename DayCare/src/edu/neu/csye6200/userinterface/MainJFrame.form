@@ -40,7 +40,7 @@
         <Container class="javax.swing.JPanel" name="controljPanel">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="ff" green="cc" red="cc" type="rgb"/>
+              <Color blue="66" green="66" red="ff" type="rgb"/>
             </Property>
           </Properties>
           <Constraints>
@@ -183,7 +183,7 @@
         <Container class="javax.swing.JPanel" name="containerjPanel">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="99" green="66" red="0" type="rgb"/>
+              <Color blue="cc" green="0" red="33" type="rgb"/>
             </Property>
           </Properties>
           <Constraints>

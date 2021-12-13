@@ -5,6 +5,7 @@
  */
 package edu.neu.csye6200.userinterface.teacher;
 
+import edu.neu.csye6200.NortheasternUniversity;
 import edu.neu.csye6200.University;
 import edu.neu.csye6200.teacher.Teacher;
 import java.awt.CardLayout;

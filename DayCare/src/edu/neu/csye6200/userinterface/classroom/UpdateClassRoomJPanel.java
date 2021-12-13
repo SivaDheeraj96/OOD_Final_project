@@ -6,6 +6,7 @@
 package edu.neu.csye6200.userinterface.classroom;
 
 import edu.neu.csye6200.Person;
+import edu.neu.csye6200.NortheasternUniversity;
 import edu.neu.csye6200.University;
 import edu.neu.csye6200.classRoom.ClassRoom;
 import edu.neu.csye6200.classRoomGroup.ClassRoomGroup;

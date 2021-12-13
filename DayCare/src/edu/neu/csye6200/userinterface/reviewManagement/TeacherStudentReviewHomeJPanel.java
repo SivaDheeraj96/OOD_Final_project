@@ -6,6 +6,7 @@
 package edu.neu.csye6200.userinterface.reviewManagement;
 
 import edu.neu.csye6200.Person;
+import edu.neu.csye6200.NortheasternUniversity;
 import edu.neu.csye6200.University;
 import java.util.Date;
 import java.util.Map;
