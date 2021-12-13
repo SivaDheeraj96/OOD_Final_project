@@ -79,6 +79,7 @@ public class TeacherManagementHomeJPanel extends javax.swing.JPanel {
         jLabel5 = new javax.swing.JLabel();
         searchPhoneNumber = new javax.swing.JTextField();
 
+        teachersListjTable.setAutoCreateRowSorter(true);
         teachersListjTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 

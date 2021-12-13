@@ -162,6 +162,7 @@ public class VaccineManagementHomeJPanel extends javax.swing.JPanel {
         jLabel6 = new javax.swing.JLabel();
         vaccineStatusjLabel = new javax.swing.JLabel();
 
+        vaccinationDirectoryRecordsListjTable.setAutoCreateRowSorter(true);
         vaccinationDirectoryRecordsListjTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
@@ -238,6 +239,7 @@ public class VaccineManagementHomeJPanel extends javax.swing.JPanel {
             }
         });
 
+        vaccinationStudentRecordsListjTable.setAutoCreateRowSorter(true);
         vaccinationStudentRecordsListjTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 

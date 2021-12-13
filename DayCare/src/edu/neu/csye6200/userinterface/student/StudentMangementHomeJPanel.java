@@ -79,6 +79,7 @@ public class StudentMangementHomeJPanel extends javax.swing.JPanel {
         jLabel6 = new javax.swing.JLabel();
         statusjCheckBox = new javax.swing.JCheckBox();
 
+        studentsListjTable.setAutoCreateRowSorter(true);
         studentsListjTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
@@ -166,7 +167,7 @@ public class StudentMangementHomeJPanel extends javax.swing.JPanel {
                         .addComponent(createjButton))
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addGroup(layout.createSequentialGroup()
-                            .addGap(368, 368, 368)
+                            .addGap(367, 367, 367)
                             .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 199, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                             .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
