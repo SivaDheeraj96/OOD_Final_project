@@ -129,9 +129,10 @@ public class VaccineManagementHomeJPanel extends javax.swing.JPanel {
     
     private boolean isVaccinePending(Date lastUpdatedDate, Vaccine vaccine) {
         
-        if(vaccine.getFrequency().getValue()==0){
-            if()
+        if((lastUpdatedDate.getTime()-new Date().getTime())/60000>(1440)*vaccine.getFrequency().getDays()){
+            return true;
         }
+        return false;
     }
     /**
      * This method is called from within the constructor to initialize the form.

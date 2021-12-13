@@ -6,12 +6,12 @@ import java.util.Map;
 public class Vaccine {
 
     public static enum FREQUENCY {
-        DAILY(0),
-        WEEKLY(1),
-        MONTHLY(2),
-        QUARTERLY(3),
-        YEARLY(4),
-        ONLYONCE(5);
+        DAILY(0,1),
+        WEEKLY(1,7),
+        MONTHLY(2,30),
+        QUARTERLY(3,90),
+        YEARLY(4,365),
+        ONLYONCE(5,-1);
 
         private static Map map = new HashMap();
         static {
@@ -20,9 +20,10 @@ public class Vaccine {
         }
     }
         private final int value;
-
-        private FREQUENCY(int value) {
+        private final int days;
+        private FREQUENCY(int value,int days) {
             this.value = value;
+            this.days = days;
         }
 
         public static FREQUENCY valueOf(int val)
@@ -32,6 +33,9 @@ public class Vaccine {
         }
         public int getValue() {
             return value;
+        }
+        public int getDays(){
+            return days;
         }
     }
     private int id;
