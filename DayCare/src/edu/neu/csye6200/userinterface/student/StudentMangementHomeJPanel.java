@@ -150,7 +150,7 @@ public class StudentMangementHomeJPanel extends javax.swing.JPanel {
 
         jLabel5.setText("Phone Number");
 
-        jLabel6.setText("Status");
+        jLabel6.setText("Renewed");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
