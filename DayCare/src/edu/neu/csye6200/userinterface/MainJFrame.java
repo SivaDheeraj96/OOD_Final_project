@@ -30,6 +30,15 @@ public class MainJFrame extends javax.swing.JFrame {
     public MainJFrame() {
         initComponents();
         initializeData();
+        setDefaultUI();
+    }
+    
+    private void setDefaultUI() {
+        containerjPanel.removeAll();
+        
+        CardLayout cardLayout = (CardLayout) containerjPanel.getLayout();
+        containerjPanel.add("DefaultPanel", new DefaultJPanel());
+        cardLayout.next(containerjPanel);
     }
     
     private void initializeData() {
@@ -189,7 +198,8 @@ public class MainJFrame extends javax.swing.JFrame {
 
     private void studentManagejButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_studentManagejButtonActionPerformed
         // TODO add your handling code here:
-
+        containerjPanel.removeAll();
+        
         CardLayout cardLayout = (CardLayout) containerjPanel.getLayout();
         containerjPanel.add("StudentManagementHomePanel", new StudentMangementHomeJPanel(containerjPanel, university));
         cardLayout.next(containerjPanel);
@@ -197,6 +207,7 @@ public class MainJFrame extends javax.swing.JFrame {
 
     private void groupManagejButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_groupManagejButtonActionPerformed
         // TODO add your handling code here:
+        containerjPanel.removeAll();
         
         CardLayout cardLayout = (CardLayout) containerjPanel.getLayout();
         containerjPanel.add("ClassroomGroupManagementHomePanel", new ClassRoomGroupManagementHomeJPanel(containerjPanel, university));
@@ -206,6 +217,7 @@ public class MainJFrame extends javax.swing.JFrame {
 
     private void classroomManagejButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_classroomManagejButtonActionPerformed
         // TODO add your handling code here:
+        containerjPanel.removeAll();
         
         CardLayout cardLayout = (CardLayout) containerjPanel.getLayout();
         containerjPanel.add("ClassroomManagementHomePanel", new ClassRoomManagementHomeJPanel(containerjPanel, university));
@@ -214,6 +226,7 @@ public class MainJFrame extends javax.swing.JFrame {
 
     private void vaccineManagejButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_vaccineManagejButtonActionPerformed
         // TODO add your handling code here:
+        containerjPanel.removeAll();
         
         CardLayout cardLayout = (CardLayout) containerjPanel.getLayout();
         containerjPanel.add("VaccinationManagementHomePanel", new VaccineManagementHomeJPanel(containerjPanel, university));
@@ -222,6 +235,7 @@ public class MainJFrame extends javax.swing.JFrame {
 
     private void teacherManagejButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_teacherManagejButtonActionPerformed
         // TODO add your handling code here:
+        containerjPanel.removeAll();
         
         CardLayout cardLayout = (CardLayout) containerjPanel.getLayout();
         containerjPanel.add("TeacherManagementHomePanel", new TeacherManagementHomeJPanel(containerjPanel, university));
@@ -230,6 +244,8 @@ public class MainJFrame extends javax.swing.JFrame {
 
     private void ratingManagejButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ratingManagejButtonActionPerformed
         // TODO add your handling code here:
+        containerjPanel.removeAll();
+        
         CardLayout cardLayout = (CardLayout) containerjPanel.getLayout();
         containerjPanel.add("RatingManagementHomePanel", new TeacherStudentReviewHomeJPanel(university));
         cardLayout.next(containerjPanel);
