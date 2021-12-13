@@ -17,6 +17,7 @@ import java.awt.Component;
 import java.util.ArrayList;
 import java.util.List;
 import javax.swing.DefaultListModel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
 /**
@@ -113,6 +114,12 @@ public class CreateNewClassRoomGroupJPanel extends javax.swing.JPanel {
         jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel3.setText("Teacher :");
 
+        teacherjComboBox.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                teacherjComboBoxActionPerformed(evt);
+            }
+        });
+
         jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel4.setText("Student :");
 
@@ -204,9 +211,18 @@ public class CreateNewClassRoomGroupJPanel extends javax.swing.JPanel {
         int id = Integer.valueOf(idjTextField.getText());
         int[] selectedStudents = studentsjList.getSelectedIndices();
         
+        if(selectedStudents.length==0) {
+            JOptionPane.showMessageDialog(this, "No students selected");
+            return;
+        }
+        
         List<Person> students = new ArrayList<>();
         for(int student:selectedStudents) {
             students.add((Student) university.getStudentController().getUnassignedStudent().get(student));
+        }
+        if(teacherjComboBox.getSelectedIndex() < 0 ){
+            JOptionPane.showMessageDialog(this, "No teacher present");
+            return;
         }
         
         Teacher teacher  = (Teacher) university.getTeacherController().getUnassignedTeacher().get(teacherjComboBox.getSelectedIndex());
@@ -244,6 +260,10 @@ public class CreateNewClassRoomGroupJPanel extends javax.swing.JPanel {
         }
         studentsjList.setListData( inputData);
     }//GEN-LAST:event_ageGroupjComboBoxActionPerformed
+
+    private void teacherjComboBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_teacherjComboBoxActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_teacherjComboBoxActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

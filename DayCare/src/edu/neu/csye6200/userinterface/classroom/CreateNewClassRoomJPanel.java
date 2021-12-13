@@ -186,16 +186,17 @@ public class CreateNewClassRoomJPanel extends javax.swing.JPanel {
         }
         List<ClassRoomGroup> groups = new ArrayList();
         int[] indices = groupsJList.getSelectedIndices();
+        if(indices.length<0)
+        {
+            JOptionPane.showMessageDialog(this, "No classroom groups to assign");
+            return;
+        }
         List<ClassRoomGroup> unassignedGroups = university.getClassRoomGroupController().getUnassignedClassRoomGroup();
         for(int i=0;i<indices.length;i++)
         {
             groups.add(unassignedGroups.get(i));
         }
-        if(indices.length<0)
-        {
-            JOptionPane.showMessageDialog(this, "Please input valid name");
-            return;
-        }
+        
         university.getClassRoomController().addClassRoom(id,name, groups);
         JOptionPane.showMessageDialog(this, "Successfully add classRoom record");
         populateDate();

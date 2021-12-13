@@ -208,6 +208,10 @@ public class ClassRoomManagementHomeJPanel extends javax.swing.JPanel {
         // TODO add your handling code here:
 
         DefaultTableModel classRoomListModel = (DefaultTableModel) classRoomsListjTable.getModel();
+        if(classRoomGroupsListjTable.getSelectedRow()<0) {
+            JOptionPane.showMessageDialog(this, "Please select a row to delete");
+            return;
+        }
         ClassRoom classRoom = (ClassRoom) classRoomListModel.getValueAt(classRoomsListjTable.getSelectedRow(), 0);
         university.getClassRoomController().removeClassRoom(classRoom);
 
@@ -228,6 +232,10 @@ public class ClassRoomManagementHomeJPanel extends javax.swing.JPanel {
         // TODO add your handling code here:
 
         DefaultTableModel studentsModel = (DefaultTableModel) classRoomsListjTable.getModel();
+        if(classRoomGroupsListjTable.getSelectedRow()<0) {
+            JOptionPane.showMessageDialog(this, "Please select a row to update");
+            return;
+        }
         ClassRoom classRoom = (ClassRoom) studentsModel.getValueAt(classRoomsListjTable.getSelectedRow(), 0);
 
         CardLayout cardLayout = (CardLayout) containerjPanel.getLayout();

@@ -9,6 +9,7 @@ import edu.neu.csye6200.Person;
 import edu.neu.csye6200.University;
 import java.util.Date;
 import java.util.Map;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -207,6 +208,11 @@ public class TeacherStudentReviewHomeJPanel extends javax.swing.JPanel {
 
     private void submitjButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_submitjButtonActionPerformed
         // TODO add your handling code here:
+        
+        if(studentjComboBox.getSelectedIndex() < 0 || teacherjComboBox.getSelectedIndex() < 0) {
+            JOptionPane.showMessageDialog(this, "Either students or teachers is empty. So cant proceed ahead");
+            return;
+        }
         
         Person student = university.getStudentController().getStudentList().get(studentjComboBox.getSelectedIndex());
         Person teacher = university.getTeacherController().getTeacherList().get(teacherjComboBox.getSelectedIndex());

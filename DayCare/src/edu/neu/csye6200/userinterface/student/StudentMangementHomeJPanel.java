@@ -233,6 +233,10 @@ public class StudentMangementHomeJPanel extends javax.swing.JPanel {
         // TODO add your handling code here:
         
         DefaultTableModel studentListModel = (DefaultTableModel) studentsListjTable.getModel();
+        if(studentsListjTable.getSelectedRow() < 0) {
+            JOptionPane.showMessageDialog(this, "Please select a row to delete");
+            return;
+        }
         Student student = (Student) studentListModel.getValueAt(studentsListjTable.getSelectedRow(), 0);
         university.getStudentController().removeStudent(student);
         

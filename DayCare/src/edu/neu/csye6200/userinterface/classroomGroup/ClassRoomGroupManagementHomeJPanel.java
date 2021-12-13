@@ -175,6 +175,10 @@ public class ClassRoomGroupManagementHomeJPanel extends javax.swing.JPanel {
         // TODO add your handling code here:
 
         DefaultTableModel classRoomListModel = (DefaultTableModel) classRoomsListjTable.getModel();
+        if(classRoomsListjTable.getSelectedRow()<0) {
+            JOptionPane.showMessageDialog(this, "Please select a row to delete");
+            return;
+        }
         ClassRoomGroup classRoomGroup = (ClassRoomGroup) classRoomListModel.getValueAt(classRoomsListjTable.getSelectedRow(), 0);
         university.getClassRoomGroupController().removeClassRoomGroup(classRoomGroup);
 
@@ -194,6 +198,10 @@ public class ClassRoomGroupManagementHomeJPanel extends javax.swing.JPanel {
         // TODO add your handling code here:
 
         DefaultTableModel classRoomListModel = (DefaultTableModel) classRoomsListjTable.getModel();
+        if(classRoomsListjTable.getSelectedRow()<0) {
+            JOptionPane.showMessageDialog(this, "Please select a row to update");
+            return;
+        }
         ClassRoomGroup classRoomGroup = (ClassRoomGroup) classRoomListModel.getValueAt(classRoomsListjTable.getSelectedRow(), 0);
 
         CardLayout cardLayout = (CardLayout) containerjPanel.getLayout();

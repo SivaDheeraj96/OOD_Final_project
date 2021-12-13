@@ -209,6 +209,7 @@ public class UpdateClassRoomGroupJPanel extends javax.swing.JPanel {
     private void updatejButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_updatejButtonActionPerformed
         String id = idjTextField.getText();
         int idx = teacherjComboBox.getSelectedIndex();
+        
         Person teacher = idx ==0? this.classRoomGroup.getTeacher():university.getTeacherController().getUnassignedTeacher().get(idx-1);
         List<Person> studentList = new ArrayList(this.classRoomGroup.getStudents());
         studentList.addAll( university.getStudentController().getUnassignedStudent());

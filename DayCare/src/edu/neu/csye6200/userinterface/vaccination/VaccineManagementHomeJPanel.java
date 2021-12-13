@@ -393,6 +393,10 @@ public class VaccineManagementHomeJPanel extends javax.swing.JPanel {
         // TODO add your handling code here:
 
         DefaultTableModel vaccineRecordListModel = (DefaultTableModel) vaccinationDirectoryRecordsListjTable.getModel();
+        if(vaccinationDirectoryRecordsListjTable.getSelectedRow() < 0) {
+            JOptionPane.showMessageDialog(this, "Please select a row to delete");
+            return;
+        }
         Vaccine vaccineRecord = (Vaccine) vaccineRecordListModel.getValueAt(vaccinationDirectoryRecordsListjTable.getSelectedRow(), 0);
         university.getImmunizationController().removeVaccine(vaccineRecord);
 
@@ -438,6 +442,10 @@ public class VaccineManagementHomeJPanel extends javax.swing.JPanel {
         // TODO add your handling code here:
         
         DefaultTableModel vaccinationStudentModel = (DefaultTableModel) vaccinationStudentRecordsListjTable.getModel();
+        if(vaccinationStudentRecordsListjTable.getSelectedRow() < 0) {
+            JOptionPane.showMessageDialog(this, "Please select a record to delete");
+            return;
+        }
         VaccineRecord vaccineRecord = (VaccineRecord) vaccinationStudentModel.getValueAt(vaccinationStudentRecordsListjTable.getSelectedRow(), 0);
         
         university.getImmunizationController().removeVaccineRecord(vaccineRecord);

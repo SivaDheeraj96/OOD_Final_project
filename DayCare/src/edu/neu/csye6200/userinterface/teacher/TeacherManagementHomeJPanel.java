@@ -228,6 +228,10 @@ public class TeacherManagementHomeJPanel extends javax.swing.JPanel {
         // TODO add your handling code here:
 
         DefaultTableModel teacherListModel = (DefaultTableModel) teachersListjTable.getModel();
+        if(teachersListjTable.getSelectedRow() < 0) {
+            JOptionPane.showMessageDialog(this, "Please select a row to delete");
+            return;
+        }
         Teacher teacher = (Teacher) teacherListModel.getValueAt(teachersListjTable.getSelectedRow(), 0);
         university.getTeacherController().removeTeacher(teacher);
         populateTeachers();
@@ -246,6 +250,10 @@ public class TeacherManagementHomeJPanel extends javax.swing.JPanel {
         // TODO add your handling code here:
         
         DefaultTableModel teacherListModel = (DefaultTableModel) teachersListjTable.getModel();
+        if(teachersListjTable.getSelectedRow() < 0) {
+            JOptionPane.showMessageDialog(this, "Please select a row to update");
+            return;
+        }
         Teacher teacher = (Teacher) teacherListModel.getValueAt(teachersListjTable.getSelectedRow(), 0);
         CardLayout cardLayout = (CardLayout) containerjPanel.getLayout();
         containerjPanel.add("UpdateTeacherJPanel", new UpdateTeacherJPanel(containerjPanel, university, teacher));
